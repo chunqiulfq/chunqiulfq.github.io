@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="etcd," />
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="description" content="黄沙百战穿金甲 不破楼兰终不还">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CHUNQIULFQ">
-<meta property="og:url" content="http://chunqiublog.github.io/categories/数据库/index.html">
+<meta name="description" content="etcd gateway 是什么?etcd gateway 是一个简单的转发网络数据到 etcd 集群的 TCP 代理. 这个 gateway 是无状态的, 透明的; 它既不检查客户端的请求, 也不干涉 etcd 集群的响应.这个 gateway 支持多 etcd 服务端点, 遵循简单的循环策略连接端点. 它只路由到可用的端点, 且对连接到它上的客户端隐藏 etcd 服务端点的故障. 其他的重试策">
+<meta name="keywords" content="etcd">
+<meta property="og:type" content="article">
+<meta property="og:title" content="etcd gateway">
+<meta property="og:url" content="http://chunqiublog.github.io/2018-01-02-etcd-gateway.html">
 <meta property="og:site_name" content="CHUNQIULFQ">
-<meta property="og:description" content="黄沙百战穿金甲 不破楼兰终不还">
+<meta property="og:description" content="etcd gateway 是什么?etcd gateway 是一个简单的转发网络数据到 etcd 集群的 TCP 代理. 这个 gateway 是无状态的, 透明的; 它既不检查客户端的请求, 也不干涉 etcd 集群的响应.这个 gateway 支持多 etcd 服务端点, 遵循简单的循环策略连接端点. 它只路由到可用的端点, 且对连接到它上的客户端隐藏 etcd 服务端点的故障. 其他的重试策">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-19T11:48:39.268Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CHUNQIULFQ">
-<meta name="twitter:description" content="黄沙百战穿金甲 不破楼兰终不还">
+<meta name="twitter:title" content="etcd gateway">
+<meta name="twitter:description" content="etcd gateway 是什么?etcd gateway 是一个简单的转发网络数据到 etcd 集群的 TCP 代理. 这个 gateway 是无状态的, 透明的; 它既不检查客户端的请求, 也不干涉 etcd 集群的响应.这个 gateway 支持多 etcd 服务端点, 遵循简单的循环策略连接端点. 它只路由到可用的端点, 且对连接到它上的客户端隐藏 etcd 服务端点的故障. 其他的重试策">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://chunqiublog.github.io/categories/数据库/"/>
+  <link rel="canonical" href="http://chunqiublog.github.io/2018-01-02-etcd-gateway.html"/>
 
 
 
 
 
-  <title>分类: 数据库 | CHUNQIULFQ</title>
+  <title>etcd gateway | CHUNQIULFQ</title>
   
 
 
@@ -145,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -273,167 +275,284 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>数据库<small>分类</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/2018-01-02-etcd-gateway.html">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chunqiulfq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHUNQIULFQ">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018-01-02-etcd-gateway.html" itemprop="url">
-              
-                <span itemprop="name">etcd gateway</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">etcd gateway</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-01-02T19:36:48+08:00"
-              content="2018-01-02" >
-          01-02
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-02T19:36:48+08:00">
+                2018-01-02
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/" itemprop="url" rel="index">
+                    <span itemprop="name">数据库</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/数据库/翻译/" itemprop="url" rel="index">
+                    <span itemprop="name">翻译</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018-01-02-etcd-gateway.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018-01-02-etcd-gateway.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i> 阅读次数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017-12-14-Redis-4-0源码解析-SDS-3.html" itemprop="url">
-              
-                <span itemprop="name">Redis 4.0源码解析: SDS(3)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-14T11:22:35+08:00"
-              content="2017-12-14" >
-          12-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017-12-14-Redis-4-0源码解析-SDS-2.html" itemprop="url">
-              
-                <span itemprop="name">Redis 4.0源码解析: SDS(2)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-14T11:22:31+08:00"
-              content="2017-12-14" >
-          12-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017-12-14-Redis-4-0源码解析-SDS-1.html" itemprop="url">
-              
-                <span itemprop="name">Redis 4.0源码解析: SDS(1)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-14T11:22:26+08:00"
-              content="2017-12-14" >
-          12-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017-12-14-Redis-4-0源码解析.html" itemprop="url">
-              
-                <span itemprop="name">Redis 4.0源码解析</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-14T11:21:58+08:00"
-              content="2017-12-14" >
-          12-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h1 id="etcd-gateway-是什么"><a href="#etcd-gateway-是什么" class="headerlink" title="etcd gateway 是什么?"></a>etcd gateway 是什么?</h1><p>etcd gateway 是一个简单的转发网络数据到 etcd 集群的 TCP 代理. 这个 gateway 是无状态的, 透明的; 它既不检查客户端的请求, 也不干涉 etcd 集群的响应.<br>这个 gateway 支持多 etcd 服务端点, 遵循简单的循环策略连接端点. 它只路由到可用的端点, 且对连接到它上的客户端隐藏 etcd 服务端点的故障. 其他的重试策略(如加权循环)在将来可能会得到支持.</p>
+<a id="more"></a>
+<h1 id="什么时候使用-etcd-gateway"><a href="#什么时候使用-etcd-gateway" class="headerlink" title="什么时候使用 etcd gateway?"></a>什么时候使用 etcd gateway?</h1><p>每个访问 etcd 的应用必须首先拥有 etcd 集群的地址. 如果是同一台服务器上的多个应用访问同一个 etcd 集群, 每个应用仍然需要知道这个 etcd 集群公布的地址. 如果这个 etcd 集群重新配置为拥有不同端点的集群, 则每个应用程序可能还需要更新其端点列表. 这种大规模的重新配置既枯燥又容易出错.</p>
+<p>etcd gateway 通过作为一个稳定的本地端点提供服务解决了这个问题. 一个典型的 etcd gateway 配置是让每一个机器运行一个监听本地端口的 gateway, 同时每一个 etcd 应用连接到这个本地 gateway. 这样在 etcd 集群重新配置时只有 gateway 需要更新它的端点配置, 而不是更新每一个应用.</p>
+<p>总之, 为了自动传播 etcd 集群端点更改, etcd gateway 应该运行在为访问同一个 etcd 集群的多个应用程序提供服务的每台机器上.</p>
+<h1 id="什么时候不应该使用-etcd-gateway"><a href="#什么时候不应该使用-etcd-gateway" class="headerlink" title="什么时候不应该使用 etcd gateway?"></a>什么时候不应该使用 etcd gateway?</h1><ul>
+<li><p>提高性能<br>gateway 不是为了提高 etcd 集群性能而设置. 它不提供缓存, watch 的合并或批处理. etcd 团队正在开发一个旨在提高集群可扩展性的缓存代理.</p>
+</li>
+<li><p>在集群管理系统上运行<br>高级集群管理系统(如 Kubernetes) 本身支持服务发现, 应用程序可以使用有系统管理的 DNS 名称或虚拟 IP 地址访问 etcd 集群. 例如: kube-proxy等同于etcd网关.</p>
+</li>
+</ul>
+<h1 id="启动-etcd-gateway"><a href="#启动-etcd-gateway" class="headerlink" title="启动 etcd gateway"></a>启动 etcd gateway</h1><p>考虑一个具有以下静态端点的 etcd 集群:<br>|Name    |Address    |Hostname          |<br>|infra0    |10.0.1.10    |infra0.example.com|<br>|infra1    |10.0.1.11    |infra1.example.com|<br>|infra2    |10.0.1.12    |infra2.example.com|</p>
+<p>使用包含这些静态端点的命令启动etcd gateway:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ etcd gateway start --endpoints=infra0.example.com,infra1.example.com,infra2.example.com</span><br><span class="line">2016-08-16 11:21:18.867350 I | tcpproxy: ready to proxy client requests to [...]</span><br></pre></td></tr></table></figure></p>
+<p>或者, 如果使用 DNS 进行服务发现, 请考虑 DNS SRV 条目:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ dig +noall +answer SRV _etcd-client._tcp.example.com</span><br><span class="line">_etcd-client._tcp.example.com. 300 IN SRV 0 0 2379 infra0.example.com.</span><br><span class="line">_etcd-client._tcp.example.com. 300 IN SRV 0 0 2379 infra1.example.com.</span><br><span class="line">_etcd-client._tcp.example.com. 300 IN SRV 0 0 2379 infra2.example.com.</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ dig +noall +answer infra0.example.com infra1.example.com infra2.example.com</span><br><span class="line">infra0.example.com.  300  IN  A  10.0.1.10</span><br><span class="line">infra1.example.com.  300  IN  A  10.0.1.11</span><br><span class="line">infra2.example.com.  300  IN  A  10.0.1.12</span><br></pre></td></tr></table></figure>
+<p>使用以下命令从 DNS SRV 条目获取端点启动 etcd gateway:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ etcd gateway --discovery-srv=example.com</span><br><span class="line">2016-08-16 11:21:18.867350 I | tcpproxy: ready to proxy client requests to [...]</span><br></pre></td></tr></table></figure></p>
+<h1 id="配置选项"><a href="#配置选项" class="headerlink" title="配置选项"></a>配置选项</h1><h2 id="etcd-集群"><a href="#etcd-集群" class="headerlink" title="etcd 集群"></a>etcd 集群</h2><h3 id="–endpoints"><a href="#–endpoints" class="headerlink" title="–endpoints"></a>–endpoints</h3><ul>
+<li>逗号分隔的转发客户端连接的目标 etcd 集群列表</li>
+<li>默认配置: <code>127.0.0.1:2379</code></li>
+<li>无效示例: <code>https://127.0.0.1:2379</code>(gateway 不终止 TLS)</li>
+</ul>
+<h3 id="–discovery-srv"><a href="#–discovery-srv" class="headerlink" title="–discovery-srv"></a>–discovery-srv</h3><ul>
+<li>通过 SRV 记录引导集群端点的 DNS 域名</li>
+<li>默认配置: (不设置)</li>
+</ul>
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h3 id="–listen-addr"><a href="#–listen-addr" class="headerlink" title="–listen-addr"></a>–listen-addr</h3><ul>
+<li>接口和端口绑定接收客户端请求</li>
+<li>默认: 127.0.0.1:23790</li>
+</ul>
+<h3 id="–retry-delay"><a href="#–retry-delay" class="headerlink" title="–retry-delay"></a>–retry-delay</h3><ul>
+<li>重试连接到失败的端点之前的延迟时间</li>
+<li>默认配置: 1m0s</li>
+<li>无效示例: “123”(使用指定格式的时间单位)</li>
+</ul>
+<h2 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h2><h3 id="–insecure-discovery"><a href="#–insecure-discovery" class="headerlink" title="–insecure-discovery"></a>–insecure-discovery</h3><ul>
+<li>接收 SRV 记录是不安全或易受到中间人攻击的</li>
+<li>默认配置: <code>false</code></li>
+</ul>
+<h3 id="–trusted-ca-file"><a href="#–trusted-ca-file" class="headerlink" title="–trusted-ca-file"></a>–trusted-ca-file</h3><ul>
+<li>用于 etcd 集群的客户端 TLS CA 文件路径. 用于认证端点.</li>
+<li>默认配置: (不设置)</li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享, 您的支持将鼓励我继续创作!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="chunqiulfq 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="chunqiulfq 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    chunqiulfq
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://chunqiublog.github.io/2018-01-02-etcd-gateway.html" title="etcd gateway">http://chunqiublog.github.io/2018-01-02-etcd-gateway.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/etcd/" rel="tag"># etcd</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017-12-14-Redis-4-0源码解析-SDS-3.html" rel="next" title="Redis 4.0源码解析: SDS(3)">
+                <i class="fa fa-chevron-left"></i> Redis 4.0源码解析: SDS(3)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -441,6 +560,17 @@
 
 
           
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+  
+
 
         </div>
         
@@ -461,8 +591,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -567,6 +706,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#etcd-gateway-是什么"><span class="nav-number">1.</span> <span class="nav-text"><a href="#etcd-gateway-&#x662F;&#x4EC0;&#x4E48;" class="headerlink" title="etcd gateway &#x662F;&#x4EC0;&#x4E48;?"></a>etcd gateway &#x662F;&#x4EC0;&#x4E48;?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么时候使用-etcd-gateway"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x4F7F;&#x7528;-etcd-gateway" class="headerlink" title="&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x4F7F;&#x7528; etcd gateway?"></a>&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x4F7F;&#x7528; etcd gateway?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么时候不应该使用-etcd-gateway"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x4E0D;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;-etcd-gateway" class="headerlink" title="&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x4E0D;&#x5E94;&#x8BE5;&#x4F7F;&#x7528; etcd gateway?"></a>&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x4E0D;&#x5E94;&#x8BE5;&#x4F7F;&#x7528; etcd gateway?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动-etcd-gateway"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x542F;&#x52A8;-etcd-gateway" class="headerlink" title="&#x542F;&#x52A8; etcd gateway"></a>&#x542F;&#x52A8; etcd gateway</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置选项"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x914D;&#x7F6E;&#x9009;&#x9879;" class="headerlink" title="&#x914D;&#x7F6E;&#x9009;&#x9879;"></a>&#x914D;&#x7F6E;&#x9009;&#x9879;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#etcd-集群"><span class="nav-number">5.1.</span> <span class="nav-text"><a href="#etcd-&#x96C6;&#x7FA4;" class="headerlink" title="etcd &#x96C6;&#x7FA4;"></a>etcd &#x96C6;&#x7FA4;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#–endpoints"><span class="nav-number">5.1.1.</span> <span class="nav-text"><a href="#&#x2013;endpoints" class="headerlink" title="&#x2013;endpoints"></a>&#x2013;endpoints</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#–discovery-srv"><span class="nav-number">5.1.2.</span> <span class="nav-text"><a href="#&#x2013;discovery-srv" class="headerlink" title="&#x2013;discovery-srv"></a>&#x2013;discovery-srv</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络"><span class="nav-number">5.2.</span> <span class="nav-text"><a href="#&#x7F51;&#x7EDC;" class="headerlink" title="&#x7F51;&#x7EDC;"></a>&#x7F51;&#x7EDC;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#–listen-addr"><span class="nav-number">5.2.1.</span> <span class="nav-text"><a href="#&#x2013;listen-addr" class="headerlink" title="&#x2013;listen-addr"></a>&#x2013;listen-addr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#–retry-delay"><span class="nav-number">5.2.2.</span> <span class="nav-text"><a href="#&#x2013;retry-delay" class="headerlink" title="&#x2013;retry-delay"></a>&#x2013;retry-delay</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全"><span class="nav-number">5.3.</span> <span class="nav-text"><a href="#&#x5B89;&#x5168;" class="headerlink" title="&#x5B89;&#x5168;"></a>&#x5B89;&#x5168;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#–insecure-discovery"><span class="nav-number">5.3.1.</span> <span class="nav-text"><a href="#&#x2013;insecure-discovery" class="headerlink" title="&#x2013;insecure-discovery"></a>&#x2013;insecure-discovery</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#–trusted-ca-file"><span class="nav-number">5.3.2.</span> <span class="nav-text"><a href="#&#x2013;trusted-ca-file" class="headerlink" title="&#x2013;trusted-ca-file"></a>&#x2013;trusted-ca-file</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -711,6 +866,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -728,6 +887,18 @@
       <script id="dsq-count-scr" src="https://chunqiulfq.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://chunqiublog.github.io/2018-01-02-etcd-gateway.html';
+          this.page.identifier = '2018-01-02-etcd-gateway.html';
+          this.page.title = 'etcd gateway';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://chunqiulfq.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
