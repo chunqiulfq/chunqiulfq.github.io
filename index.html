@@ -402,7 +402,8 @@
 
       
         
-          <h1 id="etcd-gateway-是什么"><a href="#etcd-gateway-是什么" class="headerlink" title="etcd gateway 是什么?"></a>etcd gateway 是什么?</h1><p>etcd gateway 是一个简单的转发网络数据到 etcd 集群的 TCP 代理. 这个 gateway 是无状态的, 透明的; 它既不检查客户端的请求, 也不干涉 etcd 集群的响应.<br>这个 gateway 支持多 etcd 服务端点, 遵循简单的循环策略连接端点. 它只路由到可用的端点, 且对连接到它上的客户端隐藏 etcd 服务端点的故障. 其他的重试策略(如加权循环)在将来可能会得到支持.</p>
+          <p><em>翻译自: <a href="https://github.com/coreos/etcd/blob/c578ac4a1a87f90ccd13ae210ee920ff2753387f/Documentation/op-guide/gateway.md" target="_blank" rel="noopener">etcd gateway</a></em></p>
+<h1 id="etcd-gateway-是什么"><a href="#etcd-gateway-是什么" class="headerlink" title="etcd gateway 是什么?"></a>etcd gateway 是什么?</h1><p>etcd gateway 是一个简单的转发网络数据到 etcd 集群的 TCP 代理. 这个 gateway 是无状态的, 透明的; 它既不检查客户端的请求, 也不干涉 etcd 集群的响应.<br>这个 gateway 支持多 etcd 服务端点, 遵循简单的循环策略连接端点. 它只路由到可用的端点, 且对连接到它上的客户端隐藏 etcd 服务端点的故障. 其他的重试策略(如加权循环)在将来可能会得到支持.</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018-01-02-etcd-gateway.html#more" rel="contents">

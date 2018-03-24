@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="etcd gateway 是什么?etcd gateway 是一个简单的转发网络数据到 etcd 集群的 TCP 代理. 这个 gateway 是无状态的, 透明的; 它既不检查客户端的请求, 也不干涉 etcd 集群的响应.这个 gateway 支持多 etcd 服务端点, 遵循简单的循环策略连接端点. 它只路由到可用的端点, 且对连接到它上的客户端隐藏 etcd 服务端点的故障. 其他的重试策">
+<meta name="description" content="翻译自: etcd gateway etcd gateway 是什么?etcd gateway 是一个简单的转发网络数据到 etcd 集群的 TCP 代理. 这个 gateway 是无状态的, 透明的; 它既不检查客户端的请求, 也不干涉 etcd 集群的响应.这个 gateway 支持多 etcd 服务端点, 遵循简单的循环策略连接端点. 它只路由到可用的端点, 且对连接到它上的客户端隐藏 et">
 <meta name="keywords" content="etcd">
 <meta property="og:type" content="article">
 <meta property="og:title" content="etcd gateway">
 <meta property="og:url" content="http://chunqiublog.github.io/2018-01-02-etcd-gateway.html">
 <meta property="og:site_name" content="CHUNQIULFQ">
-<meta property="og:description" content="etcd gateway 是什么?etcd gateway 是一个简单的转发网络数据到 etcd 集群的 TCP 代理. 这个 gateway 是无状态的, 透明的; 它既不检查客户端的请求, 也不干涉 etcd 集群的响应.这个 gateway 支持多 etcd 服务端点, 遵循简单的循环策略连接端点. 它只路由到可用的端点, 且对连接到它上的客户端隐藏 etcd 服务端点的故障. 其他的重试策">
+<meta property="og:description" content="翻译自: etcd gateway etcd gateway 是什么?etcd gateway 是一个简单的转发网络数据到 etcd 集群的 TCP 代理. 这个 gateway 是无状态的, 透明的; 它既不检查客户端的请求, 也不干涉 etcd 集群的响应.这个 gateway 支持多 etcd 服务端点, 遵循简单的循环策略连接端点. 它只路由到可用的端点, 且对连接到它上的客户端隐藏 et">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-19T11:48:39.268Z">
+<meta property="og:updated_time" content="2018-03-24T16:46:42.685Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="etcd gateway">
-<meta name="twitter:description" content="etcd gateway 是什么?etcd gateway 是一个简单的转发网络数据到 etcd 集群的 TCP 代理. 这个 gateway 是无状态的, 透明的; 它既不检查客户端的请求, 也不干涉 etcd 集群的响应.这个 gateway 支持多 etcd 服务端点, 遵循简单的循环策略连接端点. 它只路由到可用的端点, 且对连接到它上的客户端隐藏 etcd 服务端点的故障. 其他的重试策">
+<meta name="twitter:description" content="翻译自: etcd gateway etcd gateway 是什么?etcd gateway 是一个简单的转发网络数据到 etcd 集群的 TCP 代理. 这个 gateway 是无状态的, 透明的; 它既不检查客户端的请求, 也不干涉 etcd 集群的响应.这个 gateway 支持多 etcd 服务端点, 遵循简单的循环策略连接端点. 它只路由到可用的端点, 且对连接到它上的客户端隐藏 et">
 
 
 
@@ -405,7 +405,8 @@
       
 
       
-        <h1 id="etcd-gateway-是什么"><a href="#etcd-gateway-是什么" class="headerlink" title="etcd gateway 是什么?"></a>etcd gateway 是什么?</h1><p>etcd gateway 是一个简单的转发网络数据到 etcd 集群的 TCP 代理. 这个 gateway 是无状态的, 透明的; 它既不检查客户端的请求, 也不干涉 etcd 集群的响应.<br>这个 gateway 支持多 etcd 服务端点, 遵循简单的循环策略连接端点. 它只路由到可用的端点, 且对连接到它上的客户端隐藏 etcd 服务端点的故障. 其他的重试策略(如加权循环)在将来可能会得到支持.</p>
+        <p><em>翻译自: <a href="https://github.com/coreos/etcd/blob/c578ac4a1a87f90ccd13ae210ee920ff2753387f/Documentation/op-guide/gateway.md" target="_blank" rel="noopener">etcd gateway</a></em></p>
+<h1 id="etcd-gateway-是什么"><a href="#etcd-gateway-是什么" class="headerlink" title="etcd gateway 是什么?"></a>etcd gateway 是什么?</h1><p>etcd gateway 是一个简单的转发网络数据到 etcd 集群的 TCP 代理. 这个 gateway 是无状态的, 透明的; 它既不检查客户端的请求, 也不干涉 etcd 集群的响应.<br>这个 gateway 支持多 etcd 服务端点, 遵循简单的循环策略连接端点. 它只路由到可用的端点, 且对连接到它上的客户端隐藏 etcd 服务端点的故障. 其他的重试策略(如加权循环)在将来可能会得到支持.</p>
 <a id="more"></a>
 <h1 id="什么时候使用-etcd-gateway"><a href="#什么时候使用-etcd-gateway" class="headerlink" title="什么时候使用 etcd gateway?"></a>什么时候使用 etcd gateway?</h1><p>每个访问 etcd 的应用必须首先拥有 etcd 集群的地址. 如果是同一台服务器上的多个应用访问同一个 etcd 集群, 每个应用仍然需要知道这个 etcd 集群公布的地址. 如果这个 etcd 集群重新配置为拥有不同端点的集群, 则每个应用程序可能还需要更新其端点列表. 这种大规模的重新配置既枯燥又容易出错.</p>
 <p>etcd gateway 通过作为一个稳定的本地端点提供服务解决了这个问题. 一个典型的 etcd gateway 配置是让每一个机器运行一个监听本地端口的 gateway, 同时每一个 etcd 应用连接到这个本地 gateway. 这样在 etcd 集群重新配置时只有 gateway 需要更新它的端点配置, 而不是更新每一个应用.</p>
@@ -416,7 +417,33 @@
 <li><p>在集群管理系统上运行<br>高级集群管理系统(如 Kubernetes) 本身支持服务发现, 应用程序可以使用有系统管理的 DNS 名称或虚拟 IP 地址访问 etcd 集群. 例如: kube-proxy等同于etcd网关.</p>
 </li>
 </ul>
-<h1 id="启动-etcd-gateway"><a href="#启动-etcd-gateway" class="headerlink" title="启动 etcd gateway"></a>启动 etcd gateway</h1><p>考虑一个具有以下静态端点的 etcd 集群:<br>|Name    |Address    |Hostname          |<br>|infra0    |10.0.1.10    |infra0.example.com|<br>|infra1    |10.0.1.11    |infra1.example.com|<br>|infra2    |10.0.1.12    |infra2.example.com|</p>
+<h1 id="启动-etcd-gateway"><a href="#启动-etcd-gateway" class="headerlink" title="启动 etcd gateway"></a>启动 etcd gateway</h1><p>考虑一个具有以下静态端点的 etcd 集群:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Address</th>
+<th>Hostname</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>infra0</td>
+<td>10.0.1.10</td>
+<td>infra0.example.com</td>
+</tr>
+<tr>
+<td>infra1</td>
+<td>10.0.1.11</td>
+<td>infra1.example.com</td>
+</tr>
+<tr>
+<td>infra2</td>
+<td>10.0.1.12</td>
+<td>infra2.example.com</td>
+</tr>
+</tbody>
+</table>
 <p>使用包含这些静态端点的命令启动etcd gateway:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ etcd gateway start --endpoints=infra0.example.com,infra1.example.com,infra2.example.com</span><br><span class="line">2016-08-16 11:21:18.867350 I | tcpproxy: ready to proxy client requests to [...]</span><br></pre></td></tr></table></figure></p>
 <p>或者, 如果使用 DNS 进行服务发现, 请考虑 DNS SRV 条目:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ dig +noall +answer SRV _etcd-client._tcp.example.com</span><br><span class="line">_etcd-client._tcp.example.com. 300 IN SRV 0 0 2379 infra0.example.com.</span><br><span class="line">_etcd-client._tcp.example.com. 300 IN SRV 0 0 2379 infra1.example.com.</span><br><span class="line">_etcd-client._tcp.example.com. 300 IN SRV 0 0 2379 infra2.example.com.</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ dig +noall +answer infra0.example.com infra1.example.com infra2.example.com</span><br><span class="line">infra0.example.com.  300  IN  A  10.0.1.10</span><br><span class="line">infra1.example.com.  300  IN  A  10.0.1.11</span><br><span class="line">infra2.example.com.  300  IN  A  10.0.1.12</span><br></pre></td></tr></table></figure>
