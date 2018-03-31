@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="CHUNQIULFQ">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;页式存储管理机制通过页目录和页表将每个线性地址映射到物理地址. 但是在这个过程中可能存在一些问题导致映射失败, 这时 CPU 就会产生 页面出错异常(Page Fault Exception), 也成 缺页中断, 进而执行预定的页面异常处理程序, 使应用程序从产生异常的指令处恢复执行或进行善后处理. 产生 页面出错异常(Page Fault Exception) 的原因有:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-27T18:57:15.654Z">
+<meta property="og:updated_time" content="2018-03-31T10:56:21.626Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="越界访问">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;页式存储管理机制通过页目录和页表将每个线性地址映射到物理地址. 但是在这个过程中可能存在一些问题导致映射失败, 这时 CPU 就会产生 页面出错异常(Page Fault Exception), 也成 缺页中断, 进而执行预定的页面异常处理程序, 使应用程序从产生异常的指令处恢复执行或进行善后处理. 产生 页面出错异常(Page Fault Exception) 的原因有:">
@@ -429,7 +429,7 @@
 </ul>
 </blockquote>
 <p>&emsp;&emsp;每次从中断/异常处理程序中返回之前, 都要检查当前进程是否有信号(或称软中断)需要处理, 在 <code>vma</code> 处于最后一种情况时需要处理 <code>SIGSEGV</code> 信号. 内核会根据这些待处理信号的性质以及进程本身的选择进行处理. 有些信号是强制执行, 有些是按照进程设置处理. <code>SIGSEGV</code> 信号需要强制执行, 会是该进程产生 <code>Segment Fault</code>, 然后使进程退出.</p>
-<p><em>本文参考自《Linux内核源代码情景分析》</em></p>
+<p><em>本文整理自《Linux内核源代码情景分析》</em></p>
 
       
     </div>

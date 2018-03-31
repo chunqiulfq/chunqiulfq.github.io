@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="CHUNQIULFQ">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;在 越界访问 中, 对于 do_page_fault() 的分析只进行了部分, 只分析了 find_vma 返回 vma 紧邻其上的区间不是栈区的处理情况. 这里分析一下如果内存映射的空洞紧邻其上的是一个栈区区间的处理情况.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-27T18:57:11.734Z">
+<meta property="og:updated_time" content="2018-03-31T10:56:12.764Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用户堆栈扩展">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;在 越界访问 中, 对于 do_page_fault() 的分析只进行了部分, 只分析了 find_vma 返回 vma 紧邻其上的区间不是栈区的处理情况. 这里分析一下如果内存映射的空洞紧邻其上的是一个栈区区间的处理情况.">
@@ -445,7 +445,7 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// include/asm-i386/pgtable.h [do_page_fault() &gt; handle_mm_fault() &gt; handle_pte_fault() &gt; do_no_page() &gt; do_anonymous_page() &gt; ZERO_PAGE()]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * ZERO_PAGE is a global shared page that is always zero: used</span></span><br><span class="line"><span class="comment"> * for zero-mapped memory areas etc..</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * ZERO_PAGE 是一个始终为 0 的全局共享页面: 用于零映射内存区域等..</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">extern</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> empty_zero_page[<span class="number">1024</span>];</span><br><span class="line"><span class="comment">// 获取一个全局共享的初始化为 0 的物理页面</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ZERO_PAGE(vaddr) (virt_to_page(empty_zero_page))</span></span><br></pre></td></tr></table></figure>
 <p>&emsp;&emsp;栈区扩展是由于写操作异常引起的, 所以会调用 <code>alloc_page()</code> 为其分配新的物理内存页面, 并将分配的物理页面及权限写入页表项中. 至此映射建立完成, 逐层退出函数.</p>
 <h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>&emsp;&emsp;<strong>当 CPU 从一次页面出错异常处理返回到用户空间时, 将会先重新执行因映射失败而中断的那条指令, 然后才会继续向下执行, 这是异常处理的特殊性. 中断以及自陷(<code>trap</code> 指令) 发生时, CPU 都会将下一条指令, 也就是接下去本来要执行的指令的地址入栈作为恢复中断服务的返回地址. 而当异常发生时, CPU 将因无法完成(例如除以 0, 映射失败等) 而夭折的指令本身的地址(而不是下一条指令的地址)压入栈, 当从异常处理返回时继续刚刚没有完成的指令. 这个过程是在 <code>CPU</code> 内部电路中实现的, 不需要软件干预</strong>. 从这个意义上来讲, <code>缺页中断</code> 正确的说法应该是 <code>缺页异常</code>.</p>
-<p><em>本文参考自《Linux内核源代码情景分析》</em></p>
+<p><em>本文整理自《Linux内核源代码情景分析》</em></p>
 
       
     </div>
