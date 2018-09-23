@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="SDS 结构&amp;emsp;&amp;emsp;SDS 结构如下:">
+<meta name="description" content="&amp;emsp;&amp;emsp;关于Redis一直想学习源码但是人懒, 一直没有行动也就渐渐没有了想法. 最近工作用到了Redis, 开始学习Redis最基本的用法. 想要学习Redis源码的欲望有冒出来了, 同时由于在工作中一直感觉自己的能力不足, 需要给自己充充电. 于是决定开始阅读Redis源码.">
 <meta name="keywords" content="Redis,源码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis 4.0源码解析: SDS(3)">
-<meta property="og:url" content="http://chunqiublog.github.io/2017-12-14-Redis-4-0源码解析-SDS-3.html">
+<meta property="og:title" content="Redis 4.0源码解析">
+<meta property="og:url" content="http://chunqiublog.github.io/2017-12-14-Redis_4_0源码解析.html">
 <meta property="og:site_name" content="CHUNQIULFQ">
-<meta property="og:description" content="SDS 结构&amp;emsp;&amp;emsp;SDS 结构如下:">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;关于Redis一直想学习源码但是人懒, 一直没有行动也就渐渐没有了想法. 最近工作用到了Redis, 开始学习Redis最基本的用法. 想要学习Redis源码的欲望有冒出来了, 同时由于在工作中一直感觉自己的能力不足, 需要给自己充充电. 于是决定开始阅读Redis源码.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-23T16:05:08.570Z">
+<meta property="og:updated_time" content="2018-09-23T16:05:14.340Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis 4.0源码解析: SDS(3)">
-<meta name="twitter:description" content="SDS 结构&amp;emsp;&amp;emsp;SDS 结构如下:">
+<meta name="twitter:title" content="Redis 4.0源码解析">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;关于Redis一直想学习源码但是人懒, 一直没有行动也就渐渐没有了想法. 最近工作用到了Redis, 开始学习Redis最基本的用法. 想要学习Redis源码的欲望有冒出来了, 同时由于在工作中一直感觉自己的能力不足, 需要给自己充充电. 于是决定开始阅读Redis源码.">
 
 
 
@@ -122,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://chunqiublog.github.io/2017-12-14-Redis-4-0源码解析-SDS-3.html"/>
+  <link rel="canonical" href="http://chunqiublog.github.io/2017-12-14-Redis_4_0源码解析.html"/>
 
 
 
 
 
-  <title>Redis 4.0源码解析: SDS(3) | CHUNQIULFQ</title>
+  <title>Redis 4.0源码解析 | CHUNQIULFQ</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/2017-12-14-Redis-4-0源码解析-SDS-3.html">
+    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/2017-12-14-Redis_4_0源码解析.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chunqiulfq">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Redis 4.0源码解析: SDS(3)</h1>
+          <h1 class="post-title" itemprop="name headline">Redis 4.0源码解析</h1>
         
 
         <div class="post-meta">
@@ -318,7 +318,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-14T11:22:35+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-14T11:21:58+08:00">
                 2017-12-14
               </time>
             
@@ -348,17 +348,6 @@
 
                 
                 
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/源码/" itemprop="url" rel="index">
-                    <span itemprop="name">源码</span>
-                  </a>
-                </span>
-
-                
-                
               
             </span>
           
@@ -370,9 +359,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017-12-14-Redis-4-0源码解析-SDS-3.html#comments" itemprop="discussionUrl">
+                <a href="/2017-12-14-Redis_4_0源码解析.html#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017-12-14-Redis-4-0源码解析-SDS-3.html" itemprop="commentCount"></span>
+                        data-disqus-identifier="2017-12-14-Redis_4_0源码解析.html" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -405,50 +394,22 @@
       
 
       
-        <h2 id="SDS-结构"><a href="#SDS-结构" class="headerlink" title="SDS 结构"></a>SDS 结构</h2><p>&emsp;&emsp;<code>SDS</code> 结构如下:<br><a id="more"></a><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">attribute__</span> ((__<span class="title">packed__</span>)) <span class="title">sdshdr5</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> flags; <span class="comment">/* 类型为 3 lsb, string 长度为 5 msb. */</span></span><br><span class="line">    <span class="keyword">char</span> buf[];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">attribute__</span> ((__<span class="title">packed__</span>)) <span class="title">sdshdr8</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">uint8_t</span> len;               <span class="comment">/* 被使用 */</span></span><br><span class="line">    <span class="keyword">uint8_t</span> alloc;             <span class="comment">/* 不包括头结点和空字节符 */</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> flags;       <span class="comment">/* 类型为 3 lsb, 5 个没有使用的位 */</span></span><br><span class="line">    <span class="keyword">char</span> buf[];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">attribute__</span> ((__<span class="title">packed__</span>)) <span class="title">sdshdr16</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">uint16_t</span> len;              <span class="comment">/* 被使用 */</span></span><br><span class="line">    <span class="keyword">uint16_t</span> alloc;            <span class="comment">/* 不包括头结点和空字节符 */</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> flags;       <span class="comment">/* 类型为 3 lsb, 5 个没有使用的位 */</span></span><br><span class="line">    <span class="keyword">char</span> buf[];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">attribute__</span> ((__<span class="title">packed__</span>)) <span class="title">sdshdr32</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">uint32_t</span> len;              <span class="comment">/* 被使用 */</span></span><br><span class="line">    <span class="keyword">uint32_t</span> alloc;            <span class="comment">/* 不包括头结点和空字节符 */</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> flags;       <span class="comment">/* 类型为 3 lsb, 5 个没有使用的位 */</span></span><br><span class="line">    <span class="keyword">char</span> buf[];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">attribute__</span> ((__<span class="title">packed__</span>)) <span class="title">sdshdr64</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">uint64_t</span> len;              <span class="comment">/* 被使用 */</span></span><br><span class="line">    <span class="keyword">uint64_t</span> alloc;            <span class="comment">/* 不包括头结点和空字节符 */</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> flags;       <span class="comment">/* 类型为 3 lsb, 5 个没有使用的位 */</span></span><br><span class="line">    <span class="keyword">char</span> buf[];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;其中:</p>
-<ul>
-<li><code>len</code> 表示 <code>sds</code> 字符串的长度</li>
-<li><code>alloc</code> 表示 <code>SDS</code> 结构体剩余空间</li>
-<li><code>flags</code> 表示 <code>SDS</code> 结构体类型</li>
-<li><code>buf</code> 表示 <code>sds</code> 字符串<br>&emsp;&emsp;4.0 版本将 3.0 版本时期统一的结构根据 <code>SDS</code> 结构体可以存储字符串的长度划分为不同的 <strong>5</strong> 种类型, 节省了内存占用的空间, 但是加大字符串操作的复杂度, 在字符串长度变动时需要改变 <code>SDS</code> 结构体类型.</li>
-</ul>
-<h2 id="SDS-优势"><a href="#SDS-优势" class="headerlink" title="SDS 优势"></a>SDS 优势</h2><blockquote>
+        <p>&emsp;&emsp;关于Redis一直想学习源码但是人懒, 一直没有行动也就渐渐没有了想法. 最近工作用到了Redis, 开始学习Redis最基本的用法. 想要学习Redis源码的欲望有冒出来了, 同时由于在工作中一直感觉自己的能力不足, 需要给自己充充电. 于是决定开始阅读Redis源码.<br><a id="more"></a><br>&emsp;&emsp;以前一直没有阅读过真正大项目的源码, 真正开始阅读才发现Redis的源码对我来说真的是好庞大, 一个文件上千行代码, 利用工作之余阅读, 尽量做到认真阅读每行代码, 大于要花大半个月的时间, 算算时间可能阅读完Redis源码需要花费的时间要超过一年. 回顾以往经历, 对自己能否坚持下来很是担心. 正好这两天我也在看一个大神的博客, 想自己搞个博客, 写点东西. 所以搞个博客记录一下自己的学习. 一方面可以归纳总结自己所学到的东西, 有不对的地方也可以被其他人指正; 另一方面有人阅读我的文章也是对我的一种激励, 避免一个人独自学习因为无聊而放弃.<br>最开始在网上找到了一份关于Redis 2.8 的中文注释源码, 就开始阅读这份源码. 在阅读过程中查资料时发现了 Redis设计与实现 , 感觉这个本书写的挺不错, 而且也附带有一份关于Redis 3.0 的中文注释源码, 同时由于发现了一处Redis源码中的小问题在向Redis提交代码是发现最新的Redis已经到了4.0版本. 于是决定参考2.8和3.0的源码阅读Redis 4.0版本的源码. 由于对redis还没有一个整体的认识, 所以在阅读过程中可能存在一些错误的认识, 欢迎大家指正.</p>
+<blockquote>
+<p><strong>Redis 学习资源</strong></p>
 <ol>
-<li>常数复杂度获取字符串长度</li>
-<li>杜绝缓冲区溢出</li>
-<li>减少修改字符串时带来的内存重分配次数</li>
-<li>二进制安全</li>
-<li>兼容部分 <code>C</code> 字符串函数</li>
+<li><a href="https://redis.io" target="_blank" rel="noopener">Redis 官网</a></li>
+<li><a href="http://www.redis.cn" target="_blank" rel="noopener">Redis 中文官方网站</a></li>
+<li><a href="https://github.com/antirez/redis" target="_blank" rel="noopener">Github 上 Redis 源码</a></li>
+<li><a href="https://try.redis.io" target="_blank" rel="noopener">线上 Redis 示范环境</a></li>
+<li><a href="http://www.runoob.com/redis/redis-tutorial.html" target="_blank" rel="noopener">Redis 使用教程</a></li>
+<li><a href="http://blog.huangz.me/diary/2014/how-to-read-redis-source-code.html" target="_blank" rel="noopener">如何阅读 Redis 源码?</a></li>
+<li><a href="http://redisbook.com" target="_blank" rel="noopener">Redis 设计与实现</a></li>
+<li><a href="https://github.com/huangz1990/redis-3.0-annotated" target="_blank" rel="noopener">Redis 3.0中文注释源码</a></li>
+<li><a href="http://blog.csdn.net/androidlushangderen/article/details/39803337" target="_blank" rel="noopener">Redis 2.8源码解析</a></li>
+<li><a href="https://github.com/linyiqun/Redis-Code" target="_blank" rel="noopener">Reids 2.8中文注释源码</a></li>
 </ol>
 </blockquote>
-<h2 id="SDS-内存分配策略"><a href="#SDS-内存分配策略" class="headerlink" title="SDS 内存分配策略"></a>SDS 内存分配策略</h2><ol>
-<li>如果直接创建新结点, 会调用 <code>sdsnewlen</code> 函数根据指定字符串的长度创建一个新结点, 新结点没有空闲空间.</li>
-<li>如果已有结点需要扩展空间时, 会调用 <code>sdsMakeRoomFor</code> 函数进行扩展.<br>a. 已有结点 <code>sds</code> 字符串空间 <code>&lt;</code> <code>SDS_MAX_PREALLOC</code>,  则对 <code>sds</code> 字符串空间扩展<strong>一倍</strong>.<br>b. 已有结点 <code>sds</code> 字符串空间 <code>&gt;=</code> <code>SDS_MAX_PREALLOC</code>(<code>1024 * 1024</code>),  则对 <code>sds</code> 字符串空间扩展 <code>SDS_MAX_PREALLOC</code>.</li>
-<li><code>SDS</code> 会提供出一组接口使 <code>SDS</code> 的调用者需要释放或分配 <code>SDS</code> 相关的一些东西时可以使用. 同时将分配释放的宏封装起来可以在更换 <code>SDS</code> 分配器时不需要更改调用者中的分配器.</li>
-</ol>
-<h2 id="SDS-应用"><a href="#SDS-应用" class="headerlink" title="SDS 应用"></a>SDS 应用</h2><ul>
-<li>保存数据库中的字符串值.</li>
-<li>用作缓冲区(buffer)<ul>
-<li>AOF 模块中的 AOF 缓冲区.</li>
-<li>客户端状态中的输入缓冲区.</li>
-</ul>
-</li>
-</ul>
-<h2 id="SDS-源码的思考"><a href="#SDS-源码的思考" class="headerlink" title="SDS 源码的思考"></a>SDS 源码的思考</h2><ol>
-<li>感觉没有必要使用 <code>SDS_HDR_VAR</code>, 会影响代码的可读性.</li>
-<li>sdsnewlen 中为什么把 <code>len</code> 和 <code>alloc</code> 设置相同的字符串的长度?<br>len 表示字符串长度, <code>alloc</code> 表示字符串分配的空间, 这时分配空间是按照头结点长度 hdrlen + 字符串长度 <code>initlen</code> + <code>null</code> 终结符 1 进行计算, 分配给字符串的空间即为字符串长度, 所以这时的 <code>len</code> 等于 <code>alloc</code>.</li>
-<li><code>sdsnewlen</code> 中为什么 <code>initlen</code> 为 0 时, 类型 5 不擅长?<br><em>(后续关注对 SDS 的调用)</em></li>
-<li><code>sdsupdatelen</code> 是否已经弃用?<br><em>(后续关注对 SDS 的调用)</em></li>
-<li><code>sdsRemoveFreeSpace</code> 的注释中 级联 是什么意思?<br><em>(后续关注对 SDS 的调用)</em></li>
-<li><code>ssdsnew</code>, <code>sdsupdatelen</code>, <code>sdscat</code>, <code>sdscpy</code> 不是二进制安全, <code>sdscatrepr</code> -&gt; <code>sdscatprintf</code> -&gt; <code>sdscatvprintf</code> -&gt; <code>sdscat</code>, <code>sdsjoin</code> -&gt; <code>sdscat</code>, 二级制不安全. 注意 <code>sesdup</code> 调用的 <code>sdslen</code>, 二进制安全的. </li>
-<li><code>zfree</code> 的时间复杂度是 O(N)? <code>sdsfree</code> 时间复杂度是 O(N)?<br><em>(后续关注对 SDS 的调用)</em></li>
-<li><code>sdscatvprintf</code> 对于 <code>buf</code> 的处理为什么是将 -2 的位置置为 ‘\0’?<br>因为在 <code>vsnprintf(buf, buflen, fmt, cpy);</code> 函数中, 无论真正的格式化输出字符串的长度是否超过 <code>buflen</code>, <code>vsnprintf</code> 函数都会将 <code>buf[buflen - 1]</code> 置为 ‘\0’, 所以如果用 -1 位置判断就会出错, 只能用最后一个可以判断的字符即 -2  位置判断.</li>
-<li><code>sdsfromlonglong</code> 真的比 <code>sdscatprintf</code> 快吗?<br><code>sdsfromlonglong</code> 调用 <code>sdsll2str</code> 进行转换, <code>sdscatprintf</code> -&gt; <code>sdscatvprintf</code> -&gt; <code>vsnprintf</code> 函数进行转换, 使用了可变参数. 猜测 <code>vsnprintf</code> 底层转换与 sdsll2str 相似. 在我自己的机器上实测了一下, <code>sdscatprintf</code> 会比 <code>sdsfromlonglong</code> 慢 1us.</li>
-<li><code>sdscatrepr</code> 中 ‘\\‘, ‘“‘, 为什么不和其他字符一样使用 <code>sdscatlen</code>?<br>适用 <code>SDS</code> 中自带的测试集进行实测, 是可以实现的.</li>
-<li><code>sdssplitargs</code> 如果处理类似 “ test\”aaa\” “ 会将参数识别为 test\”aaa\” 不影响吗?<br><em>(后续关注对 SDS 的调用)</em></li>
-</ol>
-<p><em>本文部分内容参考《Redis 设计与实现》一书.</em></p>
 
       
     </div>
@@ -498,7 +459,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://chunqiublog.github.io/2017-12-14-Redis-4-0源码解析-SDS-3.html" title="Redis 4.0源码解析: SDS(3)">http://chunqiublog.github.io/2017-12-14-Redis-4-0源码解析-SDS-3.html</a>
+    <a href="http://chunqiublog.github.io/2017-12-14-Redis_4_0源码解析.html" title="Redis 4.0源码解析">http://chunqiublog.github.io/2017-12-14-Redis_4_0源码解析.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -528,18 +489,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017-12-14-Redis-4-0源码解析-SDS-2.html" rel="next" title="Redis 4.0源码解析: SDS(2)">
-                <i class="fa fa-chevron-left"></i> Redis 4.0源码解析: SDS(2)
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018-01-02-etcd_gateway.html" rel="prev" title="etcd gateway">
-                etcd gateway <i class="fa fa-chevron-right"></i>
+              <a href="/2017-12-14-Redis_4_0源码解析_SDS_1.html" rel="prev" title="Redis 4.0源码解析: SDS(1)">
+                Redis 4.0源码解析: SDS(1) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -599,17 +556,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -714,22 +662,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SDS-结构"><span class="nav-number">1.</span> <span class="nav-text"><a href="#SDS-&#x7ED3;&#x6784;" class="headerlink" title="SDS &#x7ED3;&#x6784;"></a>SDS &#x7ED3;&#x6784;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDS-优势"><span class="nav-number">2.</span> <span class="nav-text"><a href="#SDS-&#x4F18;&#x52BF;" class="headerlink" title="SDS &#x4F18;&#x52BF;"></a>SDS &#x4F18;&#x52BF;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDS-内存分配策略"><span class="nav-number">3.</span> <span class="nav-text"><a href="#SDS-&#x5185;&#x5B58;&#x5206;&#x914D;&#x7B56;&#x7565;" class="headerlink" title="SDS &#x5185;&#x5B58;&#x5206;&#x914D;&#x7B56;&#x7565;"></a>SDS &#x5185;&#x5B58;&#x5206;&#x914D;&#x7B56;&#x7565;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDS-应用"><span class="nav-number">4.</span> <span class="nav-text"><a href="#SDS-&#x5E94;&#x7528;" class="headerlink" title="SDS &#x5E94;&#x7528;"></a>SDS &#x5E94;&#x7528;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SDS-源码的思考"><span class="nav-number">5.</span> <span class="nav-text"><a href="#SDS-&#x6E90;&#x7801;&#x7684;&#x601D;&#x8003;" class="headerlink" title="SDS &#x6E90;&#x7801;&#x7684;&#x601D;&#x8003;"></a>SDS &#x6E90;&#x7801;&#x7684;&#x601D;&#x8003;</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -898,9 +830,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'http://chunqiublog.github.io/2017-12-14-Redis-4-0源码解析-SDS-3.html';
-          this.page.identifier = '2017-12-14-Redis-4-0源码解析-SDS-3.html';
-          this.page.title = 'Redis 4.0源码解析: SDS(3)';
+          this.page.url = 'http://chunqiublog.github.io/2017-12-14-Redis_4_0源码解析.html';
+          this.page.identifier = '2017-12-14-Redis_4_0源码解析.html';
+          this.page.title = 'Redis 4.0源码解析';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://chunqiulfq.disqus.com/embed.js';

@@ -103,7 +103,7 @@
 <meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E7%BF%BB%E8%AF%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/joining.gif">
 <meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E7%BF%BB%E8%AF%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/race_conditions.png">
 <meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E7%BF%BB%E8%AF%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/error_lock_unlock.png">
-<meta property="og:updated_time" content="2018-09-23T16:14:12.201Z">
+<meta property="og:updated_time" content="2018-09-23T16:20:26.519Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POSIX Threads Programming">
 <meta name="twitter:description" content="翻译自: POSIX Threads Programming 摘要在共享内存多处理器体系结构中, 线程被用来实现并行. 在历史上, 硬件供应商已经实现了他们自己专有的线程版本, 这使得多线程代码的可移植性称为软件开发者关心的问题. 对于UNIX 系统, IEEE POSIX 1003.1c 标准已经规定了一个标准化的 C 语言线程编程接口. 遵循此标准的实现称为 POSIX线程 或 Pthread">
@@ -413,6 +413,7 @@
 <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>在共享内存多处理器体系结构中, 线程被用来实现并行. 在历史上, 硬件供应商已经实现了他们自己专有的线程版本, 这使得多线程代码的可移植性称为软件开发者关心的问题. 对于<code>UNIX</code> 系统, <code>IEEE POSIX 1003.1c</code> 标准已经规定了一个标准化的 <code>C</code> 语言线程编程接口. 遵循此标准的实现称为 <code>POSIX线程</code> 或 <code>Pthreads</code>.</p>
 <p>本教程首先介绍使用Pthreads的概念, 动机和设计意图. 然后介绍 <code>Pthreads API</code> 中三大种类每一种示例程序: 线程管理, 互斥变量和条件变量. 示例代码始终被用来演示一个新的 <code>Pthreads</code> 程序员所需要的如何使用大多数 <code>Pthread</code>. 本教程最后讨论了 <code>LLNL</code> 细节以及如何将 <code>MPI</code> 与 <code>Pthreads</code> 混合使用. 还包括一个实验练习, 其中包含大量示例代码(C语言).</p>
 <p>水平/先决条件: 本教程非常适合那些不熟悉<code>Pthreads</code>并行编程的人. 需要对 <code>C</code> 中的并行编程有基本的了解. 对于那些一般不熟悉并行编程的人来说, <a href="https://computing.llnl.gov/tutorials/parallel_comp" target="_blank" rel="noopener">EC3500: Introduction to Parallel Computing</a> 中的内容有所帮助.</p>
+<a id="more"></a>
 <h2 id="Pthreads-Overview-Pthreads-概述"><a href="#Pthreads-Overview-Pthreads-概述" class="headerlink" title="Pthreads Overview(Pthreads 概述)"></a><code>Pthreads Overview</code>(<code>Pthreads</code> 概述)</h2><h3 id="什么是线程"><a href="#什么是线程" class="headerlink" title="什么是线程?"></a>什么是线程?</h3><ul>
 <li>从技术上讲, 线程被定义为一个可以被操作系统调度运行的独立指令流. 但是这是什么意思?</li>
 <li>对于软件开发者来说, 独立于其主程序运行的 <code>procedure(过程)</code> 的概念可能可以最好的描述一个线程.</li>
