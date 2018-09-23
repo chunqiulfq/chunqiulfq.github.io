@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="翻译,线程," />
 
 
 
@@ -81,16 +81,33 @@
 
 
 
-<meta name="description" content="黄沙百战穿金甲 不破楼兰终不还">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CHUNQIULFQ">
-<meta property="og:url" content="http://chunqiublog.github.io/index.html">
+<meta name="description" content="翻译自: POSIX Threads Programming 摘要在共享内存多处理器体系结构中, 线程被用来实现并行. 在历史上, 硬件供应商已经实现了他们自己专有的线程版本, 这使得多线程代码的可移植性称为软件开发者关心的问题. 对于UNIX 系统, IEEE POSIX 1003.1c 标准已经规定了一个标准化的 C 语言线程编程接口. 遵循此标准的实现称为 POSIX线程 或 Pthread">
+<meta name="keywords" content="翻译,线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="POSIX Threads Programming">
+<meta property="og:url" content="http://chunqiublog.github.io/2018-09-02-POSIX_Threads_Programming.html">
 <meta property="og:site_name" content="CHUNQIULFQ">
-<meta property="og:description" content="黄沙百战穿金甲 不破楼兰终不还">
+<meta property="og:description" content="翻译自: POSIX Threads Programming 摘要在共享内存多处理器体系结构中, 线程被用来实现并行. 在历史上, 硬件供应商已经实现了他们自己专有的线程版本, 这使得多线程代码的可移植性称为软件开发者关心的问题. 对于UNIX 系统, IEEE POSIX 1003.1c 标准已经规定了一个标准化的 C 语言线程编程接口. 遵循此标准的实现称为 POSIX线程 或 Pthread">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E7%BF%BB%E8%AF%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/unix_process.gif">
+<meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E7%BF%BB%E8%AF%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/threads_within_a_unix_process.gif">
+<meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E7%BF%BB%E8%AF%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/fork_and_pthread.png">
+<meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E7%BF%BB%E8%AF%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/MPI_and_pthread.png">
+<meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E7%BF%BB%E8%AF%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/Click_for_larger_image.jpg">
+<meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E7%BF%BB%E8%AF%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/concurrent.gif">
+<meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E7%BF%BB%E8%AF%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/shared_Memory_Model.gif">
+<meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E7%BF%BB%E8%AF%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/thread_Unsafe.gif">
+<meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E7%BF%BB%E8%AF%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/Compiling_Threaded_Programs.png">
+<meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E7%BF%BB%E8%AF%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/process%28thread%29_num_limit.png">
+<meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E7%BF%BB%E8%AF%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/peer_Threads.gif">
+<meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E7%BF%BB%E8%AF%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/joining.gif">
+<meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E7%BF%BB%E8%AF%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/race_conditions.png">
+<meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E7%BF%BB%E8%AF%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/error_lock_unlock.png">
+<meta property="og:updated_time" content="2018-09-23T16:14:12.201Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CHUNQIULFQ">
-<meta name="twitter:description" content="黄沙百战穿金甲 不破楼兰终不还">
+<meta name="twitter:title" content="POSIX Threads Programming">
+<meta name="twitter:description" content="翻译自: POSIX Threads Programming 摘要在共享内存多处理器体系结构中, 线程被用来实现并行. 在历史上, 硬件供应商已经实现了他们自己专有的线程版本, 这使得多线程代码的可移植性称为软件开发者关心的问题. 对于UNIX 系统, IEEE POSIX 1003.1c 标准已经规定了一个标准化的 C 语言线程编程接口. 遵循此标准的实现称为 POSIX线程 或 Pthread">
+<meta name="twitter:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E7%BF%BB%E8%AF%91/%E5%A4%9A%E7%BA%BF%E7%A8%8B/unix_process.gif">
 
 
 
@@ -120,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://chunqiublog.github.io/"/>
+  <link rel="canonical" href="http://chunqiublog.github.io/2018-09-02-POSIX_Threads_Programming.html"/>
 
 
 
 
 
-  <title>CHUNQIULFQ</title>
+  <title>POSIX Threads Programming | CHUNQIULFQ</title>
   
 
 
@@ -145,8 +162,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -273,9 +289,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -305,9 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018-09-02-POSIX_Threads_Programming.html" itemprop="url">POSIX Threads Programming</a></h1>
+          <h1 class="post-title" itemprop="name headline">POSIX Threads Programming</h1>
         
 
         <div class="post-meta">
@@ -372,6 +386,11 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i> 阅读次数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
 
           
 
@@ -390,9 +409,7 @@
       
 
       
-        
-          
-            <p><em>翻译自: <a href="https://computing.llnl.gov/tutorials/pthreads" target="_blank" rel="noopener">POSIX Threads Programming</a></em></p>
+        <p><em>翻译自: <a href="https://computing.llnl.gov/tutorials/pthreads" target="_blank" rel="noopener">POSIX Threads Programming</a></em></p>
 <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>在共享内存多处理器体系结构中, 线程被用来实现并行. 在历史上, 硬件供应商已经实现了他们自己专有的线程版本, 这使得多线程代码的可移植性称为软件开发者关心的问题. 对于<code>UNIX</code> 系统, <code>IEEE POSIX 1003.1c</code> 标准已经规定了一个标准化的 <code>C</code> 语言线程编程接口. 遵循此标准的实现称为 <code>POSIX线程</code> 或 <code>Pthreads</code>.</p>
 <p>本教程首先介绍使用Pthreads的概念, 动机和设计意图. 然后介绍 <code>Pthreads API</code> 中三大种类每一种示例程序: 线程管理, 互斥变量和条件变量. 示例代码始终被用来演示一个新的 <code>Pthreads</code> 程序员所需要的如何使用大多数 <code>Pthread</code>. 本教程最后讨论了 <code>LLNL</code> 细节以及如何将 <code>MPI</code> 与 <code>Pthreads</code> 混合使用. 还包括一个实验练习, 其中包含大量示例代码(C语言).</p>
 <p>水平/先决条件: 本教程非常适合那些不熟悉<code>Pthreads</code>并行编程的人. 需要对 <code>C</code> 中的并行编程有基本的了解. 对于那些一般不熟悉并行编程的人来说, <a href="https://computing.llnl.gov/tutorials/parallel_comp" target="_blank" rel="noopener">EC3500: Introduction to Parallel Computing</a> 中的内容有所帮助.</p>
@@ -1159,8 +1176,6 @@
 <p><a href="https://computing.llnl.gov/tutorials/pthreads/man/pthread_testcancel.txt" target="_blank" rel="noopener">pthread_testcancel</a></p>
 <p>[^1]: 不是说所有线程都是独立的, 不相互依赖吗, 为什么 <code>main()</code> 所在线程退出就不支持其他线程? 难道这里的 <code>main()</code> 是指进程?<br>[^2]: 什么是 <code>LC</code>?<br>[^3]: 这里拥有的意思是当一个互斥变量被锁定时, 锁定的线程占有这个互斥变量的使用权, 其他线程无法使用.</p>
 
-          
-        
       
     </div>
     
@@ -1170,974 +1185,90 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享, 您的支持将鼓励我继续创作!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="chunqiulfq 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="chunqiulfq 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
 
     
 
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
+</div>
 
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/2018-02-13-用户堆栈扩展.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chunqiulfq">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CHUNQIULFQ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018-02-13-用户堆栈扩展.html" itemprop="url">用户堆栈扩展</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-13T13:10:01+08:00">
-                2018-02-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018-02-13-用户堆栈扩展.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018-02-13-用户堆栈扩展.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
+      </div>
     
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>&emsp;&emsp;在 <code>越界访问</code> 中, 对于 <code>do_page_fault()</code> 的分析只进行了部分, 只分析了 <code>find_vma</code> 返回 <code>vma</code> 紧邻其上的区间不是栈区的处理情况. 这里分析一下如果内存映射的空洞紧邻其上的是一个栈区区间的处理情况.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018-02-13-用户堆栈扩展.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/2018-02-07-越界访问.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chunqiulfq">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CHUNQIULFQ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018-02-07-越界访问.html" itemprop="url">越界访问</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-07T22:49:53+08:00">
-                2018-02-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018-02-07-越界访问.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018-02-07-越界访问.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>&emsp;&emsp;页式存储管理机制通过页目录和页表将每个线性地址映射到物理地址. 但是在这个过程中可能存在一些问题导致映射失败, 这时 CPU 就会产生 <code>页面出错异常(Page Fault Exception)</code>, 也成 <code>缺页中断</code>, 进而执行预定的页面异常处理程序, 使应用程序从产生异常的指令处恢复执行或进行善后处理. 产生 <code>页面出错异常(Page Fault Exception)</code> 的原因有:</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018-02-07-越界访问.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/2018-01-28-数据结构.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chunqiulfq">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CHUNQIULFQ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018-01-28-数据结构.html" itemprop="url">数据结构</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T02:30:46+08:00">
-                2018-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018-01-28-数据结构.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018-01-28-数据结构.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="页面映射结构"><a href="#页面映射结构" class="headerlink" title="页面映射结构"></a>页面映射结构</h2><p>&emsp;&emsp;页目录 <code>PGD</code>, 中间目录 <code>PMD</code>, 页表 <code>PT</code> 分别是由表项 <code>pgd_t</code>, <code>pmd_t</code> 以及 <code>pte_t</code> 构成的数组.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018-01-28-数据结构.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/2018-01-23-地址映射.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chunqiulfq">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CHUNQIULFQ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018-01-23-地址映射.html" itemprop="url">地址映射</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-23T23:28:26+08:00">
-                2018-01-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018-01-23-地址映射.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018-01-23-地址映射.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>&emsp;&emsp;Linux 采用页式内存管理.</p>
-<blockquote>
-<p>优点:</p>
-<ul>
-<li>页面固定大小, 便于管理.</li>
-<li>灵活度高, 在将内存交换到磁盘上时, 按内存页进行交换.</li>
-<li>页式内存管理有内部碎片, 无外部碎片.</li>
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    chunqiulfq
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://chunqiublog.github.io/2018-09-02-POSIX_Threads_Programming.html" title="POSIX Threads Programming">http://chunqiublog.github.io/2018-09-02-POSIX_Threads_Programming.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
 </ul>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018-01-23-地址映射.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
-
-    
-
+      </div>
     
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/2018-01-23-基本框架.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chunqiulfq">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CHUNQIULFQ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018-01-23-基本框架.html" itemprop="url">基本框架</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-23T22:30:24+08:00">
-                2018-01-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/操作系统/" itemprop="url" rel="index">
-                    <span itemprop="name">操作系统</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/翻译/" rel="tag"># 翻译</a>
           
-
+            <a href="/tags/线程/" rel="tag"># 线程</a>
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018-01-23-基本框架.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018-01-23-基本框架.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          <h2 id="i386-内存映射"><a href="#i386-内存映射" class="headerlink" title="i386 内存映射"></a><code>i386</code> 内存映射</h2><p>&emsp;&emsp;<code>i386</code> CPU中采用的页式内存管理, 基本思路是：通过页目录和页表两层实现线性地址到物理地址的映射.</p>
-<ul>
-<li>优点: 大多数情况下可以节省页表所占的内存空间。当页表为空时只需要将对应页目录项置为空，就可以节省对相应页表的空间.</li>
-<li>缺点: 适用最大内存为 <code>4G</code> 的内存.</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018-01-23-基本框架.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018-02-13-用户堆栈扩展.html" rel="next" title="用户堆栈扩展">
+                <i class="fa fa-chevron-left"></i> 用户堆栈扩展
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/2018-01-02-etcd_gateway.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chunqiulfq">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CHUNQIULFQ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018-01-02-etcd_gateway.html" itemprop="url">etcd gateway</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-02T19:36:48+08:00">
-                2018-01-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018-01-02-etcd_gateway.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2018-01-02-etcd_gateway.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p><em>翻译自: <a href="https://github.com/coreos/etcd/blob/c578ac4a1a87f90ccd13ae210ee920ff2753387f/Documentation/op-guide/gateway.md" target="_blank" rel="noopener">etcd gateway</a></em></p>
-<h1 id="etcd-gateway-是什么"><a href="#etcd-gateway-是什么" class="headerlink" title="etcd gateway 是什么?"></a>etcd gateway 是什么?</h1><p>etcd gateway 是一个简单的转发网络数据到 etcd 集群的 TCP 代理. 这个 gateway 是无状态的, 透明的; 它既不检查客户端的请求, 也不干涉 etcd 集群的响应.<br>这个 gateway 支持多 etcd 服务端点, 遵循简单的循环策略连接端点. 它只路由到可用的端点, 且对连接到它上的客户端隐藏 etcd 服务端点的故障. 其他的重试策略(如加权循环)在将来可能会得到支持.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018-01-02-etcd_gateway.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -2147,503 +1278,29 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/2017-12-14-Redis-4-0源码解析-SDS-3.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chunqiulfq">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CHUNQIULFQ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017-12-14-Redis-4-0源码解析-SDS-3.html" itemprop="url">Redis 4.0源码解析: SDS(3)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-14T11:22:35+08:00">
-                2017-12-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/源码/" itemprop="url" rel="index">
-                    <span itemprop="name">源码</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017-12-14-Redis-4-0源码解析-SDS-3.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017-12-14-Redis-4-0源码解析-SDS-3.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="SDS-结构"><a href="#SDS-结构" class="headerlink" title="SDS 结构"></a>SDS 结构</h2><p>&emsp;&emsp;<code>SDS</code> 结构如下:<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017-12-14-Redis-4-0源码解析-SDS-3.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
 
 
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/2017-12-14-Redis-4-0源码解析-SDS-2.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chunqiulfq">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CHUNQIULFQ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017-12-14-Redis-4-0源码解析-SDS-2.html" itemprop="url">Redis 4.0源码解析: SDS(2)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-14T11:22:31+08:00">
-                2017-12-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017-12-14-Redis-4-0源码解析-SDS-2.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017-12-14-Redis-4-0源码解析-SDS-2.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>&emsp;&emsp;本文将介绍 <code>SDS</code> 的实现.<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017-12-14-Redis-4-0源码解析-SDS-2.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-          <!--/noindex-->
-        
-      
+          
+
+
+          
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
   
 
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/2017-12-14-Redis_4_0源码解析_SDS_1.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chunqiulfq">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CHUNQIULFQ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017-12-14-Redis_4_0源码解析_SDS_1.html" itemprop="url">Redis 4.0源码解析: SDS(1)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-14T11:22:26+08:00">
-                2017-12-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据库/" itemprop="url" rel="index">
-                    <span itemprop="name">数据库</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017-12-14-Redis_4_0源码解析_SDS_1.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017-12-14-Redis_4_0源码解析_SDS_1.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>&emsp;&emsp;本文将介绍 <code>SDS</code> 的头文件. <code>SDS</code> 的头文件包括两个文件: <code>sds.h</code> 和 <code>sdsalloc.h</code>.<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017-12-14-Redis_4_0源码解析_SDS_1.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-
-          
 
         </div>
         
@@ -2664,8 +1321,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -2770,6 +1436,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x6458;&#x8981;" class="headerlink" title="&#x6458;&#x8981;"></a>&#x6458;&#x8981;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pthreads-Overview-Pthreads-概述"><span class="nav-number">2.</span> <span class="nav-text"><a href="#Pthreads-Overview-Pthreads-&#x6982;&#x8FF0;" class="headerlink" title="Pthreads Overview(Pthreads &#x6982;&#x8FF0;)"></a><code>Pthreads Overview</code>(<code>Pthreads</code> &#x6982;&#x8FF0;)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是线程"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#&#x4EC0;&#x4E48;&#x662F;&#x7EBF;&#x7A0B;" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F;&#x7EBF;&#x7A0B;?"></a>&#x4EC0;&#x4E48;&#x662F;&#x7EBF;&#x7A0B;?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是-Pthreads"><span class="nav-number">2.2.</span> <span class="nav-text"><a href="#&#x4EC0;&#x4E48;&#x662F;-Pthreads" class="headerlink" title="&#x4EC0;&#x4E48;&#x662F; Pthreads?"></a>&#x4EC0;&#x4E48;&#x662F; <code>Pthreads</code>?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么选择-Pthreads"><span class="nav-number">2.3.</span> <span class="nav-text"><a href="#&#x4E3A;&#x4EC0;&#x4E48;&#x9009;&#x62E9;-Pthreads" class="headerlink" title="&#x4E3A;&#x4EC0;&#x4E48;&#x9009;&#x62E9; Pthreads?"></a>&#x4E3A;&#x4EC0;&#x4E48;&#x9009;&#x62E9; <code>Pthreads</code>?</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#轻量级"><span class="nav-number">2.3.1.</span> <span class="nav-text"><a href="#&#x8F7B;&#x91CF;&#x7EA7;" class="headerlink" title="&#x8F7B;&#x91CF;&#x7EA7;"></a>&#x8F7B;&#x91CF;&#x7EA7;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高效的通信-数据交换"><span class="nav-number">2.3.2.</span> <span class="nav-text"><a href="#&#x9AD8;&#x6548;&#x7684;&#x901A;&#x4FE1;-&#x6570;&#x636E;&#x4EA4;&#x6362;" class="headerlink" title="&#x9AD8;&#x6548;&#x7684;&#x901A;&#x4FE1;/&#x6570;&#x636E;&#x4EA4;&#x6362;"></a>&#x9AD8;&#x6548;&#x7684;&#x901A;&#x4FE1;/&#x6570;&#x636E;&#x4EA4;&#x6362;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他常见原因"><span class="nav-number">2.3.3.</span> <span class="nav-text"><a href="#&#x5176;&#x4ED6;&#x5E38;&#x89C1;&#x539F;&#x56E0;" class="headerlink" title="&#x5176;&#x4ED6;&#x5E38;&#x89C1;&#x539F;&#x56E0;"></a>&#x5176;&#x4ED6;&#x5E38;&#x89C1;&#x539F;&#x56E0;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设计线程程序"><span class="nav-number">2.4.</span> <span class="nav-text"><a href="#&#x8BBE;&#x8BA1;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;" class="headerlink" title="&#x8BBE;&#x8BA1;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;"></a>&#x8BBE;&#x8BA1;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#并行编程"><span class="nav-number">2.4.1.</span> <span class="nav-text"><a href="#&#x5E76;&#x884C;&#x7F16;&#x7A0B;" class="headerlink" title="&#x5E76;&#x884C;&#x7F16;&#x7A0B;"></a>&#x5E76;&#x884C;&#x7F16;&#x7A0B;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#共享内存模型"><span class="nav-number">2.4.2.</span> <span class="nav-text"><a href="#&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x6A21;&#x578B;" class="headerlink" title="&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x6A21;&#x578B;"></a>&#x5171;&#x4EAB;&#x5185;&#x5B58;&#x6A21;&#x578B;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程安全"><span class="nav-number">2.4.3.</span> <span class="nav-text"><a href="#&#x7EBF;&#x7A0B;&#x5B89;&#x5168;" class="headerlink" title="&#x7EBF;&#x7A0B;&#x5B89;&#x5168;"></a>&#x7EBF;&#x7A0B;&#x5B89;&#x5168;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程限制"><span class="nav-number">2.4.4.</span> <span class="nav-text"><a href="#&#x7EBF;&#x7A0B;&#x9650;&#x5236;" class="headerlink" title="&#x7EBF;&#x7A0B;&#x9650;&#x5236;"></a>&#x7EBF;&#x7A0B;&#x9650;&#x5236;</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-Pthreads-API"><span class="nav-number">3.</span> <span class="nav-text"><a href="#The-Pthreads-API" class="headerlink" title="The Pthreads API"></a><code>The Pthreads API</code></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译线程程序"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x7F16;&#x8BD1;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;" class="headerlink" title="&#x7F16;&#x8BD1;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;"></a>&#x7F16;&#x8BD1;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程管理"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x7EBF;&#x7A0B;&#x7BA1;&#x7406;" class="headerlink" title="&#x7EBF;&#x7A0B;&#x7BA1;&#x7406;"></a>&#x7EBF;&#x7A0B;&#x7BA1;&#x7406;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建和终止线程"><span class="nav-number">5.1.</span> <span class="nav-text"><a href="#&#x521B;&#x5EFA;&#x548C;&#x7EC8;&#x6B62;&#x7EBF;&#x7A0B;" class="headerlink" title="&#x521B;&#x5EFA;&#x548C;&#x7EC8;&#x6B62;&#x7EBF;&#x7A0B;"></a>&#x521B;&#x5EFA;&#x548C;&#x7EC8;&#x6B62;&#x7EBF;&#x7A0B;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数"><span class="nav-number">5.1.1.</span> <span class="nav-text"><a href="#&#x51FD;&#x6570;" class="headerlink" title="&#x51FD;&#x6570;"></a>&#x51FD;&#x6570;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建线程"><span class="nav-number">5.1.2.</span> <span class="nav-text"><a href="#&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;" class="headerlink" title="&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;"></a>&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程属性"><span class="nav-number">5.1.3.</span> <span class="nav-text"><a href="#&#x7EBF;&#x7A0B;&#x5C5E;&#x6027;" class="headerlink" title="&#x7EBF;&#x7A0B;&#x5C5E;&#x6027;"></a>&#x7EBF;&#x7A0B;&#x5C5E;&#x6027;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程的绑定和调度"><span class="nav-number">5.1.4.</span> <span class="nav-text"><a href="#&#x7EBF;&#x7A0B;&#x7684;&#x7ED1;&#x5B9A;&#x548C;&#x8C03;&#x5EA6;" class="headerlink" title="&#x7EBF;&#x7A0B;&#x7684;&#x7ED1;&#x5B9A;&#x548C;&#x8C03;&#x5EA6;"></a>&#x7EBF;&#x7A0B;&#x7684;&#x7ED1;&#x5B9A;&#x548C;&#x8C03;&#x5EA6;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#终止线程-amp-exit"><span class="nav-number">5.1.5.</span> <span class="nav-text"><a href="#&#x7EC8;&#x6B62;&#x7EBF;&#x7A0B;-amp-exit" class="headerlink" title="&#x7EC8;&#x6B62;&#x7EBF;&#x7A0B; &amp; exit()"></a>&#x7EC8;&#x6B62;&#x7EBF;&#x7A0B; &amp; <code>exit()</code></span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例-线程的创建和终止"><span class="nav-number">5.1.6.</span> <span class="nav-text"><a href="#&#x793A;&#x4F8B;-&#x7EBF;&#x7A0B;&#x7684;&#x521B;&#x5EFA;&#x548C;&#x7EC8;&#x6B62;" class="headerlink" title="&#x793A;&#x4F8B;: &#x7EBF;&#x7A0B;&#x7684;&#x521B;&#x5EFA;&#x548C;&#x7EC8;&#x6B62;"></a>&#x793A;&#x4F8B;: &#x7EBF;&#x7A0B;&#x7684;&#x521B;&#x5EFA;&#x548C;&#x7EC8;&#x6B62;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将参数传递给线程"><span class="nav-number">5.2.</span> <span class="nav-text"><a href="#&#x5C06;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;&#x7EBF;&#x7A0B;" class="headerlink" title="&#x5C06;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;&#x7EBF;&#x7A0B;"></a>&#x5C06;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;&#x7EBF;&#x7A0B;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线程参数传递示例"><span class="nav-number">5.2.1.</span> <span class="nav-text"><a href="#&#x7EBF;&#x7A0B;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x793A;&#x4F8B;" class="headerlink" title="&#x7EBF;&#x7A0B;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x793A;&#x4F8B;"></a>&#x7EBF;&#x7A0B;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x793A;&#x4F8B;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#合并和分离线程"><span class="nav-number">5.3.</span> <span class="nav-text"><a href="#&#x5408;&#x5E76;&#x548C;&#x5206;&#x79BB;&#x7EBF;&#x7A0B;" class="headerlink" title="&#x5408;&#x5E76;&#x548C;&#x5206;&#x79BB;&#x7EBF;&#x7A0B;"></a>&#x5408;&#x5E76;&#x548C;&#x5206;&#x79BB;&#x7EBF;&#x7A0B;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数-1"><span class="nav-number">5.3.1.</span> <span class="nav-text"><a href="#&#x51FD;&#x6570;-1" class="headerlink" title="&#x51FD;&#x6570;"></a>&#x51FD;&#x6570;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#合并-Joining"><span class="nav-number">5.3.2.</span> <span class="nav-text"><a href="#&#x5408;&#x5E76;-Joining" class="headerlink" title="&#x5408;&#x5E76;(Joining)"></a>&#x5408;&#x5E76;(<code>Joining</code>)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#是否为可合并的"><span class="nav-number">5.3.3.</span> <span class="nav-text"><a href="#&#x662F;&#x5426;&#x4E3A;&#x53EF;&#x5408;&#x5E76;&#x7684;" class="headerlink" title="&#x662F;&#x5426;&#x4E3A;&#x53EF;&#x5408;&#x5E76;&#x7684;"></a>&#x662F;&#x5426;&#x4E3A;&#x53EF;&#x5408;&#x5E76;&#x7684;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分离"><span class="nav-number">5.3.4.</span> <span class="nav-text"><a href="#&#x5206;&#x79BB;" class="headerlink" title="&#x5206;&#x79BB;"></a>&#x5206;&#x79BB;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#建议"><span class="nav-number">5.3.5.</span> <span class="nav-text"><a href="#&#x5EFA;&#x8BAE;" class="headerlink" title="&#x5EFA;&#x8BAE;"></a>&#x5EFA;&#x8BAE;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程合并示例"><span class="nav-number">5.3.6.</span> <span class="nav-text"><a href="#&#x7EBF;&#x7A0B;&#x5408;&#x5E76;&#x793A;&#x4F8B;" class="headerlink" title="&#x7EBF;&#x7A0B;&#x5408;&#x5E76;&#x793A;&#x4F8B;"></a>&#x7EBF;&#x7A0B;&#x5408;&#x5E76;&#x793A;&#x4F8B;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#栈空间管理"><span class="nav-number">5.4.</span> <span class="nav-text"><a href="#&#x6808;&#x7A7A;&#x95F4;&#x7BA1;&#x7406;" class="headerlink" title="&#x6808;&#x7A7A;&#x95F4;&#x7BA1;&#x7406;"></a>&#x6808;&#x7A7A;&#x95F4;&#x7BA1;&#x7406;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数-2"><span class="nav-number">5.4.1.</span> <span class="nav-text"><a href="#&#x51FD;&#x6570;-2" class="headerlink" title="&#x51FD;&#x6570;"></a>&#x51FD;&#x6570;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#防止栈空间出错"><span class="nav-number">5.4.2.</span> <span class="nav-text"><a href="#&#x9632;&#x6B62;&#x6808;&#x7A7A;&#x95F4;&#x51FA;&#x9519;" class="headerlink" title="&#x9632;&#x6B62;&#x6808;&#x7A7A;&#x95F4;&#x51FA;&#x9519;"></a>&#x9632;&#x6B62;&#x6808;&#x7A7A;&#x95F4;&#x51FA;&#x9519;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LC-2-的一些实际例子"><span class="nav-number">5.4.3.</span> <span class="nav-text"><a href="#LC-2-&#x7684;&#x4E00;&#x4E9B;&#x5B9E;&#x9645;&#x4F8B;&#x5B50;" class="headerlink" title="LC[^2] &#x7684;&#x4E00;&#x4E9B;&#x5B9E;&#x9645;&#x4F8B;&#x5B50;"></a>LC[^2] &#x7684;&#x4E00;&#x4E9B;&#x5B9E;&#x9645;&#x4F8B;&#x5B50;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#栈空间管理示例"><span class="nav-number">5.4.4.</span> <span class="nav-text"><a href="#&#x6808;&#x7A7A;&#x95F4;&#x7BA1;&#x7406;&#x793A;&#x4F8B;" class="headerlink" title="&#x6808;&#x7A7A;&#x95F4;&#x7BA1;&#x7406;&#x793A;&#x4F8B;"></a>&#x6808;&#x7A7A;&#x95F4;&#x7BA1;&#x7406;&#x793A;&#x4F8B;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#杂项函数"><span class="nav-number">5.5.</span> <span class="nav-text"><a href="#&#x6742;&#x9879;&#x51FD;&#x6570;" class="headerlink" title="&#x6742;&#x9879;&#x51FD;&#x6570;"></a>&#x6742;&#x9879;&#x51FD;&#x6570;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程练习一"><span class="nav-number">6.</span> <span class="nav-text"><a href="#&#x7EBF;&#x7A0B;&#x7EC3;&#x4E60;&#x4E00;" class="headerlink" title="&#x7EBF;&#x7A0B;&#x7EC3;&#x4E60;&#x4E00;"></a>&#x7EBF;&#x7A0B;&#x7EC3;&#x4E60;&#x4E00;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#入门和线程管理函数"><span class="nav-number">6.1.</span> <span class="nav-text"><a href="#&#x5165;&#x95E8;&#x548C;&#x7EBF;&#x7A0B;&#x7BA1;&#x7406;&#x51FD;&#x6570;" class="headerlink" title="&#x5165;&#x95E8;&#x548C;&#x7EBF;&#x7A0B;&#x7BA1;&#x7406;&#x51FD;&#x6570;"></a>&#x5165;&#x95E8;&#x548C;&#x7EBF;&#x7A0B;&#x7BA1;&#x7406;&#x51FD;&#x6570;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#互斥变量"><span class="nav-number">7.</span> <span class="nav-text"><a href="#&#x4E92;&#x65A5;&#x53D8;&#x91CF;" class="headerlink" title="&#x4E92;&#x65A5;&#x53D8;&#x91CF;"></a>&#x4E92;&#x65A5;&#x53D8;&#x91CF;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">7.1.</span> <span class="nav-text"><a href="#&#x6982;&#x8FF0;" class="headerlink" title="&#x6982;&#x8FF0;"></a>&#x6982;&#x8FF0;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建和销毁互斥锁"><span class="nav-number">7.2.</span> <span class="nav-text"><a href="#&#x521B;&#x5EFA;&#x548C;&#x9500;&#x6BC1;&#x4E92;&#x65A5;&#x9501;" class="headerlink" title="&#x521B;&#x5EFA;&#x548C;&#x9500;&#x6BC1;&#x4E92;&#x65A5;&#x9501;"></a>&#x521B;&#x5EFA;&#x548C;&#x9500;&#x6BC1;&#x4E92;&#x65A5;&#x9501;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数-3"><span class="nav-number">7.2.1.</span> <span class="nav-text"><a href="#&#x51FD;&#x6570;-3" class="headerlink" title="&#x51FD;&#x6570;"></a>&#x51FD;&#x6570;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用法"><span class="nav-number">7.2.2.</span> <span class="nav-text"><a href="#&#x7528;&#x6CD5;" class="headerlink" title="&#x7528;&#x6CD5;"></a>&#x7528;&#x6CD5;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#锁定和解锁互斥锁"><span class="nav-number">7.3.</span> <span class="nav-text"><a href="#&#x9501;&#x5B9A;&#x548C;&#x89E3;&#x9501;&#x4E92;&#x65A5;&#x9501;" class="headerlink" title="&#x9501;&#x5B9A;&#x548C;&#x89E3;&#x9501;&#x4E92;&#x65A5;&#x9501;"></a>&#x9501;&#x5B9A;&#x548C;&#x89E3;&#x9501;&#x4E92;&#x65A5;&#x9501;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数-4"><span class="nav-number">7.3.1.</span> <span class="nav-text"><a href="#&#x51FD;&#x6570;-4" class="headerlink" title="&#x51FD;&#x6570;"></a>&#x51FD;&#x6570;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用法-1"><span class="nav-number">7.3.2.</span> <span class="nav-text"><a href="#&#x7528;&#x6CD5;-1" class="headerlink" title="&#x7528;&#x6CD5;"></a>&#x7528;&#x6CD5;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用互斥锁的示例"><span class="nav-number">7.4.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;&#x4E92;&#x65A5;&#x9501;&#x7684;&#x793A;&#x4F8B;" class="headerlink" title="&#x4F7F;&#x7528;&#x4E92;&#x65A5;&#x9501;&#x7684;&#x793A;&#x4F8B;"></a>&#x4F7F;&#x7528;&#x4E92;&#x65A5;&#x9501;&#x7684;&#x793A;&#x4F8B;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#条件变量"><span class="nav-number">8.</span> <span class="nav-text"><a href="#&#x6761;&#x4EF6;&#x53D8;&#x91CF;" class="headerlink" title="&#x6761;&#x4EF6;&#x53D8;&#x91CF;"></a>&#x6761;&#x4EF6;&#x53D8;&#x91CF;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述-1"><span class="nav-number">8.1.</span> <span class="nav-text"><a href="#&#x6982;&#x8FF0;-1" class="headerlink" title="&#x6982;&#x8FF0;"></a>&#x6982;&#x8FF0;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建和销毁条件变量"><span class="nav-number">8.2.</span> <span class="nav-text"><a href="#&#x521B;&#x5EFA;&#x548C;&#x9500;&#x6BC1;&#x6761;&#x4EF6;&#x53D8;&#x91CF;" class="headerlink" title="&#x521B;&#x5EFA;&#x548C;&#x9500;&#x6BC1;&#x6761;&#x4EF6;&#x53D8;&#x91CF;"></a>&#x521B;&#x5EFA;&#x548C;&#x9500;&#x6BC1;&#x6761;&#x4EF6;&#x53D8;&#x91CF;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数-5"><span class="nav-number">8.2.1.</span> <span class="nav-text"><a href="#&#x51FD;&#x6570;-5" class="headerlink" title="&#x51FD;&#x6570;"></a>&#x51FD;&#x6570;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用法-2"><span class="nav-number">8.2.2.</span> <span class="nav-text"><a href="#&#x7528;&#x6CD5;-2" class="headerlink" title="&#x7528;&#x6CD5;"></a>&#x7528;&#x6CD5;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件变量等待和发信号"><span class="nav-number">8.3.</span> <span class="nav-text"><a href="#&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x7B49;&#x5F85;&#x548C;&#x53D1;&#x4FE1;&#x53F7;" class="headerlink" title="&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x7B49;&#x5F85;&#x548C;&#x53D1;&#x4FE1;&#x53F7;"></a>&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x7B49;&#x5F85;&#x548C;&#x53D1;&#x4FE1;&#x53F7;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用条件变量的示例"><span class="nav-number">8.4.</span> <span class="nav-text"><a href="#&#x4F7F;&#x7528;&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x7684;&#x793A;&#x4F8B;" class="headerlink" title="&#x4F7F;&#x7528;&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x7684;&#x793A;&#x4F8B;"></a>&#x4F7F;&#x7528;&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x7684;&#x793A;&#x4F8B;</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pthreads的监控，调试和性能分析工具"><span class="nav-number">9.</span> <span class="nav-text"><a href="#Pthreads&#x7684;&#x76D1;&#x63A7;&#xFF0C;&#x8C03;&#x8BD5;&#x548C;&#x6027;&#x80FD;&#x5206;&#x6790;&#x5DE5;&#x5177;" class="headerlink" title="Pthreads&#x7684;&#x76D1;&#x63A7;&#xFF0C;&#x8C03;&#x8BD5;&#x548C;&#x6027;&#x80FD;&#x5206;&#x6790;&#x5DE5;&#x5177;"></a>Pthreads&#x7684;&#x76D1;&#x63A7;&#xFF0C;&#x8C03;&#x8BD5;&#x548C;&#x6027;&#x80FD;&#x5206;&#x6790;&#x5DE5;&#x5177;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LLNL特定信息和建议"><span class="nav-number">10.</span> <span class="nav-text"><a href="#LLNL&#x7279;&#x5B9A;&#x4FE1;&#x606F;&#x548C;&#x5EFA;&#x8BAE;" class="headerlink" title="LLNL&#x7279;&#x5B9A;&#x4FE1;&#x606F;&#x548C;&#x5EFA;&#x8BAE;"></a>LLNL&#x7279;&#x5B9A;&#x4FE1;&#x606F;&#x548C;&#x5EFA;&#x8BAE;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#未涵盖的主题"><span class="nav-number">11.</span> <span class="nav-text"><a href="#&#x672A;&#x6DB5;&#x76D6;&#x7684;&#x4E3B;&#x9898;" class="headerlink" title="&#x672A;&#x6DB5;&#x76D6;&#x7684;&#x4E3B;&#x9898;"></a>&#x672A;&#x6DB5;&#x76D6;&#x7684;&#x4E3B;&#x9898;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程练习二"><span class="nav-number">12.</span> <span class="nav-text"><a href="#&#x7EBF;&#x7A0B;&#x7EC3;&#x4E60;&#x4E8C;" class="headerlink" title="&#x7EBF;&#x7A0B;&#x7EC3;&#x4E60;&#x4E8C;"></a>&#x7EBF;&#x7A0B;&#x7EC3;&#x4E60;&#x4E8C;</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#互斥锁-条件变量和带Pthreads的混合MPI"><span class="nav-number">12.1.</span> <span class="nav-text"><a href="#&#x4E92;&#x65A5;&#x9501;-&#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x548C;&#x5E26;Pthreads&#x7684;&#x6DF7;&#x5408;MPI" class="headerlink" title="&#x4E92;&#x65A5;&#x9501;, &#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x548C;&#x5E26;Pthreads&#x7684;&#x6DF7;&#x5408;MPI"></a>&#x4E92;&#x65A5;&#x9501;, &#x6761;&#x4EF6;&#x53D8;&#x91CF;&#x548C;&#x5E26;Pthreads&#x7684;&#x6DF7;&#x5408;MPI</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考和更多信息"><span class="nav-number">13.</span> <span class="nav-text"><a href="#&#x53C2;&#x8003;&#x548C;&#x66F4;&#x591A;&#x4FE1;&#x606F;" class="headerlink" title="&#x53C2;&#x8003;&#x548C;&#x66F4;&#x591A;&#x4FE1;&#x606F;"></a>&#x53C2;&#x8003;&#x548C;&#x66F4;&#x591A;&#x4FE1;&#x606F;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pthread-库函数参考"><span class="nav-number">14.</span> <span class="nav-text"><a href="#Pthread-&#x5E93;&#x51FD;&#x6570;&#x53C2;&#x8003;" class="headerlink" title="Pthread &#x5E93;&#x51FD;&#x6570;&#x53C2;&#x8003;"></a><code>Pthread</code> &#x5E93;&#x51FD;&#x6570;&#x53C2;&#x8003;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -2914,6 +1596,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -2931,6 +1617,18 @@
       <script id="dsq-count-scr" src="https://chunqiulfq.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://chunqiublog.github.io/2018-09-02-POSIX_Threads_Programming.html';
+          this.page.identifier = '2018-09-02-POSIX_Threads_Programming.html';
+          this.page.title = 'POSIX Threads Programming';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://chunqiulfq.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
