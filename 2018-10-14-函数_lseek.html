@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="APUE,文件I/O," />
 
 
 
@@ -81,16 +81,18 @@
 
 
 
-<meta name="description" content="黄沙百战穿金甲 不破楼兰终不还">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CHUNQIULFQ">
-<meta property="og:url" content="http://chunqiublog.github.io/tags/APUE/index.html">
+<meta name="description" content="*注: 基于 release 4.16 of the Linux man-pages project 整理 APUE 中未进行说明或与 Linux 存在不同的内容.  参考 lseek(2).  函数声明1234#include &amp;lt;sys/types.h&amp;gt;#include &amp;lt;unistd.h&amp;gt;off_t lseek(int fd, off_t offset, int whe">
+<meta name="keywords" content="APUE,文件I&#x2F;O">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数 lseek()">
+<meta property="og:url" content="http://chunqiublog.github.io/2018-10-14-函数_lseek.html">
 <meta property="og:site_name" content="CHUNQIULFQ">
-<meta property="og:description" content="黄沙百战穿金甲 不破楼兰终不还">
+<meta property="og:description" content="*注: 基于 release 4.16 of the Linux man-pages project 整理 APUE 中未进行说明或与 Linux 存在不同的内容.  参考 lseek(2).  函数声明1234#include &amp;lt;sys/types.h&amp;gt;#include &amp;lt;unistd.h&amp;gt;off_t lseek(int fd, off_t offset, int whe">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-14T14:24:44.689Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CHUNQIULFQ">
-<meta name="twitter:description" content="黄沙百战穿金甲 不破楼兰终不还">
+<meta name="twitter:title" content="函数 lseek()">
+<meta name="twitter:description" content="*注: 基于 release 4.16 of the Linux man-pages project 整理 APUE 中未进行说明或与 Linux 存在不同的内容.  参考 lseek(2).  函数声明1234#include &amp;lt;sys/types.h&amp;gt;#include &amp;lt;unistd.h&amp;gt;off_t lseek(int fd, off_t offset, int whe">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://chunqiublog.github.io/tags/APUE/"/>
+  <link rel="canonical" href="http://chunqiublog.github.io/2018-10-14-函数_lseek.html"/>
 
 
 
 
 
-  <title>标签: APUE | CHUNQIULFQ</title>
+  <title>函数 lseek() | CHUNQIULFQ</title>
   
 
 
@@ -145,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -273,138 +275,273 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>APUE<small>标签</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/2018-10-14-函数_lseek.html">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chunqiulfq">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHUNQIULFQ">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018-10-14-函数_read.html" itemprop="url">
-              
-                <span itemprop="name">函数 read()</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">函数 lseek()</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-14T22:19:57+08:00"
-              content="2018-10-14" >
-          10-14
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-14T22:19:09+08:00">
+                2018-10-14
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/操作系统/" itemprop="url" rel="index">
+                    <span itemprop="name">操作系统</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018-10-14-函数_lseek.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018-10-14-函数_lseek.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i> 阅读次数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018-10-14-函数_close.html" itemprop="url">
-              
-                <span itemprop="name">函数 close()</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-14T22:19:17+08:00"
-              content="2018-10-14" >
-          10-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018-10-14-函数_lseek.html" itemprop="url">
-              
-                <span itemprop="name">函数 lseek()</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-14T22:19:09+08:00"
-              content="2018-10-14" >
-          10-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018-10-07-函数open_creat和openat.html" itemprop="url">
-              
-                <span itemprop="name">函数 open(), creat() 和 openat()</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-07T12:14:38+08:00"
-              content="2018-10-07" >
-          10-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <p>*注: 基于 <code>release 4.16 of the Linux man-pages project</code> 整理 <code>APUE</code> 中未进行说明或与 <code>Linux</code> 存在不同的内容.</p>
+<ul>
+<li>参考 <a href="http://man7.org/linux/man-pages/man2/lseek.2.html" target="_blank" rel="noopener"><code>lseek(2)</code></a>.</li>
+</ul>
+<h3 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">off_t</span> lseek(<span class="keyword">int</span> fd, <span class="keyword">off_t</span> offset, <span class="keyword">int</span> whence);</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><ul>
+<li><code>lseek()</code> 运行将文件偏移量设置到文件结尾之外(但是这不会改变文件的大小). 如果在这之后数据被写入了这个位置, 则后续在这个间隙(“空洞(<code>hole</code>)”)的读操作将会返回空字节(<code>\0</code>), 直到数据实际被写入间隙.</li>
+</ul>
+<h4 id="寻找文件中的数据和空洞"><a href="#寻找文件中的数据和空洞" class="headerlink" title="寻找文件中的数据和空洞"></a>寻找文件中的数据和空洞</h4><ul>
+<li>从 <code>3.1</code> 版本开始, <code>Linux</code> 开始支持以下 <code>whence</code> 参数的新增值:<ul>
+<li><code>SEEK_DATA</code>: 将文件偏移量调整到文件中大于或等于 <code>offset</code> 参数的包含数据的下一个位置. 如果 <code>offset</code> 参数指向数据, 那么就把文件偏移量设置为 <code>offset</code> 参数.</li>
+<li><code>SEEK_HOLE</code>: 将文件偏移量调整到文件中大于或等于 <code>offset</code> 参数的下一个空洞. 如果 <code>offset</code> 参数指向一个空洞中, 那么就把文件偏移量设置为 <code>offset</code> 参数. 如果 <code>offset</code> 参数后没有空洞了, 那么就把文件偏移量调整为文件结尾(即, 任何文件的结尾都隐含一个空洞).</li>
+</ul>
+</li>
+<li>以上的情况在 <code>offset</code> 参数指向超过文件结尾时调用 <code>lseek()</code> 都会失败.</li>
+<li>这些操作使得应用程序可以在一个稀疏分配的文件中映射到一个空洞. 这种操作对类似文件备份工具等应用程序非常有用, 如果文件备份工具有发现空洞的机制, 就可以通过保留空洞在创建备份时节省空间.</li>
+<li>在这些操作中, 空洞是指一系列没有写入底层文件存储中的零. 但是文件系统不被强制要求在文件存储中反映空洞, 因此这些操作对映射的文件实际分配的存储空间没有保障机制(即, 文件系统是不会确保在文件映射到存储空间时存在空洞, 因为那一系列零可以被写入底层存储). (此外, 实际已经写入底层存储的一系列零可能不会被作为一个空洞被反馈.) 在最简单的实现中, 文件系统可以通过使 <code>SEEK_HOLE</code> 始终返回文件结尾的偏移量来支持 <code>SEEK_HOLE</code> 操作, 使 <code>SEEK_DATA</code> 始终返回 <code>offset</code> 参数来支持 <code>SEEK_DATA</code> 操作(即, 即使 <code>offset</code> 参数指向的位置是一个空洞, 也可以认为它是由一系列零的数据组成).</li>
+<li>在 <code>CentOS Linux release 7.5.1804</code> 实测发现当一系列零被写入底层存储时不会被认为是一个空洞, 写入数据时以 <code>4096</code> 为一个块进行写入. 数据在紧跟一系列零时, 如果数据不满 <code>4096</code> 的倍数时, 会写入紧跟的零进行不全, 这部分零将不算是空洞的一部分. 而剩下的零至少要大于等于 <code>4096</code> 才会形成空洞. 所以空洞开始位置是 <code>4096</code> 的倍数, 结束位置减去开始位置大于等于 <code>4096</code>.</li>
+<li>为了可以在 <code>&lt;unistd.h&gt;</code> 中获取到 <code>SEEK_DATA</code> 和 <code>SEEK_HOLE</code> 的定义, 必须定义 <code>_GNU_SOURCE</code> 特征测试宏.</li>
+<li>以下的文件系统支持 <code>SEEK_DATA</code> 和 <code>SEEK_HOLE</code> 操作:<ul>
+<li><code>Btrfs</code> (<code>Linux 3.1</code> 引入)</li>
+<li><code>OCFS</code> (<code>Linux 3.2</code> 引入)</li>
+<li><code>XFS</code> (<code>Linux 3.5</code> 引入)</li>
+<li><code>ext4</code> (<code>Linux 3.8</code> 引入)</li>
+<li><a href="http://man7.org/linux/man-pages/man5/tmpfs.5.html" target="_blank" rel="noopener"><code>tmpfs(5)</code></a> (<code>Linux 3.8</code> 引入)</li>
+<li><code>NFS</code> (<code>Linux 3.18</code> 引入)</li>
+<li><code>FUSE</code> (<code>Linux 4.5</code> 引入)</li>
+</ul>
+</li>
+</ul>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<li><code>POSIX.1</code> 规定 <code>off_t</code> 类型是一个有符号整型.</li>
+<li>一些设备不能使用 <code>lseek()</code>, <code>POSIX</code> 没有规定设备必须支持 <code>lseek()</code>.</li>
+<li>在 <code>Linux</code> 上, 对管道文件, <code>FIFO</code>, <code>socket</code> 文件或终端设备使用 <code>lseek()</code> 会失败并生成 <code>ESPIPE</code> 错误.</li>
+</ul>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享, 您的支持将鼓励我继续创作!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="chunqiulfq 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="chunqiulfq 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    chunqiulfq
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://chunqiublog.github.io/2018-10-14-函数_lseek.html" title="函数 lseek()">http://chunqiublog.github.io/2018-10-14-函数_lseek.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/APUE/" rel="tag"># APUE</a>
+          
+            <a href="/tags/文件I-O/" rel="tag"># 文件I/O</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018-10-07-函数open_creat和openat.html" rel="next" title="函数 open(), creat() 和 openat()">
+                <i class="fa fa-chevron-left"></i> 函数 open(), creat() 和 openat()
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018-10-14-函数_close.html" rel="prev" title="函数 close()">
+                函数 close() <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -412,6 +549,17 @@
 
 
           
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+  
+
 
         </div>
         
@@ -432,8 +580,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -538,6 +695,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数声明"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x51FD;&#x6570;&#x58F0;&#x660E;" class="headerlink" title="&#x51FD;&#x6570;&#x58F0;&#x660E;"></a>&#x51FD;&#x6570;&#x58F0;&#x660E;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x63CF;&#x8FF0;" class="headerlink" title="&#x63CF;&#x8FF0;"></a>&#x63CF;&#x8FF0;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#寻找文件中的数据和空洞"><span class="nav-number">2.1.</span> <span class="nav-text"><a href="#&#x5BFB;&#x627E;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x548C;&#x7A7A;&#x6D1E;" class="headerlink" title="&#x5BFB;&#x627E;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x548C;&#x7A7A;&#x6D1E;"></a>&#x5BFB;&#x627E;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x548C;&#x7A7A;&#x6D1E;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x6CE8;&#x610F;" class="headerlink" title="&#x6CE8;&#x610F;"></a>&#x6CE8;&#x610F;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -682,6 +855,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -699,6 +876,18 @@
       <script id="dsq-count-scr" src="https://chunqiulfq.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://chunqiublog.github.io/2018-10-14-函数_lseek.html';
+          this.page.identifier = '2018-10-14-函数_lseek.html';
+          this.page.title = '函数 lseek()';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://chunqiulfq.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
