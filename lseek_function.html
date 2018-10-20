@@ -123,18 +123,18 @@
 
 
 
-  <meta name="description" content="注: 基于 release 4.16 of the Linux man-pages project 整理 APUE 中未进行说明或与 Linux 存在不同的内容.  参考 read(2).  函数声明123#include &amp;lt;unistd.h&amp;gt;ssize_t read(int fd, void *buf, size_t count);">
+  <meta name="description" content="注: 基于 release 4.16 of the Linux man-pages project 整理 APUE 中未进行说明或与 Linux 存在不同的内容.  参考 lseek(2).  函数声明1234#include &amp;lt;sys/types.h&amp;gt;#include &amp;lt;unistd.h&amp;gt;off_t lseek(int fd, off_t offset, int when">
 <meta name="keywords" content="APUE,文件I&#x2F;O">
 <meta property="og:type" content="article">
-<meta property="og:title" content="函数 read()">
-<meta property="og:url" content="http://chunqiublog.github.io/function_read.html">
+<meta property="og:title" content="函数 lseek()">
+<meta property="og:url" content="http://chunqiublog.github.io/lseek_function.html">
 <meta property="og:site_name" content="CHUNQIULFQ">
-<meta property="og:description" content="注: 基于 release 4.16 of the Linux man-pages project 整理 APUE 中未进行说明或与 Linux 存在不同的内容.  参考 read(2).  函数声明123#include &amp;lt;unistd.h&amp;gt;ssize_t read(int fd, void *buf, size_t count);">
+<meta property="og:description" content="注: 基于 release 4.16 of the Linux man-pages project 整理 APUE 中未进行说明或与 Linux 存在不同的内容.  参考 lseek(2).  函数声明1234#include &amp;lt;sys/types.h&amp;gt;#include &amp;lt;unistd.h&amp;gt;off_t lseek(int fd, off_t offset, int when">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-15T03:49:41.087Z">
+<meta property="og:updated_time" content="2018-10-15T03:48:42.683Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="函数 read()">
-<meta name="twitter:description" content="注: 基于 release 4.16 of the Linux man-pages project 整理 APUE 中未进行说明或与 Linux 存在不同的内容.  参考 read(2).  函数声明123#include &amp;lt;unistd.h&amp;gt;ssize_t read(int fd, void *buf, size_t count);">
+<meta name="twitter:title" content="函数 lseek()">
+<meta name="twitter:description" content="注: 基于 release 4.16 of the Linux man-pages project 整理 APUE 中未进行说明或与 Linux 存在不同的内容.  参考 lseek(2).  函数声明1234#include &amp;lt;sys/types.h&amp;gt;#include &amp;lt;unistd.h&amp;gt;off_t lseek(int fd, off_t offset, int when">
 
 
 
@@ -143,7 +143,7 @@
 
 
 
-  <link rel="canonical" href="http://chunqiublog.github.io/function_read.html"/>
+  <link rel="canonical" href="http://chunqiublog.github.io/lseek_function.html"/>
 
 
 
@@ -153,7 +153,7 @@
   };
 </script>
 
-  <title>函数 read() | CHUNQIULFQ</title>
+  <title>函数 lseek() | CHUNQIULFQ</title>
   
 
 
@@ -349,7 +349,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/function_read.html">
+    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/lseek_function.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chunqiulfq">
@@ -366,7 +366,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">函数 read()
+          <h2 class="post-title" itemprop="name headline">函数 lseek()
               
             
           </h2>
@@ -391,7 +391,7 @@
                 
               
 
-              <time title="创建时间：2018-10-14 22:19:57" itemprop="dateCreated datePublished" datetime="2018-10-14T22:19:57+08:00">2018-10-14</time>
+              <time title="创建时间：2018-10-14 22:19:09" itemprop="dateCreated datePublished" datetime="2018-10-14T22:19:09+08:00">2018-10-14</time>
             
 
             
@@ -408,7 +408,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-15 11:49:41" itemprop="dateModified" datetime="2018-10-15T11:49:41+08:00">2018-10-15</time>
+                <time title="修改时间：2018-10-15 11:48:42" itemprop="dateModified" datetime="2018-10-15T11:48:42+08:00">2018-10-15</time>
               
             
           </span>
@@ -461,29 +461,39 @@
       
         <p><em>注: 基于 <code>release 4.16 of the Linux man-pages project</code> 整理 <code>APUE</code> 中未进行说明或与 <code>Linux</code> 存在不同的内容.</em></p>
 <ul>
-<li>参考 <a href="http://man7.org/linux/man-pages/man2/read.2.html" target="_blank" rel="noopener"><code>read(2)</code></a>.</li>
+<li>参考 <a href="http://man7.org/linux/man-pages/man2/lseek.2.html" target="_blank" rel="noopener"><code>lseek(2)</code></a>.</li>
 </ul>
-<h3 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ssize_t</span> read(<span class="keyword">int</span> fd, <span class="keyword">void</span> *buf, <span class="keyword">size_t</span> count);</span><br></pre></td></tr></table></figure>
+<h3 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">off_t</span> lseek(<span class="keyword">int</span> fd, <span class="keyword">off_t</span> offset, <span class="keyword">int</span> whence);</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><ul>
-<li>支持 <code>lseek()</code> 操作的文件的读操作从文件偏移量位置开始, 文件偏移量会增加读取的位数. 当文件偏移量在文件结尾或超出文件结尾, 没有数据可读, <code>read()</code> 将返回 <code>0</code>.</li>
-<li>如果 <code>count</code> 参数是 <code>0</code>, 读操作可以用于检测错误. 如果没有任何错误或 <code>read()</code> 操作没有检测到错误, <code>count</code> 参数为 <code>0</code> 的 <code>read()</code> 操作将返回 <code>0</code>, 并不会产生其他的影响.</li>
-<li>根据 <code>POSIX.1</code>, 当 <code>count</code> 参数超过 <code>SSIZE_MAX</code> 时的行为有具体的实现定义; 在<a href="#注意">注意</a>中查看 <code>Linux</code> 中 <code>count</code> 的上限.</li>
+<li><code>lseek()</code> 运行将文件偏移量设置到文件结尾之外(但是这不会改变文件的大小). 如果在这之后数据被写入了这个位置, 则后续在这个间隙(“空洞(<code>hole</code>)”)的读操作将会返回空字节(<code>\0</code>), 直到数据实际被写入间隙.</li>
 </ul>
-<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>出错时返回 <code>-1</code>, <code>errno</code> 被设置为适合的值. 在这种情况下, 没有指定文件偏移量(如果有) 的变化.</p>
+<h4 id="寻找文件中的数据和空洞"><a href="#寻找文件中的数据和空洞" class="headerlink" title="寻找文件中的数据和空洞"></a>寻找文件中的数据和空洞</h4><ul>
+<li>从 <code>3.1</code> 版本开始, <code>Linux</code> 开始支持以下 <code>whence</code> 参数的新增值:<ul>
+<li><code>SEEK_DATA</code>: 将文件偏移量调整到文件中大于或等于 <code>offset</code> 参数的包含数据的下一个位置. 如果 <code>offset</code> 参数指向数据, 那么就把文件偏移量设置为 <code>offset</code> 参数.</li>
+<li><code>SEEK_HOLE</code>: 将文件偏移量调整到文件中大于或等于 <code>offset</code> 参数的下一个空洞. 如果 <code>offset</code> 参数指向一个空洞中, 那么就把文件偏移量设置为 <code>offset</code> 参数. 如果 <code>offset</code> 参数后没有空洞了, 那么就把文件偏移量调整为文件结尾(即, 任何文件的结尾都隐含一个空洞).</li>
+</ul>
+</li>
+<li>以上的情况在 <code>offset</code> 参数指向超过文件结尾时调用 <code>lseek()</code> 都会失败.</li>
+<li>这些操作使得应用程序可以在一个稀疏分配的文件中映射到一个空洞. 这种操作对类似文件备份工具等应用程序非常有用, 如果文件备份工具有发现空洞的机制, 就可以通过保留空洞在创建备份时节省空间.</li>
+<li>在这些操作中, 空洞是指一系列没有写入底层文件存储中的零. 但是文件系统不被强制要求在文件存储中反映空洞, 因此这些操作对映射的文件实际分配的存储空间没有保障机制(即, 文件系统是不会确保在文件映射到存储空间时存在空洞, 因为那一系列零可以被写入底层存储). (此外, 实际已经写入底层存储的一系列零可能不会被作为一个空洞被反馈.) 在最简单的实现中, 文件系统可以通过使 <code>SEEK_HOLE</code> 始终返回文件结尾的偏移量来支持 <code>SEEK_HOLE</code> 操作, 使 <code>SEEK_DATA</code> 始终返回 <code>offset</code> 参数来支持 <code>SEEK_DATA</code> 操作(即, 即使 <code>offset</code> 参数指向的位置是一个空洞, 也可以认为它是由一系列零的数据组成).</li>
+<li>在 <code>CentOS Linux release 7.5.1804</code> 实测发现当一系列零被写入底层存储时不会被认为是一个空洞, 写入数据时以 <code>4096</code> 为一个块进行写入. 数据在紧跟一系列零时, 如果数据不满 <code>4096</code> 的倍数时, 会写入紧跟的零进行不全, 这部分零将不算是空洞的一部分. 而剩下的零至少要大于等于 <code>4096</code> 才会形成空洞. 所以空洞开始位置是 <code>4096</code> 的倍数, 结束位置减去开始位置大于等于 <code>4096</code>.</li>
+<li>为了可以在 <code>&lt;unistd.h&gt;</code> 中获取到 <code>SEEK_DATA</code> 和 <code>SEEK_HOLE</code> 的定义, 必须定义 <code>_GNU_SOURCE</code> 特征测试宏.</li>
+<li>以下的文件系统支持 <code>SEEK_DATA</code> 和 <code>SEEK_HOLE</code> 操作:<ul>
+<li><code>Btrfs</code> (<code>Linux 3.1</code> 引入)</li>
+<li><code>OCFS</code> (<code>Linux 3.2</code> 引入)</li>
+<li><code>XFS</code> (<code>Linux 3.5</code> 引入)</li>
+<li><code>ext4</code> (<code>Linux 3.8</code> 引入)</li>
+<li><a href="http://man7.org/linux/man-pages/man5/tmpfs.5.html" target="_blank" rel="noopener"><code>tmpfs(5)</code></a> (<code>Linux 3.8</code> 引入)</li>
+<li><code>NFS</code> (<code>Linux 3.18</code> 引入)</li>
+<li><code>FUSE</code> (<code>Linux 4.5</code> 引入)</li>
+</ul>
+</li>
+</ul>
 <h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
-<li><code>size_t</code> 和 <code>ssize_t</code> 分别是被<code>POSIX.1</code> 指定的无符号和有符号整型数据类型.</li>
-<li>在 <code>Linux</code> 中, <code>read()</code>(和类似的系统调用) 一次最多传输 <code>0x7ffff000(2,147,479,552)</code> 个字节, 会返回实际传输的字节数. (无论是 <code>32</code> 位还是 <code>64</code> 位的系统这都是正确的.)</li>
-<li>在 <code>NFS</code> 文件系统中, 读取少量数据可能只会在第一次读取时更新时间戳, 随后的调用可能不会. 这是客户端的缓存属性导致, 因为大多数 <code>NFS</code> 客户端将 <code>st_atime(last file access time)</code> 的更新留给了服务器, 当客户端从自身的缓存中读到了足够的数据时, 就不会从服务端读取, 也就不会导致服务端 <code>st_atime</code> 的更新. <code>UNIX</code> 语义可以通过关闭客户端的缓存属性使 <code>st_atime</code> 更新, 但是大多数情况下这种做法都会增加服务器负载, 降低性能.</li>
-</ul>
-<h3 id="BUGS"><a href="#BUGS" class="headerlink" title="BUGS"></a>BUGS</h3><ul>
-<li><p>根据 <code>POSIX.1-2008/SUSv4 Section XSI 2.9.7</code> (普通文件的线程交互操作):</p>
-<blockquote>
-<p>当对普通文件或符号链接操作时, 以下所有函数应该遵守 <code>POSIX.1-2008</code> 中指定的效果相互原子化: …</p>
-</blockquote>
-</li>
-<li><p>随后列出的 <code>API</code> 中包括 <code>read()</code> 和 <a href="http://man7.org/linux/man-pages/man2/readv.2.html" target="_blank" rel="noopener"><code>readv(2)</code></a>. 它们跨线程(和进程)操作的效果应该是原子化的更新文件文件偏移量. 但是, 在 <code>Linux 3.14</code> 之前的版本情况并非如此: 如果共享打开文件描述(参考 <a href="http://man7.org/linux/man-pages/man2/open.2.html" target="_blank" rel="noopener"><code>open(2)</code></a> 的两个进程同时执行 <code>read()</code>(或  <a href="http://man7.org/linux/man-pages/man2/readv.2.html" target="_blank" rel="noopener"><code>readv(2)</code></a>), 那么 <code>I/O</code> 操作更新文件偏移量将不会遵守原子化的规则, 从而导致两个进程的读取操作可能(错误的) 获取到重叠的数据块. 这个问题在 <code>Linunx 3.14</code> 中被解决.</p>
-</li>
+<li><code>POSIX.1</code> 规定 <code>off_t</code> 类型是一个有符号整型.</li>
+<li>一些设备不能使用 <code>lseek()</code>, <code>POSIX</code> 没有规定设备必须支持 <code>lseek()</code>.</li>
+<li>在 <code>Linux</code> 上, 对管道文件, <code>FIFO</code>, <code>socket</code> 文件或终端设备使用 <code>lseek()</code> 会失败并生成 <code>ESPIPE</code> 错误.</li>
 </ul>
 
       
@@ -535,7 +545,7 @@
     <strong>本文作者： </strong>chunqiulfq</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://chunqiublog.github.io/function_read.html" title="函数 read()">http://chunqiublog.github.io/function_read.html</a>
+    <a href="http://chunqiublog.github.io/lseek_function.html" title="函数 lseek()">http://chunqiublog.github.io/lseek_function.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -563,8 +573,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/function_close.html" rel="next" title="函数 close()">
-                <i class="fa fa-chevron-left"></i> 函数 close()
+              <a href="/open_creat_and_openat_function.html" rel="next" title="函数 open(), creat() 和 openat()">
+                <i class="fa fa-chevron-left"></i> 函数 open(), creat() 和 openat()
               </a>
             
           </div>
@@ -572,6 +582,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/close_function.html" rel="prev" title="函数 close()">
+                函数 close() <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -777,7 +791,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数声明"><span class="nav-number">1.</span> <span class="nav-text">函数声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">2.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#返回值"><span class="nav-number">3.</span> <span class="nav-text">返回值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">4.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BUGS"><span class="nav-number">5.</span> <span class="nav-text">BUGS</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数声明"><span class="nav-number">1.</span> <span class="nav-text">函数声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">2.</span> <span class="nav-text">描述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#寻找文件中的数据和空洞"><span class="nav-number">2.1.</span> <span class="nav-text">寻找文件中的数据和空洞</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">3.</span> <span class="nav-text">注意</span></a></li></ol></div>
             
 
           </div>
@@ -964,7 +978,7 @@
         var gitalk = new Gitalk({
           clientID: '208433c9fd56b4c87620',
           clientSecret: '5822b2d2a9ff16ec2e5f3471f23521b7d8d43912',
-          repo: 'gitalk',
+          repo: 'chunqiulfq.github.io',
           owner: 'chunqiulfq',
           admin: ['chunqiulfq'],
           id: window.location.pathname,
@@ -1337,9 +1351,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/js.cookie.js?v=6.4.2"></script>
-  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=6.4.2"></script>
-
 
   
 
