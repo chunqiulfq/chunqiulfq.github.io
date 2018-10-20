@@ -127,7 +127,7 @@
 <meta name="keywords" content="APUE,文件I&#x2F;O">
 <meta property="og:type" content="article">
 <meta property="og:title" content="函数 lseek()">
-<meta property="og:url" content="http://chunqiublog.github.io/function_read.html">
+<meta property="og:url" content="http://chunqiublog.github.io/function_lseek.html">
 <meta property="og:site_name" content="CHUNQIULFQ">
 <meta property="og:description" content="注: 基于 release 4.16 of the Linux man-pages project 整理 APUE 中未进行说明或与 Linux 存在不同的内容.  参考 lseek(2).  函数声明1234#include &amp;lt;sys/types.h&amp;gt;#include &amp;lt;unistd.h&amp;gt;off_t lseek(int fd, off_t offset, int when">
 <meta property="og:locale" content="zh-CN">
@@ -143,7 +143,7 @@
 
 
 
-  <link rel="canonical" href="http://chunqiublog.github.io/function_read.html"/>
+  <link rel="canonical" href="http://chunqiublog.github.io/function_lseek.html"/>
 
 
 
@@ -349,7 +349,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/function_read.html">
+    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/function_lseek.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chunqiulfq">
@@ -545,7 +545,7 @@
     <strong>本文作者： </strong>chunqiulfq</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://chunqiublog.github.io/function_read.html" title="函数 lseek()">http://chunqiublog.github.io/function_read.html</a>
+    <a href="http://chunqiublog.github.io/function_lseek.html" title="函数 lseek()">http://chunqiublog.github.io/function_lseek.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -981,7 +981,7 @@
           repo: 'gitalk',
           owner: 'chunqiulfq',
           admin: ['chunqiulfq'],
-          id: location.href,
+          id: window.location.pathname,
           distractionFreeMode: 'true'
         })
         gitalk.render('gitalk-container')           
