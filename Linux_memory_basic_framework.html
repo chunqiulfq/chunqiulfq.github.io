@@ -126,16 +126,16 @@
   <meta name="description" content="i386 内存映射&amp;emsp;&amp;emsp;i386 CPU中采用的页式内存管理, 基本思路是：通过页目录和页表两层实现线性地址到物理地址的映射.  优点: 大多数情况下可以节省页表所占的内存空间。当页表为空时只需要将对应页目录项置为空，就可以节省对相应页表的空间. 缺点: 适用最大内存为 4G 的内存.">
 <meta name="keywords" content="内存管理,源码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基本框架">
+<meta property="og:title" content="Linux 内存基本框架">
 <meta property="og:url" content="http://chunqiublog.github.io/Linux_memory_basic_framework.html">
 <meta property="og:site_name" content="CHUNQIULFQ">
 <meta property="og:description" content="i386 内存映射&amp;emsp;&amp;emsp;i386 CPU中采用的页式内存管理, 基本思路是：通过页目录和页表两层实现线性地址到物理地址的映射.  优点: 大多数情况下可以节省页表所占的内存空间。当页表为空时只需要将对应页目录项置为空，就可以节省对相应页表的空间. 缺点: 适用最大内存为 4G 的内存.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6/%E4%B8%89%E5%B1%82%E5%9C%B0%E5%9D%80%E6%98%A0%E5%B0%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
 <meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6/%E8%BF%9B%E7%A8%8B%E8%99%9A%E5%AD%98%E7%A9%BA%E9%97%B4%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
-<meta property="og:updated_time" content="2018-10-15T10:13:17.191Z">
+<meta property="og:updated_time" content="2018-10-20T15:38:08.301Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基本框架">
+<meta name="twitter:title" content="Linux 内存基本框架">
 <meta name="twitter:description" content="i386 内存映射&amp;emsp;&amp;emsp;i386 CPU中采用的页式内存管理, 基本思路是：通过页目录和页表两层实现线性地址到物理地址的映射.  优点: 大多数情况下可以节省页表所占的内存空间。当页表为空时只需要将对应页目录项置为空，就可以节省对相应页表的空间. 缺点: 适用最大内存为 4G 的内存.">
 <meta name="twitter:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6/%E4%B8%89%E5%B1%82%E5%9C%B0%E5%9D%80%E6%98%A0%E5%B0%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
 
@@ -156,7 +156,7 @@
   };
 </script>
 
-  <title>基本框架 | CHUNQIULFQ</title>
+  <title>Linux 内存基本框架 | CHUNQIULFQ</title>
   
 
 
@@ -254,7 +254,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">15</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">12</span></a>
   </li>
         
         
@@ -369,7 +369,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">基本框架
+          <h2 class="post-title" itemprop="name headline">Linux 内存基本框架
               
             
           </h2>
@@ -411,7 +411,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-15 18:13:17" itemprop="dateModified" datetime="2018-10-15T18:13:17+08:00">2018-10-15</time>
+                <time title="修改时间：2018-10-20 23:38:08" itemprop="dateModified" datetime="2018-10-20T23:38:08+08:00">2018-10-20</time>
               
             
           </span>
@@ -538,7 +538,7 @@
     <strong>本文作者： </strong>chunqiulfq</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://chunqiublog.github.io/Linux_memory_basic_framework.html" title="基本框架">http://chunqiublog.github.io/Linux_memory_basic_framework.html</a>
+    <a href="http://chunqiublog.github.io/Linux_memory_basic_framework.html" title="Linux 内存基本框架">http://chunqiublog.github.io/Linux_memory_basic_framework.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -576,8 +576,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Linux_memory_address_mapping.html" rel="prev" title="地址映射">
-                地址映射 <i class="fa fa-chevron-right"></i>
+              <a href="/Linux_memory_address_mapping.html" rel="prev" title="Linux 内存地址映射">
+                Linux 内存地址映射 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -657,7 +657,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

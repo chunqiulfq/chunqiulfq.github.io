@@ -126,14 +126,14 @@
   <meta name="description" content="&amp;emsp;&amp;emsp;页式存储管理机制通过页目录和页表将每个线性地址映射到物理地址. 但是在这个过程中可能存在一些问题导致映射失败, 这时 CPU 就会产生 页面出错异常(Page Fault Exception), 也成 缺页中断, 进而执行预定的页面异常处理程序, 使应用程序从产生异常的指令处恢复执行或进行善后处理. 产生 页面出错异常(Page Fault Exception) 的原因有:">
 <meta name="keywords" content="内存管理,源码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="越界访问">
+<meta property="og:title" content="Linux 内存越界访问">
 <meta property="og:url" content="http://chunqiublog.github.io/Linux_memory_out_of_bounds_access.html">
 <meta property="og:site_name" content="CHUNQIULFQ">
 <meta property="og:description" content="&amp;emsp;&amp;emsp;页式存储管理机制通过页目录和页表将每个线性地址映射到物理地址. 但是在这个过程中可能存在一些问题导致映射失败, 这时 CPU 就会产生 页面出错异常(Page Fault Exception), 也成 缺页中断, 进而执行预定的页面异常处理程序, 使应用程序从产生异常的指令处恢复执行或进行善后处理. 产生 页面出错异常(Page Fault Exception) 的原因有:">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-07T04:13:12.891Z">
+<meta property="og:updated_time" content="2018-10-20T15:43:03.473Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="越界访问">
+<meta name="twitter:title" content="Linux 内存越界访问">
 <meta name="twitter:description" content="&amp;emsp;&amp;emsp;页式存储管理机制通过页目录和页表将每个线性地址映射到物理地址. 但是在这个过程中可能存在一些问题导致映射失败, 这时 CPU 就会产生 页面出错异常(Page Fault Exception), 也成 缺页中断, 进而执行预定的页面异常处理程序, 使应用程序从产生异常的指令处恢复执行或进行善后处理. 产生 页面出错异常(Page Fault Exception) 的原因有:">
 
 
@@ -153,7 +153,7 @@
   };
 </script>
 
-  <title>越界访问 | CHUNQIULFQ</title>
+  <title>Linux 内存越界访问 | CHUNQIULFQ</title>
   
 
 
@@ -251,7 +251,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">15</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">12</span></a>
   </li>
         
         
@@ -366,7 +366,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">越界访问
+          <h2 class="post-title" itemprop="name headline">Linux 内存越界访问
               
             
           </h2>
@@ -408,7 +408,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-07 12:13:12" itemprop="dateModified" datetime="2018-10-07T12:13:12+08:00">2018-10-07</time>
+                <time title="修改时间：2018-10-20 23:43:03" itemprop="dateModified" datetime="2018-10-20T23:43:03+08:00">2018-10-20</time>
               
             
           </span>
@@ -534,7 +534,7 @@
     <strong>本文作者： </strong>chunqiulfq</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://chunqiublog.github.io/Linux_memory_out_of_bounds_access.html" title="越界访问">http://chunqiublog.github.io/Linux_memory_out_of_bounds_access.html</a>
+    <a href="http://chunqiublog.github.io/Linux_memory_out_of_bounds_access.html" title="Linux 内存越界访问">http://chunqiublog.github.io/Linux_memory_out_of_bounds_access.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -562,8 +562,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Linux_memory_data_structure.html" rel="next" title="数据结构">
-                <i class="fa fa-chevron-left"></i> 数据结构
+              <a href="/Linux_memory_data_structure.html" rel="next" title="Linux 内存数据结构">
+                <i class="fa fa-chevron-left"></i> Linux 内存数据结构
               </a>
             
           </div>
@@ -572,8 +572,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Linux_memoryout_user_stack_extension.html" rel="prev" title="用户堆栈扩展">
-                用户堆栈扩展 <i class="fa fa-chevron-right"></i>
+              <a href="/Linux_memoryout_user_stack_extension.html" rel="prev" title="Linux 内存用户堆栈扩展">
+                Linux 内存用户堆栈扩展 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -644,7 +644,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
