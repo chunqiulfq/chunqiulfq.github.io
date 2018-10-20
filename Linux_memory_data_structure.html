@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    fastclick: false,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="页面映射结构&amp;emsp;&amp;emsp;页目录 PGD, 中间目录 PMD, 页表 PT 分别是由表项 pgd_t, pmd_t 以及 pte_t 构成的数组.">
+<meta name="keywords" content="内存管理,源码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构">
+<meta property="og:url" content="http://chunqiublog.github.io/Linux_memory_data_structure.html">
+<meta property="og:site_name" content="CHUNQIULFQ">
+<meta property="og:description" content="页面映射结构&amp;emsp;&amp;emsp;页目录 PGD, 中间目录 PMD, 页表 PT 分别是由表项 pgd_t, pmd_t 以及 pte_t 构成的数组.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E8%99%9A%E5%AD%98%E7%AE%A1%E7%90%86%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png">
+<meta property="og:updated_time" content="2018-10-07T04:12:59.231Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构">
+<meta name="twitter:description" content="页面映射结构&amp;emsp;&amp;emsp;页目录 PGD, 中间目录 PMD, 页表 PT 分别是由表项 pgd_t, pmd_t 以及 pte_t 构成的数组.">
+<meta name="twitter:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E8%99%9A%E5%AD%98%E7%AE%A1%E7%90%86%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="CHUNQIULFQ" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://chunqiublog.github.io/Linux_memory_data_structure.html"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>数据结构 | CHUNQIULFQ</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">CHUNQIULFQ</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <h1 class="site-subtitle" itemprop="description">技术博客</h1>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">15</span></a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类<span class="badge">2</span></a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签<span class="badge">8</span></a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/Linux_memory_data_structure.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chunqiulfq">
+      <meta itemprop="description" content="黄沙百战穿金甲 不破楼兰终不还">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHUNQIULFQ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">数据结构
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-01-28 02:30:46" itemprop="dateCreated datePublished" datetime="2018-01-28T02:30:46+08:00">2018-01-28</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-07 12:12:59" itemprop="dateModified" datetime="2018-10-07T12:12:59+08:00">2018-10-07</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/操作系统/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="页面映射结构"><a href="#页面映射结构" class="headerlink" title="页面映射结构"></a>页面映射结构</h2><p>&emsp;&emsp;页目录 <code>PGD</code>, 中间目录 <code>PMD</code>, 页表 <code>PT</code> 分别是由表项 <code>pgd_t</code>, <code>pmd_t</code> 以及 <code>pte_t</code> 构成的数组.</p>
+<a id="more"></a>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// include/asm-i386/page.h</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * These are used to make use of C type-checking..</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 这些用于 C 类型检查..</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> CONFIG_X86_PAE <span class="comment">// 三层映射 PAE 模式</span></span></span><br><span class="line"><span class="comment">// PT 表项</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> pte_low, pte_high; &#125; <span class="keyword">pte_t</span>;</span><br><span class="line"><span class="comment">// PMD 表项</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> pmd; &#125; <span class="keyword">pmd_t</span>;</span><br><span class="line"><span class="comment">// PGD 表项</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> pgd; &#125; <span class="keyword">pgd_t</span>;</span><br><span class="line"><span class="comment">// 计算 pte 的值</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pte_val(x)	((x).pte_low | ((unsigned long long)(x).pte_high &lt;&lt; 32))</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span> <span class="comment">// 两层映射</span></span></span><br><span class="line"><span class="comment">// PT 表项</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> pte_low; &#125; <span class="keyword">pte_t</span>;</span><br><span class="line"><span class="comment">// PMD 表项</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> pmd; &#125; <span class="keyword">pmd_t</span>;</span><br><span class="line"><span class="comment">// PGD 表项</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> pgd; &#125; <span class="keyword">pgd_t</span>;</span><br><span class="line"><span class="comment">// 计算 pte 的值</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pte_val(x)	((x).pte_low)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PTE_MASK	PAGE_MASK</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 页面状态信息和访问权限结构体</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> pgprot; &#125; <span class="keyword">pgprot_t</span>;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;32 位地址时, <code>pgd_t</code>, <code>pmd_t</code> 和 <code>pte_t</code> 实际上就是长整型. 36 位地址时, 则是 <code>long long</code> 整型. <strong>不直接定义成整型是因为这样可以让 <code>gcc</code> 在编译时加以更严格的类型检查</strong>.</p>
+<p>&emsp;&emsp;所有的物理页面都是 4K 边界对齐, 因此这些表项作为页面的指针一定是 4K 的倍数, 所以指针实际只需要高 20 位, 这高 20 位也可以看做物理页面的下标序号. 所以这些表项的低 12 位就被用于记录页面的状态信息和访问权限. 内核中并没有在表项中定义相关的位段, 而是单独定义用来说明页面保护的结构 <code>pgprot_t</code>. 对 <code>pgprot_t</code> 中位段说明如下:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// include/asm-i386/pgtable.h</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _PAGE_PRESENT	0x001</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _PAGE_RW	0x002</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _PAGE_USER	0x004</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _PAGE_PWT	0x008</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _PAGE_PCD	0x010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _PAGE_ACCESSED	0x020</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _PAGE_DIRTY	0x040</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _PAGE_PSE	0x080	<span class="comment">/* 4 MB (or 2MB) page, Pentium+, if present.. */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _PAGE_GLOBAL	0x100	<span class="comment">/* Global TLB entry PPro+ */</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 对应 pte_t 中第 8 位, Intel 手册指定这一位保留不用, 所以对 MMU 不起作用</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _PAGE_PROTNONE	0x080	<span class="comment">/* If not present */</span></span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;<code>pgprot_t</code> 设置 <code>pte</code> 低 12 位, 所以总是小于 <code>0x1000</code>, <code>pte</code> 中的指针部分总是大于等于 <code>0x1000</code>, 将二者合在一起就得到实际用于 <code>PT</code> 中的表项.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// include/asm-i386/pgtable-2level.h</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 为 pte_t 设置 pgprot_t 权限</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __mk_pte(page_nr,pgprot) __pte(((page_nr) &lt;&lt; PAGE_SHIFT) | pgprot_val(pgprot))</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;<strong>当 <code>PTE</code> 为 <code>0</code> 时, 表示这个表项所代表的虚拟内存页面没有建立映射. 在映射过程中 <code>MMU</code> 会首先检查 P 标志位, 即 <code>_PAGE_PRESENT</code>, 表示映射的页面是否在内存中. 只有当 P 标志位为 <code>1</code> 时, <code>MMU</code> 才会完成映射的全过程; 如果 <code>PTE</code> 不为 <code>0</code>, P 标志位为 <code>0</code> 时, 表示映射已经建立, 但是所映射的物理页面不在内存中, 会产生一次缺页异常</strong>.</p>
+<h2 id="物理内存管理结构"><a href="#物理内存管理结构" class="headerlink" title="物理内存管理结构"></a>物理内存管理结构</h2><h3 id="page-结构"><a href="#page-结构" class="headerlink" title="page 结构"></a><code>page</code> 结构</h3><p>&emsp;&emsp;在内核中有个全局的 <code>mem_map</code> 指针, 指向一个 <code>page</code> 结构体的数组, 每个 <code>page</code> 代表一个物理页面, 整个数组代表系统中的所有物理页面. <code>PTE</code> 不仅仅低 12 位为 0 时对于硬件是物理页面的地址, 同时它的高 20 位对于软件也代表这个数组的下标.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// include/asm-i386/pgtable-2level.h</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 根据 PTE 获取 PTE 指向的物理页面的 page 指针</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pte_page(x)		(mem_map+((unsigned long)(((x).pte_low &gt;&gt; PAGE_SHIFT))))</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// include/linux/mm.h</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Try to keep the most commonly accessed fields in single cache lines</span></span><br><span class="line"><span class="comment"> * here (16 bytes or greater).  This ordering should be particularly</span></span><br><span class="line"><span class="comment"> * beneficial on 32-bit processors.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 尝试在单个缓存线中保留最常访问的字段(16 字节或更大). 这一点对 32 位处理器应该特别有利.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * The first line is data used in page cache lookup, the second line</span></span><br><span class="line"><span class="comment"> * is used for linear searches (eg. clock algorithm scans). </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 第一行是用于页面缓存的查找的数据, 第二行是用于线性搜索(如时钟算法扫描).</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 物理页面结构体, 代表一个物理页面</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">page</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> <span class="title">list</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">address_space</span> *<span class="title">mapping</span>;</span></span><br><span class="line">	<span class="comment">// 当页面内容来自一个文件时, index 表示该页面在文件中的序号</span></span><br><span class="line">	<span class="comment">// 当页面的内容被交换到磁盘上, index 表示页面的去向</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> index;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">page</span> *<span class="title">next_hash</span>;</span></span><br><span class="line">	<span class="keyword">atomic_t</span> count;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> flags;	<span class="comment">/* atomic flags, some possibly updated asynchronously */</span> <span class="comment">/* 原子标志, 有可能异步更新 */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> <span class="title">lru</span>;</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> age;</span><br><span class="line">	<span class="keyword">wait_queue_head_t</span> wait;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">page</span> **<span class="title">pprev_hash</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">buffer_head</span> * <span class="title">buffers</span>;</span></span><br><span class="line">	<span class="keyword">void</span> *<span class="keyword">virtual</span>; <span class="comment">/* non-NULL if kmapped */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">zone_struct</span> *<span class="title">zone</span>;</span></span><br><span class="line">&#125; <span class="keyword">mem_map_t</span>;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;<code>page</code> 结构中各个成分的次序是有讲究的, 目的是尽量使得联系紧密的若干成分在执行是被装填入高速缓存的同一缓冲线(16个字节)中. 系统在初始化时会创建一个由 <code>page</code>(或 <code>mem_map_t</code>) 组成的 <code>mem_map</code> 数组, 每个 <code>page</code> 代表系统中的一个物理页面, 物理页面初始地址的高 20 位就是对应 <code>page</code> 的下标.</p>
+<h3 id="zone-struct-结构"><a href="#zone-struct-结构" class="headerlink" title="zone_struct 结构"></a><code>zone_struct</code> 结构</h3><p>&emsp;&emsp;<code>mem_map</code> 中的所有物理页面被划分成 <code>ZONE_DMA</code> 和 <code>ZONE_NORMAL</code> 两个管理区(也有可能存在第三个 <code>ZONE_HIGHMEM</code>). <strong><code>ZONE_DMA</code> 中管理的是专供 <code>DMA</code> 使用的内存页</strong>.</p>
+<blockquote>
+<p>为什么供 <code>DMA</code> 使用的页面要单独加以管理?</p>
+<ul>
+<li><code>DMA</code> 使用的页面需要进行磁盘 I/O, 单独管理防止内存页面全部被分配出去无法进行页面与盘区的交换.</li>
+<li>在 <code>i386</code> 中 <code>MMU</code> 存在于 CPU 中, <code>DMA</code> 不经过 <code>MMU</code> 的地址映射, 外设直接访问物理内存, 但是部分外设访问物理内存地址较小.</li>
+<li><code>DMA</code> 所需的内存当超过 4K 时, 需要连续的物理内存页面, 无法使用 <code>MMU</code> 提供的连续的虚拟内存页面.</li>
+</ul>
+</blockquote>
+<p>&emsp;&emsp;每个管理区由 <code>none_struct</code> 结构创建, 一旦创建成功, 每个物理页面就永久属于一个管理区. </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// include/linux/mmzone.h</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Free memory management - zoned buddy allocator.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 空闲内存管理 - zoned buddy allocator.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// free_area_struct 链接的最大内存块为 2 ^ MAX_ORDER</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_ORDER 10</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">free_area_struct</span> &#123;</span></span><br><span class="line">    <span class="comment">// 双向链表</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">list_head</span>	<span class="title">free_list</span>;</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">int</span>		*<span class="built_in">map</span>;</span><br><span class="line">&#125; <span class="keyword">free_area_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">pglist_data</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 管理区结构体</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">zone_struct</span> &#123;</span></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * Commonly accessed fields:</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * 常用字段</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">spinlock_t</span>		lock;</span><br><span class="line">    <span class="comment">// 当前管理区在 mem_map 中的起始位置(页面序号)</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span>		offset;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span>		free_pages;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span>		inactive_clean_pages;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span>		inactive_dirty_pages;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span>		pages_min, pages_low, pages_high;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * free areas of different sizes</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * 不同大小的空闲空间</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">list_head</span>	<span class="title">inactive_clean_list</span>;</span></span><br><span class="line">    <span class="comment">// 数组中每个成员都是由双向链表连接起来的内存块的链表指针, 每个成员中内存块都是由 2 ^ n 个物理页面组成(1 &lt;= n &lt;= MAX_ORDER, MAX_ORDER = 10).</span></span><br><span class="line">	<span class="keyword">free_area_t</span>		free_area[MAX_ORDER];</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * rarely used fields:</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * 很少使用的字段</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">char</span>			*name;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span>		size;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * Discontig memory support fields.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">    <span class="comment">// 指向当前 node 节点的管理结构 pglist_data(下一小节介绍)</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">pglist_data</span>	*<span class="title">zone_pgdat</span>;</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span>		zone_start_paddr;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span>		zone_start_mapnr;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">page</span>		*<span class="title">zone_mem_map</span>;</span></span><br><span class="line">&#125; <span class="keyword">zone_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 管理区类型</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ZONE_DMA		0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ZONE_NORMAL		1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ZONE_HIGHMEM		2</span></span><br><span class="line"><span class="comment">// 管理区最大数量</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_NR_ZONES		3</span></span><br></pre></td></tr></table></figure>
+<h3 id="pglist-data-结构"><a href="#pglist-data-结构" class="headerlink" title="pglist_data 结构"></a><code>pglist_data</code> 结构</h3><p>&emsp;&emsp;计算机内存系统存在两种结构.</p>
+<blockquote>
+<ul>
+<li><strong><code>均质存储结构(Uniform Memory Architecture)</code> 指计算机中所有物理内存地位均等, 访问任意物理内存消耗时间相同, 简称 <code>UMA</code>.</strong> </li>
+<li><strong><code>非均质存储结构(Non-Uniform Memory Architecture)</code> 指计算机中物理内存地址虽然是连续的, 但是却分为不同的模块, 访问速度不同, 消耗的时间也不同, 简称 <code>NUMA</code>.</strong></li>
+</ul>
+</blockquote>
+<p>&emsp;&emsp;在真实的计算机系统中, 绝对的 <code>UMA</code> 是不存在的. 真正的系统会存在不同的内存模块, 如多级高速缓存, <code>RAM</code>, <code>ROM</code>, 显存等. Linux 内核从 <code>2.4.0</code> 版本开始支持 <code>NUMA</code>. <strong>在 <code>NUMA</code> 结构的系统中, 分配连续多个物理内存页面要求分配在质地相同的区间(称为 <code>node</code>, 即 <code>节点</code>)</strong>. 这里的 <code>node</code> 对应到 Linux 系统中就是 <code>pglist_data</code> 结构. 这时 <code>mem_map</code> 数组将不再管理整个物理内存, 而是管理当前 <code>node</code> 中的物理页面. 而 <code>zone_struct</code> 则表示当前 <code>node</code> 中的管理区. 在 <code>zone_struct</code> 和 <code>mem_map</code> 之上则是 <code>pglist_data</code> 结构, 管理整个存储节点.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// include/linux/mmzone.h</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * One allocation request operates on a zonelist. A zonelist</span></span><br><span class="line"><span class="comment"> * is a list of zones, the first one is the 'goal' of the</span></span><br><span class="line"><span class="comment"> * allocation, the other zones are fallback zones, in decreasing</span></span><br><span class="line"><span class="comment"> * priority.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 一个分配请求在一个 zonelist(管理区列表) 上运行. 一个 zonelist 是 zone 的列表,</span></span><br><span class="line"><span class="comment"> * 第一个管理区是分配的 'goal`(目标), 剩下管理区是后备区域, 优先级依次降低.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Right now a zonelist takes up less than a cacheline. We never</span></span><br><span class="line"><span class="comment"> * modify it apart from boot-up, and only a few indices are used,</span></span><br><span class="line"><span class="comment"> * so despite the zonelist table being relatively big, the cache</span></span><br><span class="line"><span class="comment"> * footprint of this construct is very small.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 现在一个 zonelist 占用的空间比一个缓存线小.</span></span><br><span class="line"><span class="comment"> * 除非在启动时, 否则我们从不修改它, 并且只有少数索引被使用, 因此尽管 zonelist 表相对较大(0x100(256) 项),</span></span><br><span class="line"><span class="comment"> * 但是构造它的缓存空间是非常小的.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">zonelist_struct</span> &#123;</span></span><br><span class="line">	<span class="comment">// zone_struct 管理区, 类型相同(猜测), 第一个管理区是分配的 'goal`(目标), 剩下管理区是后备区域, 优先级依次降低.</span></span><br><span class="line">	<span class="keyword">zone_t</span> * zones [MAX_NR_ZONES+<span class="number">1</span>]; <span class="comment">// NULL delimited</span></span><br><span class="line">	<span class="keyword">int</span> gfp_mask;</span><br><span class="line">&#125; <span class="keyword">zonelist_t</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// zonelist 数组最大长度</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NR_GFPINDEX		0x100</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">bootmem_data</span>;</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">pglist_data</span> &#123;</span></span><br><span class="line">	<span class="comment">// 当前 node 的 zone_struct 管理区, 最大为 3 个</span></span><br><span class="line">	<span class="keyword">zone_t</span> node_zones[MAX_NR_ZONES];</span><br><span class="line">	<span class="comment">// zonelist 表, 规定最多 0x100(256) 中内存分配策略</span></span><br><span class="line">	<span class="keyword">zonelist_t</span> node_zonelists[NR_GFPINDEX];</span><br><span class="line">	<span class="comment">// 指向当前 node 的 mem_map 数组</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">page</span> *<span class="title">node_mem_map</span>;</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> *valid_addr_bitmap;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">bootmem_data</span> *<span class="title">bdata</span>;</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> node_start_paddr;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> node_start_mapnr;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> node_size;</span><br><span class="line">	<span class="keyword">int</span> node_id;</span><br><span class="line">	<span class="comment">// 单向链表, 指向下一个 pglist_data 节点</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">pglist_data</span> *<span class="title">node_next</span>;</span></span><br><span class="line">&#125; <span class="keyword">pg_data_t</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="虚拟内存管理结构"><a href="#虚拟内存管理结构" class="headerlink" title="虚拟内存管理结构"></a>虚拟内存管理结构</h2><h3 id="vm-area-struct-结构"><a href="#vm-area-struct-结构" class="headerlink" title="vm_area_struct 结构"></a><code>vm_area_struct</code> 结构</h3><p>&emsp;&emsp;在虚拟内存中, 以进程为基础分为两个部分: <code>系统空间</code> 和 <code>用户空间</code>. <code>系统空间</code> 为所有进程共享; <code>用户空间</code> 为每个进程私有. 其中 <code>用户空间</code> 中的各个部分未必是连续的, 通常形成许多分散的虚拟内存区间. Linux 内核中 <code>vm_area_struct</code> 就表示这些虚拟内存区间, 使用单链表将所有区间连接, 同时为了提高搜索效率, 在区间数量增大到 <strong>32</strong> 时(&gt;=), 会创建 AVL 树. 在Linux内核中 <code>vm_area_struct</code> 的变量名常常是 <code>vma</code>. <code>vm_area_struct</code> 的划分不仅仅取决于地址的连续性, 还要求同一 <code>vm_area_struct</code> 中的虚拟内存具有相同访问权限(<code>vm_page_prot</code>)和其他一些属性(<code>vm_flags</code>).</p>
+<p>&emsp;&emsp;同时 <code>vm_area_struct</code> 还会与磁盘文件发生交互:</p>
+<blockquote>
+<ul>
+<li><code>盘去交换(swap)</code>: 指在物理内存页面不够分配时, 一些长时间不用的内存交换到磁盘上, 腾出物理页面以供应急. 这就是一般意义上的 <code>&quot;按需调度&quot;页式虚存管理(demand paging)</code>.</li>
+<li>系统调用 <code>mmap()</code>: 可以将一个打开的文件映射到用户空间中, 使进程像访问内存中的字符数组一样访问文件中的数据.</li>
+</ul>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// include/linux/mm.h</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * This struct defines a memory VMM memory area. There is one of these</span></span><br><span class="line"><span class="comment"> * per VM-area/task.  A VM area is any part of the process virtual memory</span></span><br><span class="line"><span class="comment"> * space that has a special rule for the page-fault handlers (ie a shared</span></span><br><span class="line"><span class="comment"> * library, the executable area etc).</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">vm_area_struct</span> &#123;</span></span><br><span class="line">    <span class="comment">// 当前 vm_area_struct 所在进程用户空间的管理结构 mm_struct(下一小节介绍)</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">mm_struct</span> * <span class="title">vm_mm</span>;</span>	<span class="comment">/* VM area parameters */</span></span><br><span class="line">	<span class="comment">// vm_area_struct 起始地址, 包含在 vm_area_struct 中</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> vm_start;</span><br><span class="line">	<span class="comment">// vm_area_struct 结束地址, 不包含在 vm_area_struct 中</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> vm_end;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* linked list of VM areas per task, sorted by address */</span></span><br><span class="line">	<span class="comment">// 单链表, 每个进程的 vm_area_struct 按照地址高低依次链接</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">vm_area_struct</span> *<span class="title">vm_next</span>;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// vm_area_struct 访问权限</span></span><br><span class="line">	<span class="keyword">pgprot_t</span> vm_page_prot;</span><br><span class="line">	<span class="comment">// vm_area_struct 属性</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> vm_flags;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* AVL tree of VM areas per task, sorted by address */</span></span><br><span class="line">	<span class="comment">// AVL 树, 每个进程的 vm_area_struct 按照地址高低组成 AVL 树, 便于查找</span></span><br><span class="line">	<span class="keyword">short</span> vm_avl_height;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">vm_area_struct</span> * <span class="title">vm_avl_left</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">vm_area_struct</span> * <span class="title">vm_avl_right</span>;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">/* For areas with an address space and backing store,</span></span><br><span class="line"><span class="comment">	 * one of the address_space-&gt;i_mmap&#123;,shared&#125; lists,</span></span><br><span class="line"><span class="comment">	 * for shm areas, the list of attaches, otherwise unused.</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">    <span class="comment">// 记录, 管理 vm_area_struct 与磁盘文件交互</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">vm_area_struct</span> *<span class="title">vm_next_share</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">vm_area_struct</span> **<span class="title">vm_pprev_share</span>;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 定义了 vm_area_struct 操作执行函数指针, 包括打开, 关闭, 缺页时建立映射</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">vm_operations_struct</span> * <span class="title">vm_ops</span>;</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> vm_pgoff;		<span class="comment">/* offset in PAGE_SIZE units, *not* PAGE_CACHE_SIZE */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">file</span> * <span class="title">vm_file</span>;</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> vm_raend;</span><br><span class="line">	<span class="keyword">void</span> * vm_private_data;		<span class="comment">/* was vm_pte (shared mem) */</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// include/linux/mm.h</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * These are the virtual MM functions - opening of an area, closing and</span></span><br><span class="line"><span class="comment"> * unmapping it (needed to keep files on disk up-to-date etc), pointer</span></span><br><span class="line"><span class="comment"> * to the functions called when a no-page or a wp-page exception occurs. </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">vm_operations_struct</span> &#123;</span></span><br><span class="line">    <span class="comment">// vma 打开操作</span></span><br><span class="line">	<span class="keyword">void</span> (*open)(struct vm_area_struct * area);</span><br><span class="line">    <span class="comment">// vma 关闭操作</span></span><br><span class="line">	<span class="keyword">void</span> (*close)(struct vm_area_struct * area);</span><br><span class="line">    <span class="comment">// vma 中产生缺页异常时建立映射操作</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">page</span> * (*<span class="title">nopage</span>)(<span class="title">struct</span> <span class="title">vm_area_struct</span> * <span class="title">area</span>, <span class="title">unsigned</span> <span class="title">long</span> <span class="title">address</span>, <span class="title">int</span> <span class="title">write_access</span>);</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="mm-struct-结构"><a href="#mm-struct-结构" class="headerlink" title="mm_struct 结构"></a><code>mm_struct</code> 结构</h3><p>&emsp;&emsp;在 <code>vm_area_struct</code> 结构中存在指向 <code>mm_struct</code> 结构的指针, <code>mm_struct</code> 是整个进程用户空间的管理结构, 在内核中的变量名常常为<code>mm</code>, 比 <code>vm_area_struct</code> 更高一个层次, 对 <code>vm_area_struct</code> 进行管理. 每一个进程控制块即 <code>task_struct</code> 结构中都有一个指向当前进程 <code>mm_struct</code> 结构的指针. 虽然每个进程都只有一个 <code>mm_struct</code> 结构, 但是一个 <code>mm_struct</code> 结构可以被多个进程共用, 如 <code>vfork()</code> 的父子进程共享一个 <code>mm_struct</code> 结构.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// include/linux/sched.h</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">mm_struct</span> &#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">vm_area_struct</span> * <span class="title">mmap</span>;</span>		<span class="comment">/* list of VMAs */</span> <span class="comment">/* vma 链表 */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">vm_area_struct</span> * <span class="title">mmap_avl</span>;</span>	<span class="comment">/* tree of VMAs */</span> <span class="comment">/* vma AVL 树 */</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">vm_area_struct</span> * <span class="title">mmap_cache</span>;</span>	<span class="comment">/* last find_vma result */</span> <span class="comment">/* find_vma 返回的结果 ,即上一次访问的 vma */</span></span><br><span class="line">	<span class="comment">// pgd 指针</span></span><br><span class="line">	<span class="keyword">pgd_t</span> * pgd;</span><br><span class="line">	<span class="comment">// atomic_t 原子操作整数</span></span><br><span class="line">	<span class="keyword">atomic_t</span> mm_users;			<span class="comment">/* How many users with user space? */</span></span><br><span class="line">	<span class="keyword">atomic_t</span> mm_count;			<span class="comment">/* How many references to "struct mm_struct" (users count as 1) */</span></span><br><span class="line">	<span class="keyword">int</span> map_count;				<span class="comment">/* number of VMAs */</span> <span class="comment">/* 当前 mm_struct 中 vma 的数量 */</span></span><br><span class="line">	<span class="comment">// P, V 操作信号量. 使对 mm_struct 及下属 vm_area_struct 的访问互斥</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">semaphore</span> <span class="title">mmap_sem</span>;</span></span><br><span class="line">	<span class="comment">// 类似 mmap_sem</span></span><br><span class="line">	<span class="keyword">spinlock_t</span> page_table_lock;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 双向链表</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">list_head</span> <span class="title">mmlist</span>;</span>		<span class="comment">/* List of all active mm's */</span> <span class="comment">/* 所有存活 mm_struct 组成的链表 */</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 代码段, 数据段起始地址和终止地址</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> start_code, end_code, start_data, end_data;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> start_brk, brk, start_stack;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> arg_start, arg_end, env_start, env_end;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> rss, total_vm, locked_vm;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> def_flags;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> cpu_vm_mask;</span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> swap_cnt;	<span class="comment">/* number of pages to swap on next pass */</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">long</span> swap_address;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* Architecture-specific MM context */</span></span><br><span class="line">	<span class="keyword">mm_context_t</span> context;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;CPU 实际进行的映射并不涉及 <code>mm_struct</code> 结构, 而是像 <code>地址映射</code> 中讲的那样通过 <code>PGD</code> 和 <code>PT</code> 进行, 但是 <code>mm_struct</code> 结构描述了这种映射.</p>
+<p>&emsp;&emsp;通过 <code>mm_struct</code> 结构查找给定虚拟地址所在的 <code>vma</code>:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// mm/mmap.c</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Look up the first VMA which satisfies  addr &lt; vm_end,  NULL if none. */</span></span><br><span class="line"><span class="comment">/* 查找满足 addr &lt; vm_end 的 vma, 没有则返回 NULL */</span></span><br><span class="line"><span class="comment">// 给出一个虚拟地址, 查找对应用户空间 mm 中第一个虚拟地址大于其结束地址的 vma</span></span><br><span class="line"><span class="comment">// 返回 NULL 表示该虚拟地址所在区间还未创建</span></span><br><span class="line"><span class="function">struct vm_area_struct * <span class="title">find_vma</span><span class="params">(struct mm_struct * mm, <span class="keyword">unsigned</span> <span class="keyword">long</span> addr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">vm_area_struct</span> *<span class="title">vma</span> = <span class="title">NULL</span>;</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (mm) &#123;</span><br><span class="line">		<span class="comment">/* Check the cache first. */</span> <span class="comment">/* 实现检查缓存 */</span></span><br><span class="line">		<span class="comment">/* (Cache hit rate is typically around 35%.) */</span> <span class="comment">/* 缓存命中率大约为 35% */</span></span><br><span class="line">		vma = mm-&gt;mmap_cache;</span><br><span class="line">		<span class="comment">// 如果不在缓存中</span></span><br><span class="line">		<span class="keyword">if</span> (!(vma &amp;&amp; vma-&gt;vm_end &gt; addr &amp;&amp; vma-&gt;vm_start &lt;= addr)) &#123;</span><br><span class="line">			<span class="comment">// 如果没有建立 AVL 树</span></span><br><span class="line">			<span class="keyword">if</span> (!mm-&gt;mmap_avl) &#123;</span><br><span class="line">				<span class="comment">/* Go through the linear list. */</span> <span class="comment">/* 通过线性链表查找 */</span></span><br><span class="line">				vma = mm-&gt;mmap;</span><br><span class="line">				<span class="keyword">while</span> (vma &amp;&amp; vma-&gt;vm_end &lt;= addr)</span><br><span class="line">					vma = vma-&gt;vm_next;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="comment">/* Then go through the AVL tree quickly. */</span> <span class="comment">/* 建立了 AVL 树, 通过 AVL 树快速查找 */</span></span><br><span class="line">				struct vm_area_struct * tree = mm-&gt;mmap_avl;</span><br><span class="line">				vma = <span class="literal">NULL</span>;</span><br><span class="line">				<span class="keyword">for</span> (;;) &#123;</span><br><span class="line">					<span class="keyword">if</span> (tree == vm_avl_empty)</span><br><span class="line">						<span class="keyword">break</span>;</span><br><span class="line">					<span class="keyword">if</span> (tree-&gt;vm_end &gt; addr) &#123;</span><br><span class="line">						vma = tree;</span><br><span class="line">						<span class="keyword">if</span> (tree-&gt;vm_start &lt;= addr)</span><br><span class="line">							<span class="keyword">break</span>;</span><br><span class="line">						tree = tree-&gt;vm_avl_left;</span><br><span class="line">					&#125; <span class="keyword">else</span></span><br><span class="line">						tree = tree-&gt;vm_avl_right;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (vma)</span><br><span class="line">				mm-&gt;mmap_cache = vma; <span class="comment">// 将当前查到的 vma 保存到缓存中.</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> vma;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;在创建一个新的 <code>vm_area_struct</code> 将其插入 <code>mm_struct</code> 时, 会调用 <code>insert_vm_struct()</code> 函数, 在这里加了两把锁, 第一把加在新区间 <code>vm_area_struct</code> 上, 第二把加在代表整个虚拟空间的 <code>mm_struct</code> 结构中, 使得操作过程中不让其他进程能够中途也能对这两个数据结构进行修改.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// mm/mmap.c</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Insert vm structure into process list sorted by address</span></span><br><span class="line"><span class="comment"> * and into the inode's i_mmap ring.  If vm_file is non-NULL</span></span><br><span class="line"><span class="comment"> * then the i_shared_lock must be held here.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">void</span> __insert_vm_struct(struct mm_struct *mm, struct vm_area_struct *vmp)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">vm_area_struct</span> **<span class="title">pprev</span>;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">file</span> * <span class="title">file</span>;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 如果没有创建 AVL 树</span></span><br><span class="line">	<span class="keyword">if</span> (!mm-&gt;mmap_avl) &#123;</span><br><span class="line">		<span class="comment">// 在单链表中查找</span></span><br><span class="line">		pprev = &amp;mm-&gt;mmap;</span><br><span class="line">		<span class="keyword">while</span> (*pprev &amp;&amp; (*pprev)-&gt;vm_start &lt;= vmp-&gt;vm_start)</span><br><span class="line">			pprev = &amp;(*pprev)-&gt;vm_next;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// 已经创建 AVL 树, 插入 AVL 树</span></span><br><span class="line">		struct vm_area_struct *prev, *next;</span><br><span class="line">		avl_insert_neighbours(vmp, &amp;mm-&gt;mmap_avl, &amp;prev, &amp;next);</span><br><span class="line">		pprev = (prev ? &amp;prev-&gt;vm_next : &amp;mm-&gt;mmap);</span><br><span class="line">		<span class="keyword">if</span> (*pprev != next)</span><br><span class="line">			printk(<span class="string">"insert_vm_struct: tree inconsistent with list\n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 将新的 vm_area_struct 加入单链表</span></span><br><span class="line">	vmp-&gt;vm_next = *pprev;</span><br><span class="line">	*pprev = vmp;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// mm_struct 中 vm_area_struct 总数++</span></span><br><span class="line">	mm-&gt;map_count++;</span><br><span class="line">	<span class="comment">// 当 mm_struct 中 vm_area_struct 数量达到 AVL_MIN_MAP_COUNT(32) 且没有创建 AVL 树时, 创建 vm_area_struct 的 AVL 树</span></span><br><span class="line">	<span class="keyword">if</span> (mm-&gt;map_count &gt;= AVL_MIN_MAP_COUNT &amp;&amp; !mm-&gt;mmap_avl)</span><br><span class="line">		build_mmap_avl(mm);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 文件映射相关操作</span></span><br><span class="line">	file = vmp-&gt;vm_file;</span><br><span class="line">	<span class="keyword">if</span> (file) &#123;</span><br><span class="line">		<span class="class"><span class="keyword">struct</span> <span class="title">inode</span> * <span class="title">inode</span> = <span class="title">file</span>-&gt;<span class="title">f_dentry</span>-&gt;<span class="title">d_inode</span>;</span></span><br><span class="line">		<span class="class"><span class="keyword">struct</span> <span class="title">address_space</span> *<span class="title">mapping</span> = <span class="title">inode</span>-&gt;<span class="title">i_mapping</span>;</span></span><br><span class="line">		<span class="class"><span class="keyword">struct</span> <span class="title">vm_area_struct</span> **<span class="title">head</span>;</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (vmp-&gt;vm_flags &amp; VM_DENYWRITE)</span><br><span class="line">			atomic_dec(&amp;inode-&gt;i_writecount);</span><br><span class="line"></span><br><span class="line">		head = &amp;mapping-&gt;i_mmap;</span><br><span class="line">		<span class="keyword">if</span> (vmp-&gt;vm_flags &amp; VM_SHARED)</span><br><span class="line">			head = &amp;mapping-&gt;i_mmap_shared;</span><br><span class="line">      </span><br><span class="line">		<span class="comment">/* insert vmp into inode's share list */</span></span><br><span class="line">		<span class="keyword">if</span>((vmp-&gt;vm_next_share = *head) != <span class="literal">NULL</span>)</span><br><span class="line">			(*head)-&gt;vm_pprev_share = &amp;vmp-&gt;vm_next_share;</span><br><span class="line">		*head = vmp;</span><br><span class="line">		vmp-&gt;vm_pprev_share = head;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将一个新创建的 vm_area_struct 结构插入当前用户空间的 mm_struct 中</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert_vm_struct</span><span class="params">(struct mm_struct *mm, struct vm_area_struct *vmp)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 加在 vm_area_struct 上的第一把锁, 防止插入过程中其他进程修改当前的 vm_area_struct</span></span><br><span class="line">	lock_vma_mappings(vmp);</span><br><span class="line">    <span class="comment">// 加在 mm_struct 上的第二把锁, 防止插入过程中其他进程修改当前的 mm_struct</span></span><br><span class="line">	spin_lock(&amp;current-&gt;mm-&gt;page_table_lock);</span><br><span class="line">	__insert_vm_struct(mm, vmp);</span><br><span class="line">	spin_unlock(&amp;current-&gt;mm-&gt;page_table_lock);</span><br><span class="line">	unlock_vma_mappings(vmp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E8%99%9A%E5%AD%98%E7%AE%A1%E7%90%86%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png" alt="虚存管理数据结构" title="虚存管理数据结构"></p>
+<p>&emsp;&emsp;<code>mm_struct</code> 及其下属 <code>vm_area_struct</code> 只是说明了对虚拟内存的需求, 一个虚拟内存有相应的区间存在并不保证其所在的页面已经映射到了一个物理(物理内存或磁盘)页面, 更不保证该页面就在内存中.</p>
+<h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><p>&emsp;&emsp;<code>mm_struct</code> 和 <code>vm_area_struct</code> 说明了对页面的需求; <code>page</code>, <code>zone_struct</code> 和 <code>pglist_data</code> 说明了对页面的供应; <code>PGD</code>, <code>PMD</code> 和 <code>PT</code> 则是二者之间的桥梁.</p>
+<p><em>本文整理自《Linux内核源代码情景分析》</em></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享, 您的支持将鼓励我继续创作!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="chunqiulfq 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="chunqiulfq 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>chunqiulfq</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://chunqiublog.github.io/Linux_memory_data_structure.html" title="数据结构">http://chunqiublog.github.io/Linux_memory_data_structure.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+			<a href="/tags/内存管理/" rel="tag"><i class="fa fa-tag"></i> 内存管理</a>
+          
+			<a href="/tags/源码/" rel="tag"><i class="fa fa-tag"></i> 源码</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Linux_memory_address_mapping.html" rel="next" title="地址映射">
+                <i class="fa fa-chevron-left"></i> 地址映射
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Linux_memory_out_of_bounds_access.html" rel="prev" title="越界访问">
+                越界访问 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div id="gitalk-container"></div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="chunqiulfq" />
+            
+              <p class="site-author-name" itemprop="name">chunqiulfq</p>
+              <p class="site-description motion-element" itemprop="description">黄沙百战穿金甲 不破楼兰终不还</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/chunqiulfq" target="_blank" title="GitHub" rel="external nofollow"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:chunqiu.lfq@gmail.com" target="_blank" title="E-Mail" rel="external nofollow"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+              </a>
+            </div>
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://redisbook.com/" title="Redis 设计与实现" target="_blank">Redis 设计与实现</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.liaoxuefeng.com/" title="廖雪峰的官方网站" target="_blank">廖雪峰的官方网站</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#页面映射结构"><span class="nav-number">1.</span> <span class="nav-text">页面映射结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#物理内存管理结构"><span class="nav-number">2.</span> <span class="nav-text">物理内存管理结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#page-结构"><span class="nav-number">2.1.</span> <span class="nav-text">page 结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#zone-struct-结构"><span class="nav-number">2.2.</span> <span class="nav-text">zone_struct 结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pglist-data-结构"><span class="nav-number">2.3.</span> <span class="nav-text">pglist_data 结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟内存管理结构"><span class="nav-number">3.</span> <span class="nav-text">虚拟内存管理结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#vm-area-struct-结构"><span class="nav-number">3.1.</span> <span class="nav-text">vm_area_struct 结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mm-struct-结构"><span class="nav-number">3.2.</span> <span class="nav-text">mm_struct 结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结-1"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 – <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heartbeat"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chunqiulfq</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" rel="external nofollow" href="https://theme-next.org">NexT.Mist</a></div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '208433c9fd56b4c87620',
+          clientSecret: '5822b2d2a9ff16ec2e5f3471f23521b7d8d43912',
+          repo: 'gitalk',
+          owner: 'chunqiulfq',
+          admin: ['chunqiulfq'],
+          id: window.location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v=6.4.2"></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v=6.4.2"></script>
+
+
+  
+
+  
+  
+  
+    
+  
+  <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@latest/bookmark.min.js"></script>
+  <script type="text/javascript">
+  
+    bookmark.scrollToMark('auto', "#更多");
+  
+  </script>
+
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+        
+          if(result)$(this).text('复制成功')
+          else $(this).text('复制失败')
+        
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+
+
+</body>
+</html>

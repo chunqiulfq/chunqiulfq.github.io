@@ -123,18 +123,21 @@
 
 
 
-  <meta name="description" content="&amp;emsp;&amp;emsp;关于Redis一直想学习源码但是人懒, 一直没有行动也就渐渐没有了想法. 最近工作用到了Redis, 开始学习Redis最基本的用法. 想要学习Redis源码的欲望有冒出来了, 同时由于在工作中一直感觉自己的能力不足, 需要给自己充充电. 于是决定开始阅读Redis源码.">
-<meta name="keywords" content="源码,Redis">
+  <meta name="description" content="i386 内存映射&amp;emsp;&amp;emsp;i386 CPU中采用的页式内存管理, 基本思路是：通过页目录和页表两层实现线性地址到物理地址的映射.  优点: 大多数情况下可以节省页表所占的内存空间。当页表为空时只需要将对应页目录项置为空，就可以节省对相应页表的空间. 缺点: 适用最大内存为 4G 的内存.">
+<meta name="keywords" content="内存管理,源码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis 4.0源码解析">
-<meta property="og:url" content="http://chunqiublog.github.io/Redis_4_0源码解析.html">
+<meta property="og:title" content="基本框架">
+<meta property="og:url" content="http://chunqiublog.github.io/Linux_memory_basic_framework.html">
 <meta property="og:site_name" content="CHUNQIULFQ">
-<meta property="og:description" content="&amp;emsp;&amp;emsp;关于Redis一直想学习源码但是人懒, 一直没有行动也就渐渐没有了想法. 最近工作用到了Redis, 开始学习Redis最基本的用法. 想要学习Redis源码的欲望有冒出来了, 同时由于在工作中一直感觉自己的能力不足, 需要给自己充充电. 于是决定开始阅读Redis源码.">
+<meta property="og:description" content="i386 内存映射&amp;emsp;&amp;emsp;i386 CPU中采用的页式内存管理, 基本思路是：通过页目录和页表两层实现线性地址到物理地址的映射.  优点: 大多数情况下可以节省页表所占的内存空间。当页表为空时只需要将对应页目录项置为空，就可以节省对相应页表的空间. 缺点: 适用最大内存为 4G 的内存.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-23T16:05:14.340Z">
+<meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6/%E4%B8%89%E5%B1%82%E5%9C%B0%E5%9D%80%E6%98%A0%E5%B0%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta property="og:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6/%E8%BF%9B%E7%A8%8B%E8%99%9A%E5%AD%98%E7%A9%BA%E9%97%B4%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
+<meta property="og:updated_time" content="2018-10-15T10:13:17.191Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis 4.0源码解析">
-<meta name="twitter:description" content="&amp;emsp;&amp;emsp;关于Redis一直想学习源码但是人懒, 一直没有行动也就渐渐没有了想法. 最近工作用到了Redis, 开始学习Redis最基本的用法. 想要学习Redis源码的欲望有冒出来了, 同时由于在工作中一直感觉自己的能力不足, 需要给自己充充电. 于是决定开始阅读Redis源码.">
+<meta name="twitter:title" content="基本框架">
+<meta name="twitter:description" content="i386 内存映射&amp;emsp;&amp;emsp;i386 CPU中采用的页式内存管理, 基本思路是：通过页目录和页表两层实现线性地址到物理地址的映射.  优点: 大多数情况下可以节省页表所占的内存空间。当页表为空时只需要将对应页目录项置为空，就可以节省对相应页表的空间. 缺点: 适用最大内存为 4G 的内存.">
+<meta name="twitter:image" content="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6/%E4%B8%89%E5%B1%82%E5%9C%B0%E5%9D%80%E6%98%A0%E5%B0%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png">
 
 
 
@@ -143,7 +146,7 @@
 
 
 
-  <link rel="canonical" href="http://chunqiublog.github.io/Redis_4_0源码解析.html"/>
+  <link rel="canonical" href="http://chunqiublog.github.io/Linux_memory_basic_framework.html"/>
 
 
 
@@ -153,7 +156,7 @@
   };
 </script>
 
-  <title>Redis 4.0源码解析 | CHUNQIULFQ</title>
+  <title>基本框架 | CHUNQIULFQ</title>
   
 
 
@@ -349,7 +352,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/Redis_4_0源码解析.html">
+    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/Linux_memory_basic_framework.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chunqiulfq">
@@ -366,7 +369,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Redis 4.0源码解析
+          <h2 class="post-title" itemprop="name headline">基本框架
               
             
           </h2>
@@ -391,7 +394,7 @@
                 
               
 
-              <time title="创建时间：2017-12-14 11:21:58" itemprop="dateCreated datePublished" datetime="2017-12-14T11:21:58+08:00">2017-12-14</time>
+              <time title="创建时间：2018-01-23 22:30:24" itemprop="dateCreated datePublished" datetime="2018-01-23T22:30:24+08:00">2018-01-23</time>
             
 
             
@@ -408,7 +411,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-09-24 00:05:14" itemprop="dateModified" datetime="2018-09-24T00:05:14+08:00">2018-09-24</time>
+                <time title="修改时间：2018-10-15 18:13:17" itemprop="dateModified" datetime="2018-10-15T18:13:17+08:00">2018-10-15</time>
               
             
           </span>
@@ -425,7 +428,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/操作系统/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a></span>
 
                 
                 
@@ -459,24 +462,32 @@
       
 
       
-        <p>&emsp;&emsp;关于Redis一直想学习源码但是人懒, 一直没有行动也就渐渐没有了想法. 最近工作用到了Redis, 开始学习Redis最基本的用法. 想要学习Redis源码的欲望有冒出来了, 同时由于在工作中一直感觉自己的能力不足, 需要给自己充充电. 于是决定开始阅读Redis源码.<br><a id="more"></a><br>&emsp;&emsp;以前一直没有阅读过真正大项目的源码, 真正开始阅读才发现Redis的源码对我来说真的是好庞大, 一个文件上千行代码, 利用工作之余阅读, 尽量做到认真阅读每行代码, 大于要花大半个月的时间, 算算时间可能阅读完Redis源码需要花费的时间要超过一年. 回顾以往经历, 对自己能否坚持下来很是担心. 正好这两天我也在看一个大神的博客, 想自己搞个博客, 写点东西. 所以搞个博客记录一下自己的学习. 一方面可以归纳总结自己所学到的东西, 有不对的地方也可以被其他人指正; 另一方面有人阅读我的文章也是对我的一种激励, 避免一个人独自学习因为无聊而放弃.<br>最开始在网上找到了一份关于Redis 2.8 的中文注释源码, 就开始阅读这份源码. 在阅读过程中查资料时发现了 Redis设计与实现 , 感觉这个本书写的挺不错, 而且也附带有一份关于Redis 3.0 的中文注释源码, 同时由于发现了一处Redis源码中的小问题在向Redis提交代码是发现最新的Redis已经到了4.0版本. 于是决定参考2.8和3.0的源码阅读Redis 4.0版本的源码. 由于对redis还没有一个整体的认识, 所以在阅读过程中可能存在一些错误的认识, 欢迎大家指正.</p>
+        <h2 id="i386-内存映射"><a href="#i386-内存映射" class="headerlink" title="i386 内存映射"></a><code>i386</code> 内存映射</h2><p>&emsp;&emsp;<code>i386</code> CPU中采用的页式内存管理, 基本思路是：通过页目录和页表两层实现线性地址到物理地址的映射.</p>
+<ul>
+<li>优点: 大多数情况下可以节省页表所占的内存空间。当页表为空时只需要将对应页目录项置为空，就可以节省对相应页表的空间.</li>
+<li>缺点: 适用最大内存为 <code>4G</code> 的内存.</li>
+</ul>
+<a id="more"></a>
+<h2 id="Linux-内存映射"><a href="#Linux-内存映射" class="headerlink" title="Linux 内存映射"></a>Linux 内存映射</h2><p>&emsp;&emsp;由于 Linux 需要考虑不同CPU上的实现, 所有需要设计出一种通用的<code>内存映射模型模型</code>.</p>
 <blockquote>
-<p><strong>Redis 学习资源</strong></p>
+<ul>
+<li><strong>Linux 内核的映射机制设计成三层, 在 <code>i386</code> 的页目录和页表的基础上在中间增设了一层”中间目录”.</strong></li>
+</ul>
 </blockquote>
-<blockquote>
-<ol>
-<li><a href="https://redis.io" target="_blank" rel="noopener">Redis 官网</a></li>
-<li><a href="http://www.redis.cn" target="_blank" rel="noopener">Redis 中文官方网站</a></li>
-<li><a href="https://github.com/antirez/redis" target="_blank" rel="noopener">Github 上 Redis 源码</a></li>
-<li><a href="https://try.redis.io" target="_blank" rel="noopener">线上 Redis 示范环境</a></li>
-<li><a href="http://www.runoob.com/redis/redis-tutorial.html" target="_blank" rel="noopener">Redis 使用教程</a></li>
-<li><a href="http://blog.huangz.me/diary/2014/how-to-read-redis-source-code.html" target="_blank" rel="noopener">如何阅读 Redis 源码?</a></li>
-<li><a href="http://redisbook.com" target="_blank" rel="noopener">Redis 设计与实现</a></li>
-<li><a href="https://github.com/huangz1990/redis-3.0-annotated" target="_blank" rel="noopener">Redis 3.0中文注释源码</a></li>
-<li><a href="http://blog.csdn.net/androidlushangderen/article/details/39803337" target="_blank" rel="noopener">Redis 2.8源码解析</a></li>
-<li><a href="https://github.com/linyiqun/Redis-Code" target="_blank" rel="noopener">Reids 2.8中文注释源码</a></li>
-</ol>
-</blockquote>
+<p>在源码中, 页目录称为 <code>PGD</code>, 中间目录称为 <code>PMD</code>, 页表称为 <code>PT</code>. 三者均为数组. 相应的逻辑上也将线性地址由高到低分为四个段位, 分别作用于页目录 <code>PGD</code> 的下标, 中间目录 <code>PMD</code> 的下标, 页表 <code>PT</code> 的下标以及物理页面中的位移.</p>
+<p><img src="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6/%E4%B8%89%E5%B1%82%E5%9C%B0%E5%9D%80%E6%98%A0%E5%B0%84%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="三层地址映射示意图" title="三层地址映射示意图"></p>
+<p>&emsp;&emsp;对于 <code>i386</code> 中的段式内存映射<strong>在 Linux 内存映射时(除用来模拟80286的 <code>VM86模式</code>[^1]), 段式映射的基址总是 <code>0</code>, 所以线性地址与虚拟地址总是一致, 相当于没有使用段式内存映射</strong>. <code>i386</code> 在 Pentium Pro 开始引入了物理地址扩充功能 <code>PAE</code>, 可以将地址宽度从32位上升为36位. 所以在 Linux 的内存映射模型对应到 <code>i386</code> CPU时, 如果设置了 <code>PAE</code> 则使用三层映射, 否则跳过中间的 <code>PMD</code> 层次, 使用两层映射.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// include/asm-i386/pgtable.h</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * The Linux x86 paging architecture is 'compile-time dual-mode', it</span></span><br><span class="line"><span class="comment"> * implements both the traditional 2-level x86 page tables and the</span></span><br><span class="line"><span class="comment"> * newer 3-level PAE-mode page tables.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * Linux x86 分页架构是'编译时双模式', 它实现了传统两层 x86 页表和新的三层 PAE 模式页表两种映射方式.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __ASSEMBLY__</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> CONFIG_X86_PAE <span class="comment">// 编译时设置</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;asm/pgtable-3level.h&gt; // PAE模式三层映射</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;asm/pgtable-2level.h&gt; // 两层映射</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __beep() asm(<span class="meta-string">"movb $0x3,%al; outb %al,$0x61"</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PMD_SIZE	(1UL &lt;&lt; PMD_SHIFT)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PMD_MASK	(~(PMD_SIZE-1))</span></span><br><span class="line"><span class="comment">// 每个页目录项所指向空间的大小</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PGDIR_SIZE	(1UL &lt;&lt; PGDIR_SHIFT)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PGDIR_MASK	(~(PGDIR_SIZE-1))</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// include/asm-i386/pgtable-2level.h</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * traditional i386 two-level paging structure:</span></span><br><span class="line"><span class="comment"> * 传统 i386 两层分页结构</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// PGD 数组的下标在线性地址中的起始位置, 即线性地址的 23 ~ 32 位(从 0 开始)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PGDIR_SHIFT	22</span></span><br><span class="line"><span class="comment">// 每个 PGD 中的指针数, 即 PGD 中页目录项的数量, i386 中指针所用空间为 4 个字节, 则 PGD 所占空间为 1024 * 4 = 4KB</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PTRS_PER_PGD	1024</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * the i386 is two-level, so we don't really have any</span></span><br><span class="line"><span class="comment"> * PMD directory physically.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 因为 i386 是两层分页结构, 所以我们不会有真正物理上的 PMD 目录.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// PMD 数组的下标在线性地址中的起始位置, 与 PGDIR_SHIFT 相同, 即 PMD 在线性地址中不存在, 长度为 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PMD_SHIFT	22</span></span><br><span class="line"><span class="comment">// 每个 PMD 中的指针数, 只有 1 个, 直接指向 PT</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PTRS_PER_PMD	1</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;32位地址意味着4G字节的虚存空间, Linux 内核将这4G字节的空间分成两个部分. 将最高的1G字节(从虚拟地址 <code>0xC0000000</code> 至 <code>0xFFFFFFFF</code>), 用于内核本身, 称为<strong>系统空间</strong>. 而将较低的3G字节(从虚拟地址    <code>0x00000000</code> 至 <code>0xBFFFFFFF</code>), 用作各个进程的<strong>用户空间</strong>, 理论上每个进程拥有独立的3G字节的用户空间. 系统空间是所有进程逻辑上共用的1G字节空间, 每一个进程通过系统调用从用户空间进入内核, 在系统空间中运行. 即每一个进程都拥有4G的虚拟空间, 较低的3G虚拟空间独立使用, 最高的1G虚拟空间与所用进程及内核共享.</p>
+<p><img src="http://7xlaf3.com1.z0.glb.clouddn.com/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0/Linux/%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6/%E8%BF%9B%E7%A8%8B%E8%99%9A%E5%AD%98%E7%A9%BA%E9%97%B4%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="进程虚存空间示意图" title="进程虚存空间示意图"></p>
+<p><em>这里独立的虚拟空间只是在逻辑上独立, 但是在物理上所有的进程共用3G的物理内存.</em></p>
+<p>&emsp;&emsp;<strong>系统空间在虚拟内存中占据最高的1G空间, 但是在物理内存中却是从最低地址(0)开始, 处于最低1G空间</strong>. </p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// include/asm-i386/page.h</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * This handles the memory map.. We could make this a config</span></span><br><span class="line"><span class="comment"> * option, but too many people screw it up, and too few need</span></span><br><span class="line"><span class="comment"> * it.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 这里处理内核的内存映射. 我们可以将其设置为配置选项, 但是有许多人搞砸它, 并且很少需要它.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * A __PAGE_OFFSET of 0xC0000000 means that the kernel has</span></span><br><span class="line"><span class="comment"> * a virtual address space of one gigabyte, which limits the</span></span><br><span class="line"><span class="comment"> * amount of physical memory you can use to about 950MB. </span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 值为 0xC0000000 的 __PAGE_OFFSET 意味着内核有 1GB 的虚拟空间, 这限制了可以内核使用的物理空间大约 950MB.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * If you want more physical memory than this then see the CONFIG_HIGHMEM4G</span></span><br><span class="line"><span class="comment"> * and CONFIG_HIGHMEM64G options in the kernel configuration.</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 如果你想要超过这些的物理内存, 请参阅内核配置中的 CONFIG_HIGHMEM4G</span></span><br><span class="line"><span class="comment"> * 和 CONFIG_HIGHMEM64G 选项</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 系统空间在物理内存(从 0 开始)和在虚拟内存(从 0xC0000000 开始)中位置的偏移量, 同时也表示用户空间大小.</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __PAGE_OFFSET		(0xC0000000)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// include/asm-i386/page.h</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 系统空间在物理内存(从 0 开始)和在虚拟内存(从 0xC0000000 开始)中位置的偏移量, 同时也表示用户空间大小.</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PAGE_OFFSET		((unsigned long)__PAGE_OFFSET)</span></span><br><span class="line"><span class="comment">// 计算系统空间在虚拟内存中对应物理空间中的地址</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __pa(x)			((unsigned long)(x)-PAGE_OFFSET)</span></span><br><span class="line"><span class="comment">// 计算系统空间在物理内存中对应虚拟空间中的地址</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __va(x)			((void *)((unsigned long)(x)+PAGE_OFFSET))</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// include/asm-i386/processor.h</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * User space process size: 3GB (default).</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * 用户空间进程大小: 3GB(默认)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">// 用户空间进程大小.</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> TASK_SIZE	(PAGE_OFFSET)</span></span><br></pre></td></tr></table></figure>
+<p><em>本文整理自《Linux内核源代码情景分析》</em></p>
+<p>[^1]: <code>VM86模式</code> 是为采用保护模式的系统提供 <code>实模式(real-mode)</code> 软件的兼容性, 用来在保护模式下模拟运行实模式的软件.</p>
 
       
     </div>
@@ -527,7 +538,7 @@
     <strong>本文作者： </strong>chunqiulfq</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://chunqiublog.github.io/Redis_4_0源码解析.html" title="Redis 4.0源码解析">http://chunqiublog.github.io/Redis_4_0源码解析.html</a>
+    <a href="http://chunqiublog.github.io/Linux_memory_basic_framework.html" title="基本框架">http://chunqiublog.github.io/Linux_memory_basic_framework.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -540,9 +551,9 @@
       
         <div class="post-tags">
           
-			<a href="/tags/源码/" rel="tag"><i class="fa fa-tag"></i> 源码</a>
+			<a href="/tags/内存管理/" rel="tag"><i class="fa fa-tag"></i> 内存管理</a>
           
-			<a href="/tags/Redis/" rel="tag"><i class="fa fa-tag"></i> Redis</a>
+			<a href="/tags/源码/" rel="tag"><i class="fa fa-tag"></i> 源码</a>
           
         </div>
       
@@ -555,14 +566,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/etcd_gateway.html" rel="next" title="etcd gateway">
+                <i class="fa fa-chevron-left"></i> etcd gateway
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/Redis_4_0源码解析_SDS_1.html" rel="prev" title="Redis 4.0源码解析: SDS(1)">
-                Redis 4.0源码解析: SDS(1) <i class="fa fa-chevron-right"></i>
+              <a href="/Linux_memory_address_mapping.html" rel="prev" title="地址映射">
+                地址映射 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -613,8 +628,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -750,6 +774,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#i386-内存映射"><span class="nav-number">1.</span> <span class="nav-text">i386 内存映射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux-内存映射"><span class="nav-number">2.</span> <span class="nav-text">Linux 内存映射</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

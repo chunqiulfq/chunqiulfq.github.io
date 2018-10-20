@@ -18,8 +18,8 @@
   
   <entry>
     <title>函数 read()</title>
-    <link href="http://chunqiublog.github.io/%E5%87%BD%E6%95%B0_read.html"/>
-    <id>http://chunqiublog.github.io/函数_read.html</id>
+    <link href="http://chunqiublog.github.io/function_read.html"/>
+    <id>http://chunqiublog.github.io/function_read.html</id>
     <published>2018-10-14T14:19:57.000Z</published>
     <updated>2018-10-15T03:49:41.087Z</updated>
     
@@ -102,8 +102,8 @@
   
   <entry>
     <title>函数 open(), creat() 和 openat()</title>
-    <link href="http://chunqiublog.github.io/%E5%87%BD%E6%95%B0open_creat%E5%92%8Copenat.html"/>
-    <id>http://chunqiublog.github.io/函数open_creat和openat.html</id>
+    <link href="http://chunqiublog.github.io/function_open_creat_and_openat.html"/>
+    <id>http://chunqiublog.github.io/function_open_creat_and_openat.html</id>
     <published>2018-10-07T04:14:38.000Z</published>
     <updated>2018-10-14T14:22:42.087Z</updated>
     
@@ -157,8 +157,8 @@
   
   <entry>
     <title>用户堆栈扩展</title>
-    <link href="http://chunqiublog.github.io/%E7%94%A8%E6%88%B7%E5%A0%86%E6%A0%88%E6%89%A9%E5%B1%95.html"/>
-    <id>http://chunqiublog.github.io/用户堆栈扩展.html</id>
+    <link href="http://chunqiublog.github.io/Linux_memoryout_user_stack_extension.html"/>
+    <id>http://chunqiublog.github.io/Linux_memoryout_user_stack_extension.html</id>
     <published>2018-02-13T05:10:01.000Z</published>
     <updated>2018-10-07T04:13:06.099Z</updated>
     
@@ -173,16 +173,16 @@
       <category term="操作系统" scheme="http://chunqiublog.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
     
-      <category term="源码" scheme="http://chunqiublog.github.io/tags/%E6%BA%90%E7%A0%81/"/>
-    
       <category term="内存管理" scheme="http://chunqiublog.github.io/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="源码" scheme="http://chunqiublog.github.io/tags/%E6%BA%90%E7%A0%81/"/>
     
   </entry>
   
   <entry>
     <title>越界访问</title>
-    <link href="http://chunqiublog.github.io/%E8%B6%8A%E7%95%8C%E8%AE%BF%E9%97%AE.html"/>
-    <id>http://chunqiublog.github.io/越界访问.html</id>
+    <link href="http://chunqiublog.github.io/Linux_memory_out_of_bounds_access.html"/>
+    <id>http://chunqiublog.github.io/Linux_memory_out_of_bounds_access.html</id>
     <published>2018-02-07T14:49:53.000Z</published>
     <updated>2018-10-07T04:13:12.891Z</updated>
     
@@ -197,16 +197,16 @@
       <category term="操作系统" scheme="http://chunqiublog.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
     
-      <category term="源码" scheme="http://chunqiublog.github.io/tags/%E6%BA%90%E7%A0%81/"/>
-    
       <category term="内存管理" scheme="http://chunqiublog.github.io/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="源码" scheme="http://chunqiublog.github.io/tags/%E6%BA%90%E7%A0%81/"/>
     
   </entry>
   
   <entry>
     <title>数据结构</title>
-    <link href="http://chunqiublog.github.io/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.html"/>
-    <id>http://chunqiublog.github.io/数据结构.html</id>
+    <link href="http://chunqiublog.github.io/Linux_memory_data_structure.html"/>
+    <id>http://chunqiublog.github.io/Linux_memory_data_structure.html</id>
     <published>2018-01-27T18:30:46.000Z</published>
     <updated>2018-10-07T04:12:59.231Z</updated>
     
@@ -221,16 +221,16 @@
       <category term="操作系统" scheme="http://chunqiublog.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
     
-      <category term="源码" scheme="http://chunqiublog.github.io/tags/%E6%BA%90%E7%A0%81/"/>
-    
       <category term="内存管理" scheme="http://chunqiublog.github.io/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="源码" scheme="http://chunqiublog.github.io/tags/%E6%BA%90%E7%A0%81/"/>
     
   </entry>
   
   <entry>
     <title>地址映射</title>
-    <link href="http://chunqiublog.github.io/%E5%9C%B0%E5%9D%80%E6%98%A0%E5%B0%84.html"/>
-    <id>http://chunqiublog.github.io/地址映射.html</id>
+    <link href="http://chunqiublog.github.io/Linux_memory_address_mapping.html"/>
+    <id>http://chunqiublog.github.io/Linux_memory_address_mapping.html</id>
     <published>2018-01-23T15:28:26.000Z</published>
     <updated>2018-10-07T04:13:42.929Z</updated>
     
@@ -253,16 +253,16 @@
       <category term="操作系统" scheme="http://chunqiublog.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
     
-      <category term="源码" scheme="http://chunqiublog.github.io/tags/%E6%BA%90%E7%A0%81/"/>
-    
       <category term="内存管理" scheme="http://chunqiublog.github.io/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="源码" scheme="http://chunqiublog.github.io/tags/%E6%BA%90%E7%A0%81/"/>
     
   </entry>
   
   <entry>
     <title>基本框架</title>
-    <link href="http://chunqiublog.github.io/%E5%9F%BA%E6%9C%AC%E6%A1%86%E6%9E%B6.html"/>
-    <id>http://chunqiublog.github.io/基本框架.html</id>
+    <link href="http://chunqiublog.github.io/Linux_memory_basic_framework.html"/>
+    <id>http://chunqiublog.github.io/Linux_memory_basic_framework.html</id>
     <published>2018-01-23T14:30:24.000Z</published>
     <updated>2018-10-15T10:13:17.191Z</updated>
     
@@ -281,9 +281,9 @@
       <category term="操作系统" scheme="http://chunqiublog.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
     
     
-      <category term="源码" scheme="http://chunqiublog.github.io/tags/%E6%BA%90%E7%A0%81/"/>
-    
       <category term="内存管理" scheme="http://chunqiublog.github.io/tags/%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/"/>
+    
+      <category term="源码" scheme="http://chunqiublog.github.io/tags/%E6%BA%90%E7%A0%81/"/>
     
   </entry>
   
@@ -330,9 +330,9 @@
       <category term="数据库" scheme="http://chunqiublog.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
-      <category term="Redis" scheme="http://chunqiublog.github.io/tags/Redis/"/>
-    
       <category term="源码" scheme="http://chunqiublog.github.io/tags/%E6%BA%90%E7%A0%81/"/>
+    
+      <category term="Redis" scheme="http://chunqiublog.github.io/tags/Redis/"/>
     
   </entry>
   
@@ -354,9 +354,9 @@
       <category term="数据库" scheme="http://chunqiublog.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
-      <category term="Redis" scheme="http://chunqiublog.github.io/tags/Redis/"/>
-    
       <category term="源码" scheme="http://chunqiublog.github.io/tags/%E6%BA%90%E7%A0%81/"/>
+    
+      <category term="Redis" scheme="http://chunqiublog.github.io/tags/Redis/"/>
     
   </entry>
   
@@ -378,9 +378,9 @@
       <category term="数据库" scheme="http://chunqiublog.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
-      <category term="Redis" scheme="http://chunqiublog.github.io/tags/Redis/"/>
-    
       <category term="源码" scheme="http://chunqiublog.github.io/tags/%E6%BA%90%E7%A0%81/"/>
+    
+      <category term="Redis" scheme="http://chunqiublog.github.io/tags/Redis/"/>
     
   </entry>
   
@@ -402,9 +402,9 @@
       <category term="数据库" scheme="http://chunqiublog.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
     
-      <category term="Redis" scheme="http://chunqiublog.github.io/tags/Redis/"/>
-    
       <category term="源码" scheme="http://chunqiublog.github.io/tags/%E6%BA%90%E7%A0%81/"/>
+    
+      <category term="Redis" scheme="http://chunqiublog.github.io/tags/Redis/"/>
     
   </entry>
   
