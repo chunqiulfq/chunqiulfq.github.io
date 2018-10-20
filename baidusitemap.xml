@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://chunqiublog.github.io/redis_source_code_analysis_SDS_1.html</loc>
+    <lastmod>2018-10-20T16:08:13.455Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/redis_source_code_analysis_SDS_2.html</loc>
+    <lastmod>2018-10-20T16:08:04.223Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/redis_source_code_analysis_SDS_3.html</loc>
+    <lastmod>2018-10-20T16:07:44.990Z</lastmod>
+  </url>  <url>
     <loc>http://chunqiublog.github.io/redis_source_code_analysis.html</loc>
-    <lastmod>2018-10-20T15:59:57.376Z</lastmod>
+    <lastmod>2018-10-20T16:06:12.291Z</lastmod>
   </url>  <url>
     <loc>http://chunqiublog.github.io/Linux_memory_data_structure.html</loc>
     <lastmod>2018-10-20T15:43:05.924Z</lastmod>
