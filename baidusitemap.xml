@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://chunqiublog.github.io/write_function.html</loc>
+    <lastmod>2018-10-21T03:23:28.285Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/open_creat_and_openat_function.html</loc>
+    <lastmod>2018-10-21T03:21:26.134Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/lseek_function.html</loc>
+    <lastmod>2018-10-21T03:20:40.188Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/read_function.html</loc>
+    <lastmod>2018-10-21T03:20:10.994Z</lastmod>
+  </url>  <url>
     <loc>http://chunqiublog.github.io/redis_source_code_analysis.html</loc>
     <lastmod>2018-10-20T16:40:47.058Z</lastmod>
   </url>  <url>
@@ -28,17 +40,8 @@
     <loc>http://chunqiublog.github.io/Linux_memory_address_mapping.html</loc>
     <lastmod>2018-10-20T15:38:05.494Z</lastmod>
   </url>  <url>
-    <loc>http://chunqiublog.github.io/read_function.html</loc>
-    <lastmod>2018-10-15T03:49:41.087Z</lastmod>
-  </url>  <url>
-    <loc>http://chunqiublog.github.io/lseek_function.html</loc>
-    <lastmod>2018-10-15T03:48:42.683Z</lastmod>
-  </url>  <url>
     <loc>http://chunqiublog.github.io/close_function.html</loc>
     <lastmod>2018-10-15T03:46:07.027Z</lastmod>
-  </url>  <url>
-    <loc>http://chunqiublog.github.io/open_creat_and_openat_function.html</loc>
-    <lastmod>2018-10-14T14:22:42.087Z</lastmod>
   </url>  <url>
     <loc>http://chunqiublog.github.io/POSIX_Threads_Programming.html</loc>
     <lastmod>2018-10-07T04:07:59.857Z</lastmod>

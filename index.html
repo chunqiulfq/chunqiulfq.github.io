@@ -250,7 +250,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">15</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">16</span></a>
   </li>
         
         
@@ -348,6 +348,172 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/write_function.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chunqiulfq">
+      <meta itemprop="description" content="黄沙百战穿金甲 不破楼兰终不还">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHUNQIULFQ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/write_function.html" itemprop="url">
+                  write() 函数
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-10-21 11:13:17 / 修改时间：11:23:28" itemprop="dateCreated datePublished" datetime="2018-10-21T11:13:17+08:00">2018-10-21</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/操作系统/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>*注: 基于 <code>release 4.16 of the Linux man-pages project</code> 整理 <code>APUE</code> 中未进行说明或与 <code>Linux</code> 存在不同的内容.</p>
+<ul>
+<li>参考 <a href="http://man7.org/linux/man-pages/man2/write.2.html" target="_blank" rel="noopener"><code>write(2)</code></a>.</li>
+</ul>
+<h1 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ssize_t</span> write(<span class="keyword">int</span> fd, <span class="keyword">const</span> <span class="keyword">void</span> *buf, <span class="keyword">size_t</span> count);</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/write_function.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/read_function.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -411,7 +577,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-15 11:49:41" itemprop="dateModified" datetime="2018-10-15T11:49:41+08:00">2018-10-15</time>
+                <time title="修改时间：2018-10-21 11:20:10" itemprop="dateModified" datetime="2018-10-21T11:20:10+08:00">2018-10-21</time>
               
             
           </span>
@@ -467,7 +633,7 @@
 <ul>
 <li>参考 <a href="http://man7.org/linux/man-pages/man2/read.2.html" target="_blank" rel="noopener"><code>read(2)</code></a>.</li>
 </ul>
-<h3 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ssize_t</span> read(<span class="keyword">int</span> fd, <span class="keyword">void</span> *buf, <span class="keyword">size_t</span> count);</span><br></pre></td></tr></table></figure>
+<h2 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ssize_t</span> read(<span class="keyword">int</span> fd, <span class="keyword">void</span> *buf, <span class="keyword">size_t</span> count);</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/read_function.html#more" rel="contents">
@@ -767,7 +933,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-15 11:48:42" itemprop="dateModified" datetime="2018-10-15T11:48:42+08:00">2018-10-15</time>
+                <time title="修改时间：2018-10-21 11:20:40" itemprop="dateModified" datetime="2018-10-21T11:20:40+08:00">2018-10-21</time>
               
             
           </span>
@@ -823,7 +989,7 @@
 <ul>
 <li>参考 <a href="http://man7.org/linux/man-pages/man2/lseek.2.html" target="_blank" rel="noopener"><code>lseek(2)</code></a>.</li>
 </ul>
-<h3 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">off_t</span> lseek(<span class="keyword">int</span> fd, <span class="keyword">off_t</span> offset, <span class="keyword">int</span> whence);</span><br></pre></td></tr></table></figure>
+<h2 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">off_t</span> lseek(<span class="keyword">int</span> fd, <span class="keyword">off_t</span> offset, <span class="keyword">int</span> whence);</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/lseek_function.html#more" rel="contents">
@@ -945,7 +1111,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-14 22:22:42" itemprop="dateModified" datetime="2018-10-14T22:22:42+08:00">2018-10-14</time>
+                <time title="修改时间：2018-10-21 11:21:26" itemprop="dateModified" datetime="2018-10-21T11:21:26+08:00">2018-10-21</time>
               
             
           </span>
@@ -1001,7 +1167,7 @@
 <ul>
 <li>参考: <a href="http://man7.org/linux/man-pages/man2/open.2.html" target="_blank" rel="noopener"><code>open(2)</code></a>.</li>
 </ul>
-<h3 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">open</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *pathname, <span class="keyword">int</span> flags)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">open</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *pathname, <span class="keyword">int</span> flags, <span class="keyword">mode_t</span> mode)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">creat</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *pathname, <span class="keyword">mode_t</span> mode)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">openat</span><span class="params">(<span class="keyword">int</span> dirfd, <span class="keyword">const</span> <span class="keyword">char</span> *pathname, <span class="keyword">int</span> flags)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">openat</span><span class="params">(<span class="keyword">int</span> dirfd, <span class="keyword">const</span> <span class="keyword">char</span> *pathname, <span class="keyword">int</span> flags, <span class="keyword">mode_t</span> mode)</span></span>;</span><br></pre></td></tr></table></figure>
+<h2 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/stat.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">open</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *pathname, <span class="keyword">int</span> flags)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">open</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *pathname, <span class="keyword">int</span> flags, <span class="keyword">mode_t</span> mode)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">creat</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *pathname, <span class="keyword">mode_t</span> mode)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">openat</span><span class="params">(<span class="keyword">int</span> dirfd, <span class="keyword">const</span> <span class="keyword">char</span> *pathname, <span class="keyword">int</span> flags)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">openat</span><span class="params">(<span class="keyword">int</span> dirfd, <span class="keyword">const</span> <span class="keyword">char</span> *pathname, <span class="keyword">int</span> flags, <span class="keyword">mode_t</span> mode)</span></span>;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/open_creat_and_openat_function.html#more" rel="contents">
@@ -1926,184 +2092,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/Linux_memory_basic_framework.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chunqiulfq">
-      <meta itemprop="description" content="黄沙百战穿金甲 不破楼兰终不还">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CHUNQIULFQ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Linux_memory_basic_framework.html" itemprop="url">
-                  Linux 内存基本框架
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-01-23 22:30:24" itemprop="dateCreated datePublished" datetime="2018-01-23T22:30:24+08:00">2018-01-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-10-20 23:38:08" itemprop="dateModified" datetime="2018-10-20T23:38:08+08:00">2018-10-20</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/操作系统/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="i386-内存映射"><a href="#i386-内存映射" class="headerlink" title="i386 内存映射"></a><code>i386</code> 内存映射</h2><p>&emsp;&emsp;<code>i386</code> CPU中采用的页式内存管理, 基本思路是：通过页目录和页表两层实现线性地址到物理地址的映射.</p>
-<ul>
-<li>优点: 大多数情况下可以节省页表所占的内存空间。当页表为空时只需要将对应页目录项置为空，就可以节省对相应页表的空间.</li>
-<li>缺点: 适用最大内存为 <code>4G</code> 的内存.</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Linux_memory_basic_framework.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2157,7 +2145,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

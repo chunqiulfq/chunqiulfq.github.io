@@ -131,7 +131,7 @@
 <meta property="og:site_name" content="CHUNQIULFQ">
 <meta property="og:description" content="注: 基于 release 4.16 of the Linux man-pages project 整理 APUE 中未进行说明或与 Linux 存在不同的内容.  参考 lseek(2).  函数声明1234#include &amp;lt;sys/types.h&amp;gt;#include &amp;lt;unistd.h&amp;gt;off_t lseek(int fd, off_t offset, int when">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-15T03:48:42.683Z">
+<meta property="og:updated_time" content="2018-10-21T03:20:40.188Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="函数 lseek()">
 <meta name="twitter:description" content="注: 基于 release 4.16 of the Linux man-pages project 整理 APUE 中未进行说明或与 Linux 存在不同的内容.  参考 lseek(2).  函数声明1234#include &amp;lt;sys/types.h&amp;gt;#include &amp;lt;unistd.h&amp;gt;off_t lseek(int fd, off_t offset, int when">
@@ -251,7 +251,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">15</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">16</span></a>
   </li>
         
         
@@ -408,7 +408,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-15 11:48:42" itemprop="dateModified" datetime="2018-10-15T11:48:42+08:00">2018-10-15</time>
+                <time title="修改时间：2018-10-21 11:20:40" itemprop="dateModified" datetime="2018-10-21T11:20:40+08:00">2018-10-21</time>
               
             
           </span>
@@ -463,12 +463,12 @@
 <ul>
 <li>参考 <a href="http://man7.org/linux/man-pages/man2/lseek.2.html" target="_blank" rel="noopener"><code>lseek(2)</code></a>.</li>
 </ul>
-<h3 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">off_t</span> lseek(<span class="keyword">int</span> fd, <span class="keyword">off_t</span> offset, <span class="keyword">int</span> whence);</span><br></pre></td></tr></table></figure>
+<h2 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">off_t</span> lseek(<span class="keyword">int</span> fd, <span class="keyword">off_t</span> offset, <span class="keyword">int</span> whence);</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><ul>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><ul>
 <li><code>lseek()</code> 运行将文件偏移量设置到文件结尾之外(但是这不会改变文件的大小). 如果在这之后数据被写入了这个位置, 则后续在这个间隙(“空洞(<code>hole</code>)”)的读操作将会返回空字节(<code>\0</code>), 直到数据实际被写入间隙.</li>
 </ul>
-<h4 id="寻找文件中的数据和空洞"><a href="#寻找文件中的数据和空洞" class="headerlink" title="寻找文件中的数据和空洞"></a>寻找文件中的数据和空洞</h4><ul>
+<h3 id="寻找文件中的数据和空洞"><a href="#寻找文件中的数据和空洞" class="headerlink" title="寻找文件中的数据和空洞"></a>寻找文件中的数据和空洞</h3><ul>
 <li>从 <code>3.1</code> 版本开始, <code>Linux</code> 开始支持以下 <code>whence</code> 参数的新增值:<ul>
 <li><code>SEEK_DATA</code>: 将文件偏移量调整到文件中大于或等于 <code>offset</code> 参数的包含数据的下一个位置. 如果 <code>offset</code> 参数指向数据, 那么就把文件偏移量设置为 <code>offset</code> 参数.</li>
 <li><code>SEEK_HOLE</code>: 将文件偏移量调整到文件中大于或等于 <code>offset</code> 参数的下一个空洞. 如果 <code>offset</code> 参数指向一个空洞中, 那么就把文件偏移量设置为 <code>offset</code> 参数. 如果 <code>offset</code> 参数后没有空洞了, 那么就把文件偏移量调整为文件结尾(即, 任何文件的结尾都隐含一个空洞).</li>
@@ -490,7 +490,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ul>
 <li><code>POSIX.1</code> 规定 <code>off_t</code> 类型是一个有符号整型.</li>
 <li>一些设备不能使用 <code>lseek()</code>, <code>POSIX</code> 没有规定设备必须支持 <code>lseek()</code>.</li>
 <li>在 <code>Linux</code> 上, 对管道文件, <code>FIFO</code>, <code>socket</code> 文件或终端设备使用 <code>lseek()</code> 会失败并生成 <code>ESPIPE</code> 错误.</li>
@@ -664,7 +664,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -791,7 +791,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数声明"><span class="nav-number">1.</span> <span class="nav-text">函数声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#描述"><span class="nav-number">2.</span> <span class="nav-text">描述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#寻找文件中的数据和空洞"><span class="nav-number">2.1.</span> <span class="nav-text">寻找文件中的数据和空洞</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">3.</span> <span class="nav-text">注意</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数声明"><span class="nav-number">1.</span> <span class="nav-text">函数声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#描述"><span class="nav-number">2.</span> <span class="nav-text">描述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#寻找文件中的数据和空洞"><span class="nav-number">2.1.</span> <span class="nav-text">寻找文件中的数据和空洞</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意"><span class="nav-number">3.</span> <span class="nav-text">注意</span></a></li></ol></div>
             
 
           </div>
