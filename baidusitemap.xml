@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://chunqiublog.github.io/TCP_header.html</loc>
+    <lastmod>2020-04-07T15:56:55.449Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/POSIX_Threads_Programming.html</loc>
+    <lastmod>2020-04-06T04:44:20.222Z</lastmod>
+  </url>  <url>
     <loc>http://chunqiublog.github.io/write_function.html</loc>
     <lastmod>2018-10-21T03:23:28.285Z</lastmod>
   </url>  <url>
@@ -42,9 +48,6 @@
   </url>  <url>
     <loc>http://chunqiublog.github.io/close_function.html</loc>
     <lastmod>2018-10-15T03:46:07.027Z</lastmod>
-  </url>  <url>
-    <loc>http://chunqiublog.github.io/POSIX_Threads_Programming.html</loc>
-    <lastmod>2018-10-07T04:07:59.857Z</lastmod>
   </url>  <url>
     <loc>http://chunqiublog.github.io/etcd_gateway.html</loc>
     <lastmod>2018-09-23T16:05:15.654Z</lastmod>
