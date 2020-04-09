@@ -1,17 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://chunqiublog.github.io/Derangement.html</loc>
+    <lastmod>2020-04-09T16:52:55.722Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/Brute_Force.html</loc>
+    <lastmod>2020-04-09T16:48:04.606Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/dual_system_cannot_start.html</loc>
+    <lastmod>2020-04-09T16:28:01.586Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/Linux_forget_root_password.html</loc>
+    <lastmod>2020-04-09T16:18:10.094Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/Linux_software_installation.html</loc>
+    <lastmod>2020-04-09T15:45:17.801Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/open_creat_and_openat_function.html</loc>
+    <lastmod>2020-04-09T15:39:47.231Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/Linux_getting_help.html</loc>
+    <lastmod>2020-04-09T15:38:54.268Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/Linux_system_basic_structure.html</loc>
+    <lastmod>2020-04-09T15:10:22.151Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/scanf_read_error.html</loc>
+    <lastmod>2020-04-09T03:47:57.932Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/teaching_management_system.html</loc>
+    <lastmod>2020-04-09T03:05:44.915Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/quick_sort.html</loc>
+    <lastmod>2020-04-09T02:26:15.065Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/print_more_text_line.html</loc>
+    <lastmod>2020-04-09T02:19:39.511Z</lastmod>
+  </url>  <url>
     <loc>http://chunqiublog.github.io/TCP_header.html</loc>
-    <lastmod>2020-04-07T15:56:55.449Z</lastmod>
+    <lastmod>2020-04-09T01:51:25.588Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/etcd_gateway.html</loc>
+    <lastmod>2020-04-09T01:50:53.416Z</lastmod>
   </url>  <url>
     <loc>http://chunqiublog.github.io/POSIX_Threads_Programming.html</loc>
     <lastmod>2020-04-06T04:44:20.222Z</lastmod>
   </url>  <url>
     <loc>http://chunqiublog.github.io/write_function.html</loc>
     <lastmod>2018-10-21T03:23:28.285Z</lastmod>
-  </url>  <url>
-    <loc>http://chunqiublog.github.io/open_creat_and_openat_function.html</loc>
-    <lastmod>2018-10-21T03:21:26.134Z</lastmod>
   </url>  <url>
     <loc>http://chunqiublog.github.io/lseek_function.html</loc>
     <lastmod>2018-10-21T03:20:40.188Z</lastmod>
@@ -48,8 +84,5 @@
   </url>  <url>
     <loc>http://chunqiublog.github.io/close_function.html</loc>
     <lastmod>2018-10-15T03:46:07.027Z</lastmod>
-  </url>  <url>
-    <loc>http://chunqiublog.github.io/etcd_gateway.html</loc>
-    <lastmod>2018-09-23T16:05:15.654Z</lastmod>
   </url>
 </urlset>

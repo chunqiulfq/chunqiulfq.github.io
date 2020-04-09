@@ -131,7 +131,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://user-images.githubusercontent.com/7577575/78691226-f8eb9f00-792a-11ea-86ad-e6953b52e05f.png">
 <meta property="og:image" content="https://user-images.githubusercontent.com/7577575/78691429-2e908800-792b-11ea-81fc-d34a94b9f69d.png">
-<meta property="og:updated_time" content="2020-04-07T15:56:55.449Z">
+<meta property="og:updated_time" content="2020-04-09T01:51:25.588Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TCP 头部封装">
 <meta name="twitter:image" content="https://user-images.githubusercontent.com/7577575/78691226-f8eb9f00-792a-11ea-86ad-e6953b52e05f.png">
@@ -251,7 +251,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">17</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">28</span></a>
   </li>
         
         
@@ -259,7 +259,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类<span class="badge">3</span></a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类<span class="badge">6</span></a>
   </li>
         
         
@@ -267,7 +267,7 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签<span class="badge">9</span></a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签<span class="badge">14</span></a>
   </li>
 
       
@@ -408,7 +408,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-04-07 23:56:55" itemprop="dateModified" datetime="2020-04-07T23:56:55+08:00">2020-04-07</time>
+                <time title="修改时间：2020-04-09 09:51:25" itemprop="dateModified" datetime="2020-04-09T09:51:25+08:00">2020-04-09</time>
               
             
           </span>
@@ -462,7 +462,7 @@
         <p><img src="https://user-images.githubusercontent.com/7577575/78691226-f8eb9f00-792a-11ea-86ad-e6953b52e05f.png" alt="TCP header location" title="图一: TCP头部位置(图片来源: TCP/IP Illustrated Volume 1: The Protocols Second Edition)"></p>
 <a id="more"></a>
 <p><img src="https://user-images.githubusercontent.com/7577575/78691429-2e908800-792b-11ea-81fc-d34a94b9f69d.png" alt="The TCP header" title="图二: TCP头部(图片来源: TCP/IP Illustrated Volume 1: The Protocols Second Edition)"></p>
-<p><code>TCP</code> 头部包括以下字段:</p>
+<p>&emsp;&emsp;<code>TCP</code> 头部包括以下字段:</p>
 <ul>
 <li><p><strong>源端口</strong>(<code>Source Port, 16 bits</code>): 发送端进程端口号, 用于标识发送进程.</p>
 </li>
@@ -489,9 +489,9 @@
 <li><strong>紧急指针</strong>(<code>Urgent Pointer, 16 bits</code>): <code>URG</code> 置位时生效, 用于指明紧急数据结束的位置, 即正常数据开始位置, 在 <code>Linux</code> 中称为带外数据.</li>
 <li><strong>选项(可变)</strong>(<code>Options, variable</code>): </li>
 </ul>
-<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><p><code>TCP</code> 在 <code>Linux</code> 中定义如下:</p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><p>&emsp;&emsp;<code>TCP</code> 在 <code>Linux</code> 中定义如下:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tcphdr</span> &#123;</span></span><br><span class="line">	__be16	source;</span><br><span class="line">	__be16	dest;</span><br><span class="line">	__be32	seq;</span><br><span class="line">	__be32	ack_seq;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> defined(__LITTLE_ENDIAN_BITFIELD)</span></span><br><span class="line">	__u16	res1:<span class="number">4</span>,</span><br><span class="line">		doff:<span class="number">4</span>,</span><br><span class="line">		fin:<span class="number">1</span>,</span><br><span class="line">		syn:<span class="number">1</span>,</span><br><span class="line">		rst:<span class="number">1</span>,</span><br><span class="line">		psh:<span class="number">1</span>,</span><br><span class="line">		ack:<span class="number">1</span>,</span><br><span class="line">		urg:<span class="number">1</span>,</span><br><span class="line">		ece:<span class="number">1</span>,</span><br><span class="line">		cwr:<span class="number">1</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">elif</span> defined(__BIG_ENDIAN_BITFIELD)</span></span><br><span class="line">	__u16	doff:<span class="number">4</span>,</span><br><span class="line">		res1:<span class="number">4</span>,</span><br><span class="line">		cwr:<span class="number">1</span>,</span><br><span class="line">		ece:<span class="number">1</span>,</span><br><span class="line">		urg:<span class="number">1</span>,</span><br><span class="line">		ack:<span class="number">1</span>,</span><br><span class="line">		psh:<span class="number">1</span>,</span><br><span class="line">		rst:<span class="number">1</span>,</span><br><span class="line">		syn:<span class="number">1</span>,</span><br><span class="line">		fin:<span class="number">1</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">error</span>	<span class="meta-string">"Adjust your &lt;asm/byteorder.h&gt; defines"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span>	</span></span><br><span class="line">	__be16	window;</span><br><span class="line">	__sum16	check;</span><br><span class="line">	__be16	urg_ptr;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>其中 <code>__be16</code> 和 <code>__sum16</code> 为 <code>unsigned short</code>, <code>__be32</code> 为 <code>unsigned int</code>, <code>__LITTLE_ENDIAN_BITFIELD</code> 表示小端比特序, <code>__BIG_ENDIAN_BITFIELD</code> 表示大端比特序. 其中大端比特序与人类思维方式一致, 可以通过对比大端序与上文中图二 <code>TCP</code> 头部字段加深了解. 同时通过源码可以看出 <code>Linux</code> 并没有实现 <code>NS</code> 标志位.</p>
+<p>&emsp;&emsp;其中 <code>__be16</code> 和 <code>__sum16</code> 为 <code>unsigned short</code>, <code>__be32</code> 为 <code>unsigned int</code>, <code>__LITTLE_ENDIAN_BITFIELD</code> 表示小端比特序, <code>__BIG_ENDIAN_BITFIELD</code> 表示大端比特序. 其中大端比特序与人类思维方式一致, 可以通过对比大端序与上文中图二 <code>TCP</code> 头部字段加深了解. 同时通过源码可以看出 <code>Linux</code> 并没有实现 <code>NS</code> 标志位.</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
 <li><a href="http://www.r-5.org/files/books/computers/internals/net/Richard_Stevens-TCP-IP_Illustrated-EN.pdf" target="_blank" rel="noopener">TCP/IP Illustrated, Volume 1: The Protocols (2nd Edition)</a> • Chapter 12 TCP: The Transmission Control Protocol (Preliminaries)</li>
 <li><a href="http://www.r-5.org/files/books/computers/internals/net/Richard_Stevens-TCP-IP_Illustrated-EN.pdf" target="_blank" rel="noopener">TCP/IP Illustrated, Volume 1: The Protocols (2nd Edition)</a> • Chapter 13 TCP Connection Management</li>
@@ -662,7 +662,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -681,7 +681,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -712,7 +718,17 @@
                     
                       
                     
-                    <span class="site-state-item-count">9</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -813,7 +829,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017 – <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; 2013 – <span itemprop="copyrightYear">2020</span>
   <span class="with-love" id="animate">
     <i class="fa fa-heartbeat"></i>
   </span>
