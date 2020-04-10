@@ -131,7 +131,7 @@
 <meta property="og:site_name" content="CHUNQIULFQ">
 <meta property="og:description" content="翻译自: etcd gateway etcd gateway 是什么?&amp;emsp;&amp;emsp;etcd gateway 是一个简单的转发网络数据到 etcd 集群的 TCP 代理. 这个 gateway 是无状态的, 透明的; 它既不检查客户端的请求, 也不干涉 etcd 集群的响应.这个 gateway 支持多 etcd 服务端点, 遵循简单的循环策略连接端点. 它只路由到可用的端点, 且对连接">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-09T01:50:53.416Z">
+<meta property="og:updated_time" content="2020-04-10T16:22:44.218Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="etcd gateway">
 <meta name="twitter:description" content="翻译自: etcd gateway etcd gateway 是什么?&amp;emsp;&amp;emsp;etcd gateway 是一个简单的转发网络数据到 etcd 集群的 TCP 代理. 这个 gateway 是无状态的, 透明的; 它既不检查客户端的请求, 也不干涉 etcd 集群的响应.这个 gateway 支持多 etcd 服务端点, 遵循简单的循环策略连接端点. 它只路由到可用的端点, 且对连接">
@@ -251,7 +251,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">28</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">29</span></a>
   </li>
         
         
@@ -408,7 +408,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-04-09 09:50:53" itemprop="dateModified" datetime="2020-04-09T09:50:53+08:00">2020-04-09</time>
+                <time title="修改时间：2020-04-11 00:22:44" itemprop="dateModified" datetime="2020-04-11T00:22:44+08:00">2020-04-11</time>
               
             
           </span>
@@ -460,72 +460,72 @@
 
       
         <p><em>翻译自: <a href="https://github.com/coreos/etcd/blob/c578ac4a1a87f90ccd13ae210ee920ff2753387f/Documentation/op-guide/gateway.md" target="_blank" rel="noopener">etcd gateway</a></em></p>
-<h1 id="etcd-gateway-是什么"><a href="#etcd-gateway-是什么" class="headerlink" title="etcd gateway 是什么?"></a>etcd gateway 是什么?</h1><p>&emsp;&emsp;etcd gateway 是一个简单的转发网络数据到 etcd 集群的 TCP 代理. 这个 gateway 是无状态的, 透明的; 它既不检查客户端的请求, 也不干涉 etcd 集群的响应.<br>这个 gateway 支持多 etcd 服务端点, 遵循简单的循环策略连接端点. 它只路由到可用的端点, 且对连接到它上的客户端隐藏 etcd 服务端点的故障. 其他的重试策略(如加权循环)在将来可能会得到支持.</p>
+<h1 id="etcd-gateway-是什么"><a href="#etcd-gateway-是什么" class="headerlink" title="etcd gateway 是什么?"></a><code>etcd gateway</code> 是什么?</h1><p>&emsp;&emsp;<code>etcd gateway</code> 是一个简单的转发网络数据到 <code>etcd</code> 集群的 <code>TCP</code> 代理. 这个 <code>gateway</code> 是无状态的, 透明的; 它既不检查客户端的请求, 也不干涉 <code>etcd</code> 集群的响应.<br>这个 <code>gateway</code> 支持多 <code>etcd</code> 服务端点, 遵循简单的循环策略连接端点. 它只路由到可用的端点, 且对连接到它上的客户端隐藏 <code>etcd</code> 服务端点的故障. 其他的重试策略(如加权循环)在将来可能会得到支持.</p>
 <a id="more"></a>
-<h1 id="什么时候使用-etcd-gateway"><a href="#什么时候使用-etcd-gateway" class="headerlink" title="什么时候使用 etcd gateway?"></a>什么时候使用 etcd gateway?</h1><p>&emsp;&emsp;每个访问 etcd 的应用必须首先拥有 etcd 集群的地址. 如果是同一台服务器上的多个应用访问同一个 etcd 集群, 每个应用仍然需要知道这个 etcd 集群公布的地址. 如果这个 etcd 集群重新配置为拥有不同端点的集群, 则每个应用程序可能还需要更新其端点列表. 这种大规模的重新配置既枯燥又容易出错.</p>
-<p>&emsp;&emsp;etcd gateway 通过作为一个稳定的本地端点提供服务解决了这个问题. 一个典型的 etcd gateway 配置是让每一个机器运行一个监听本地端口的 gateway, 同时每一个 etcd 应用连接到这个本地 gateway. 这样在 etcd 集群重新配置时只有 gateway 需要更新它的端点配置, 而不是更新每一个应用.</p>
-<p>&emsp;&emsp;总之, 为了自动传播 etcd 集群端点更改, etcd gateway 应该运行在为访问同一个 etcd 集群的多个应用程序提供服务的每台机器上.</p>
-<h1 id="什么时候不应该使用-etcd-gateway"><a href="#什么时候不应该使用-etcd-gateway" class="headerlink" title="什么时候不应该使用 etcd gateway?"></a>什么时候不应该使用 etcd gateway?</h1><ul>
-<li><p>提高性能<br>gateway 不是为了提高 etcd 集群性能而设置. 它不提供缓存, watch 的合并或批处理. etcd 团队正在开发一个旨在提高集群可扩展性的缓存代理.</p>
+<h1 id="什么时候使用-etcd-gateway"><a href="#什么时候使用-etcd-gateway" class="headerlink" title="什么时候使用 etcd gateway?"></a>什么时候使用 <code>etcd gateway</code>?</h1><p>&emsp;&emsp;每个访问 <code>etcd</code> 的应用必须首先拥有 <code>etcd</code> 集群的地址. 如果是同一台服务器上的多个应用访问同一个 <code>etcd</code> 集群, 每个应用仍然需要知道这个 <code>etcd</code> 集群公布的地址. 如果这个 <code>etcd</code> 集群重新配置为拥有不同端点的集群, 则每个应用程序可能还需要更新其端点列表. 这种大规模的重新配置既枯燥又容易出错.</p>
+<p>&emsp;&emsp;<code>etcd gateway</code> 通过作为一个稳定的本地端点提供服务解决了这个问题. 一个典型的 <code>etcd</code> <code>gateway</code> 配置是让每一个机器运行一个监听本地端口的 <code>gateway</code>, 同时每一个 <code>etcd</code> 应用连接到这个本地 <code>gateway</code>. 这样在 <code>etcd</code> 集群重新配置时只有 <code>gateway</code> 需要更新它的端点配置, 而不是更新每一个应用.</p>
+<p>&emsp;&emsp;总之, 为了自动传播 <code>etcd</code> 集群端点更改, <code>etcd gateway</code> 应该运行在为访问同一个 <code>etcd</code> 集群的多个应用程序提供服务的每台机器上.</p>
+<h1 id="什么时候不应该使用-etcd-gateway"><a href="#什么时候不应该使用-etcd-gateway" class="headerlink" title="什么时候不应该使用 etcd gateway?"></a>什么时候不应该使用 <code>etcd gateway</code>?</h1><ul>
+<li><p>提高性能<br><code>gateway</code> 不是为了提高 <code>etcd</code> 集群性能而设置. 它不提供缓存, <code>watch</code> 的合并或批处理. <code>etcd</code> 团队正在开发一个旨在提高集群可扩展性的缓存代理.</p>
 </li>
-<li><p>在集群管理系统上运行<br>高级集群管理系统(如 Kubernetes) 本身支持服务发现, 应用程序可以使用有系统管理的 DNS 名称或虚拟 IP 地址访问 etcd 集群. 例如: kube-proxy等同于etcd网关.</p>
+<li><p>在集群管理系统上运行<br>高级集群管理系统(如 <code>Kubernetes</code>) 本身支持服务发现, 应用程序可以使用有系统管理的 <code>DNS</code> 名称或虚拟 <code>IP</code> 地址访问 <code>etcd</code> 集群. 例如: <code>kube-proxy</code> 等同于 <code>etcd</code> 网关.</p>
 </li>
 </ul>
-<h1 id="启动-etcd-gateway"><a href="#启动-etcd-gateway" class="headerlink" title="启动 etcd gateway"></a>启动 etcd gateway</h1><p>&emsp;&emsp;考虑一个具有以下静态端点的 etcd 集群:</p>
+<h1 id="启动-etcd-gateway"><a href="#启动-etcd-gateway" class="headerlink" title="启动 etcd gateway"></a>启动 <code>etcd gateway</code></h1><p>&emsp;&emsp;考虑一个具有以下静态端点的 <code>etcd</code> 集群:</p>
 <table>
 <thead>
 <tr>
-<th>Name</th>
-<th>Address</th>
-<th>Hostname</th>
+<th><code>Name</code></th>
+<th><code>Address</code></th>
+<th><code>Hostname</code></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>infra0</td>
-<td>10.0.1.10</td>
-<td>infra0.example.com</td>
+<td><code>infra0</code></td>
+<td><code>10.0.1.10</code></td>
+<td><code>infra0.example.com</code></td>
 </tr>
 <tr>
-<td>infra1</td>
-<td>10.0.1.11</td>
-<td>infra1.example.com</td>
+<td><code>infra1</code></td>
+<td><code>10.0.1.11</code></td>
+<td><code>infra1.example.com</code></td>
 </tr>
 <tr>
-<td>infra2</td>
-<td>10.0.1.12</td>
-<td>infra2.example.com</td>
+<td><code>infra2</code></td>
+<td><code>10.0.1.12</code></td>
+<td><code>infra2.example.com</code></td>
 </tr>
 </tbody>
 </table>
-<p>&emsp;&emsp;使用包含这些静态端点的命令启动etcd gateway:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ etcd gateway start --endpoints=infra0.example.com,infra1.example.com,infra2.example.com</span><br><span class="line">2016-08-16 11:21:18.867350 I | tcpproxy: ready to proxy client requests to [...]</span><br></pre></td></tr></table></figure></p>
-<p>&emsp;&emsp;或者, 如果使用 DNS 进行服务发现, 请考虑 DNS SRV 条目:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ dig +noall +answer SRV _etcd-client._tcp.example.com</span><br><span class="line">_etcd-client._tcp.example.com. 300 IN SRV 0 0 2379 infra0.example.com.</span><br><span class="line">_etcd-client._tcp.example.com. 300 IN SRV 0 0 2379 infra1.example.com.</span><br><span class="line">_etcd-client._tcp.example.com. 300 IN SRV 0 0 2379 infra2.example.com.</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ dig +noall +answer infra0.example.com infra1.example.com infra2.example.com</span><br><span class="line">infra0.example.com.  300  IN  A  10.0.1.10</span><br><span class="line">infra1.example.com.  300  IN  A  10.0.1.11</span><br><span class="line">infra2.example.com.  300  IN  A  10.0.1.12</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;使用以下命令从 DNS SRV 条目获取端点启动 etcd gateway:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ etcd gateway --discovery-srv=example.com</span><br><span class="line">2016-08-16 11:21:18.867350 I | tcpproxy: ready to proxy client requests to [...]</span><br></pre></td></tr></table></figure></p>
-<h1 id="配置选项"><a href="#配置选项" class="headerlink" title="配置选项"></a>配置选项</h1><h2 id="etcd-集群"><a href="#etcd-集群" class="headerlink" title="etcd 集群"></a>etcd 集群</h2><h3 id="–endpoints"><a href="#–endpoints" class="headerlink" title="–endpoints"></a>–endpoints</h3><ul>
-<li>逗号分隔的转发客户端连接的目标 etcd 集群列表</li>
+<p>&emsp;&emsp;使用包含这些静态端点的命令启动 <code>etcd gateway</code>:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> etcd gateway start --endpoints=infra0.example.com,infra1.example.com,infra2.example.com</span><br><span class="line">2016-08-16 11:21:18.867350 I | tcpproxy: ready to proxy client requests to [...]</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;或者, 如果使用 DNS 进行服务发现, 请考虑 DNS SRV 条目:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> dig +noall +answer SRV _etcd-client._tcp.example.com</span><br><span class="line">_etcd-client._tcp.example.com. 300 IN SRV 0 0 2379 infra0.example.com.</span><br><span class="line">_etcd-client._tcp.example.com. 300 IN SRV 0 0 2379 infra1.example.com.</span><br><span class="line">_etcd-client._tcp.example.com. 300 IN SRV 0 0 2379 infra2.example.com.</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> dig +noall +answer infra0.example.com infra1.example.com infra2.example.com</span><br><span class="line">infra0.example.com.  300  IN  A  10.0.1.10</span><br><span class="line">infra1.example.com.  300  IN  A  10.0.1.11</span><br><span class="line">infra2.example.com.  300  IN  A  10.0.1.12</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;使用以下命令从 <code>DNS SRV</code> 条目获取端点启动 <code>etcd gateway</code>:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> etcd gateway --discovery-srv=example.com</span><br><span class="line">2016-08-16 11:21:18.867350 I | tcpproxy: ready to proxy client requests to [...]</span><br></pre></td></tr></table></figure></p>
+<h1 id="配置选项"><a href="#配置选项" class="headerlink" title="配置选项"></a>配置选项</h1><h2 id="etcd-集群"><a href="#etcd-集群" class="headerlink" title="etcd 集群"></a><code>etcd</code> 集群</h2><h3 id="endpoints"><a href="#endpoints" class="headerlink" title="--endpoints"></a><code>--endpoints</code></h3><ul>
+<li>逗号分隔的转发客户端连接的目标 <code>etcd</code> 集群列表</li>
 <li>默认配置: <code>127.0.0.1:2379</code></li>
-<li>无效示例: <code>https://127.0.0.1:2379</code>(gateway 不终止 TLS)</li>
+<li>无效示例: <code>https://127.0.0.1:2379</code>(<code>gateway</code> 不终止 <code>TLS</code>)</li>
 </ul>
-<h3 id="–discovery-srv"><a href="#–discovery-srv" class="headerlink" title="–discovery-srv"></a>–discovery-srv</h3><ul>
-<li>通过 SRV 记录引导集群端点的 DNS 域名</li>
+<h3 id="discovery-srv"><a href="#discovery-srv" class="headerlink" title="--discovery-srv"></a><code>--discovery-srv</code></h3><ul>
+<li>通过 <code>SRV</code> 记录引导集群端点的 <code>DNS</code> 域名</li>
 <li>默认配置: (不设置)</li>
 </ul>
-<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h3 id="–listen-addr"><a href="#–listen-addr" class="headerlink" title="–listen-addr"></a>–listen-addr</h3><ul>
+<h2 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h2><h3 id="listen-addr"><a href="#listen-addr" class="headerlink" title="--listen-addr"></a><code>--listen-addr</code></h3><ul>
 <li>接口和端口绑定接收客户端请求</li>
-<li>默认: 127.0.0.1:23790</li>
+<li>默认: <code>127.0.0.1:23790</code></li>
 </ul>
-<h3 id="–retry-delay"><a href="#–retry-delay" class="headerlink" title="–retry-delay"></a>–retry-delay</h3><ul>
+<h3 id="retry-delay"><a href="#retry-delay" class="headerlink" title="--retry-delay"></a><code>--retry-delay</code></h3><ul>
 <li>重试连接到失败的端点之前的延迟时间</li>
-<li>默认配置: 1m0s</li>
+<li>默认配置: <code>1m0s</code></li>
 <li>无效示例: “123”(使用指定格式的时间单位)</li>
 </ul>
-<h2 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h2><h3 id="–insecure-discovery"><a href="#–insecure-discovery" class="headerlink" title="–insecure-discovery"></a>–insecure-discovery</h3><ul>
-<li>接收 SRV 记录是不安全或易受到中间人攻击的</li>
+<h2 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h2><h3 id="insecure-discovery"><a href="#insecure-discovery" class="headerlink" title="--insecure-discovery"></a><code>--insecure-discovery</code></h3><ul>
+<li>接收 <code>SRV</code> 记录是不安全或易受到中间人攻击的</li>
 <li>默认配置: <code>false</code></li>
 </ul>
-<h3 id="–trusted-ca-file"><a href="#–trusted-ca-file" class="headerlink" title="–trusted-ca-file"></a>–trusted-ca-file</h3><ul>
-<li>用于 etcd 集群的客户端 TLS CA 文件路径. 用于认证端点.</li>
+<h3 id="trusted-ca-file"><a href="#trusted-ca-file" class="headerlink" title="--trusted-ca-file"></a><code>--trusted-ca-file</code></h3><ul>
+<li>用于 <code>etcd</code> 集群的客户端 <code>TLS CA</code> 文件路径. 用于认证端点.</li>
 <li>默认配置: (不设置)</li>
 </ul>
 
@@ -697,7 +697,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -844,7 +844,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#etcd-gateway-是什么"><span class="nav-number">1.</span> <span class="nav-text">etcd gateway 是什么?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么时候使用-etcd-gateway"><span class="nav-number">2.</span> <span class="nav-text">什么时候使用 etcd gateway?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么时候不应该使用-etcd-gateway"><span class="nav-number">3.</span> <span class="nav-text">什么时候不应该使用 etcd gateway?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动-etcd-gateway"><span class="nav-number">4.</span> <span class="nav-text">启动 etcd gateway</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置选项"><span class="nav-number">5.</span> <span class="nav-text">配置选项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#etcd-集群"><span class="nav-number">5.1.</span> <span class="nav-text">etcd 集群</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#–endpoints"><span class="nav-number">5.1.1.</span> <span class="nav-text">–endpoints</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#–discovery-srv"><span class="nav-number">5.1.2.</span> <span class="nav-text">–discovery-srv</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络"><span class="nav-number">5.2.</span> <span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#–listen-addr"><span class="nav-number">5.2.1.</span> <span class="nav-text">–listen-addr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#–retry-delay"><span class="nav-number">5.2.2.</span> <span class="nav-text">–retry-delay</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全"><span class="nav-number">5.3.</span> <span class="nav-text">安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#–insecure-discovery"><span class="nav-number">5.3.1.</span> <span class="nav-text">–insecure-discovery</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#–trusted-ca-file"><span class="nav-number">5.3.2.</span> <span class="nav-text">–trusted-ca-file</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#etcd-gateway-是什么"><span class="nav-number">1.</span> <span class="nav-text">etcd gateway 是什么?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么时候使用-etcd-gateway"><span class="nav-number">2.</span> <span class="nav-text">什么时候使用 etcd gateway?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么时候不应该使用-etcd-gateway"><span class="nav-number">3.</span> <span class="nav-text">什么时候不应该使用 etcd gateway?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动-etcd-gateway"><span class="nav-number">4.</span> <span class="nav-text">启动 etcd gateway</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置选项"><span class="nav-number">5.</span> <span class="nav-text">配置选项</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#etcd-集群"><span class="nav-number">5.1.</span> <span class="nav-text">etcd 集群</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#endpoints"><span class="nav-number">5.1.1.</span> <span class="nav-text">--endpoints</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#discovery-srv"><span class="nav-number">5.1.2.</span> <span class="nav-text">--discovery-srv</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络"><span class="nav-number">5.2.</span> <span class="nav-text">网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#listen-addr"><span class="nav-number">5.2.1.</span> <span class="nav-text">--listen-addr</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#retry-delay"><span class="nav-number">5.2.2.</span> <span class="nav-text">--retry-delay</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安全"><span class="nav-number">5.3.</span> <span class="nav-text">安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#insecure-discovery"><span class="nav-number">5.3.1.</span> <span class="nav-text">--insecure-discovery</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#trusted-ca-file"><span class="nav-number">5.3.2.</span> <span class="nav-text">--trusted-ca-file</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
