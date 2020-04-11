@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://chunqiublog.github.io/raft_conclusion.html</loc>
+    <lastmod>2020-04-11T12:32:16.800Z</lastmod>
+  </url>  <url>
     <loc>http://chunqiublog.github.io/KV_API_guarantees.html</loc>
     <lastmod>2020-04-10T16:43:47.559Z</lastmod>
   </url>  <url>
