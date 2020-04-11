@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://chunqiublog.github.io/c_function_call.html</loc>
+    <lastmod>2020-04-11T16:36:10.325Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/scanf_read_error.html</loc>
+    <lastmod>2020-04-11T16:30:45.978Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/print_more_text_line.html</loc>
+    <lastmod>2020-04-11T16:28:35.418Z</lastmod>
+  </url>  <url>
     <loc>http://chunqiublog.github.io/raft_conclusion.html</loc>
-    <lastmod>2020-04-11T12:32:16.800Z</lastmod>
+    <lastmod>2020-04-11T12:58:29.830Z</lastmod>
   </url>  <url>
     <loc>http://chunqiublog.github.io/KV_API_guarantees.html</loc>
     <lastmod>2020-04-10T16:43:47.559Z</lastmod>
@@ -34,17 +43,11 @@
     <loc>http://chunqiublog.github.io/Linux_system_basic_structure.html</loc>
     <lastmod>2020-04-09T15:10:22.151Z</lastmod>
   </url>  <url>
-    <loc>http://chunqiublog.github.io/scanf_read_error.html</loc>
-    <lastmod>2020-04-09T03:47:57.932Z</lastmod>
-  </url>  <url>
     <loc>http://chunqiublog.github.io/teaching_management_system.html</loc>
     <lastmod>2020-04-09T03:05:44.915Z</lastmod>
   </url>  <url>
     <loc>http://chunqiublog.github.io/quick_sort.html</loc>
     <lastmod>2020-04-09T02:26:15.065Z</lastmod>
-  </url>  <url>
-    <loc>http://chunqiublog.github.io/print_more_text_line.html</loc>
-    <lastmod>2020-04-09T02:19:39.511Z</lastmod>
   </url>  <url>
     <loc>http://chunqiublog.github.io/TCP_header.html</loc>
     <lastmod>2020-04-09T01:51:25.588Z</lastmod>
