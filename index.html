@@ -250,7 +250,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">32</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">33</span></a>
   </li>
         
         
@@ -535,6 +535,196 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/computer_startup.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chunqiulfq">
+      <meta itemprop="description" content="黄沙百战穿金甲 不破楼兰终不还">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHUNQIULFQ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/computer_startup.html" itemprop="url">
+                  计算机启动过程
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-23 16:39:24" itemprop="dateCreated datePublished" datetime="2019-03-23T16:39:24+08:00">2019-03-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-04-13 02:50:07" itemprop="dateModified" datetime="2020-04-13T02:50:07+08:00">2020-04-13</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/操作系统/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="系统启动标准"><a href="#系统启动标准" class="headerlink" title="系统启动标准"></a>系统启动标准</h1><p>系统启动有两种标准:</p>
+<ul>
+<li><code>BIOS</code>(<code>Basic Input/Output System</code>)<ul>
+<li>固化到计算机主板上的程序</li>
+<li>包括系统设置, 自检程序和系统自启动程序</li>
+<li><code>BIOS-MBR</code>: 通过 <code>BIOS</code> 加载主引导记录(<code>MBR</code>, <code>Main Boot Record</code>) 在多个分区中选择具体的活动分区来启动系统</li>
+<li><code>BIOS-GPT</code>: <code>MBR</code> 最大只能描述 <code>4</code> 个主分区, 每个主分区占 <code>16</code> 字节. 当主分区大于 <code>4</code> 时, 就需要 <code>GPT</code>(全局唯一标识分区表), 可以在分区表中描述更多的分区结构</li>
+<li><code>PXE</code>: 网络启动的标准, 在 <code>BIOS</code> 中添加网络协议栈, 功能更加复杂</li>
+</ul>
+</li>
+<li><code>UEFI</code>(<code>Unified Extensible Firmware Interface</code>)<ul>
+<li>接口标准</li>
+<li>在所有平台上一致的操作系统启动服务</li>
+</ul>
+</li>
+</ul>
+<p>今天介绍的是 <code>BIOS</code>.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/computer_startup.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/c_function_call.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -598,7 +788,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-04-12 16:37:37" itemprop="dateModified" datetime="2020-04-12T16:37:37+08:00">2020-04-12</time>
+                <time title="修改时间：2020-04-13 02:41:26" itemprop="dateModified" datetime="2020-04-13T02:41:26+08:00">2020-04-13</time>
               
             
           </span>
@@ -1930,181 +2120,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/KV_API_guarantees.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chunqiulfq">
-      <meta itemprop="description" content="黄沙百战穿金甲 不破楼兰终不还">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CHUNQIULFQ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/KV_API_guarantees.html" itemprop="url">
-                  KV API guarantees
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-05-14 01:23:45" itemprop="dateCreated datePublished" datetime="2018-05-14T01:23:45+08:00">2018-05-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-04-11 00:43:47" itemprop="dateModified" datetime="2020-04-11T00:43:47+08:00">2020-04-11</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><em>翻译自: <a href="https://github.com/etcd-io/etcd/blob/master/Documentation/learning/api_guarantees.md" target="_blank" rel="noopener">KV API guarantees</a></em></p>
-<p><code>etcd</code> 是一个具有<a href="https://github.com/etcd-io/etcd/blob/master/Documentation/learning/api.md#transactions" target="_blank" rel="noopener">小型事务</a>支持的一致和持久的键值存储. 键值存储通过 <code>KV APIs</code> 操作. <code>etcd</code> 试图为分布式系统确保最强的一致性和持久化. 本规范列举了 <code>etcd</code> 提供的 <code>KV API</code> 保证.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/KV_API_guarantees.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2158,7 +2173,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">32</span>
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2834,9 +2849,9 @@
       
     
       
-        
-      
     
+      
+        
       
     
       

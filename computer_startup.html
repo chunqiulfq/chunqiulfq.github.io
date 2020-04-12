@@ -123,16 +123,24 @@
 
 
 
-  <meta name="description" content="黄沙百战穿金甲 不破楼兰终不还">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CHUNQIULFQ">
-<meta property="og:url" content="http://chunqiublog.github.io/archives/2018/05/index.html">
+  <meta name="description" content="系统启动标准系统启动有两种标准:  BIOS(Basic Input/Output System) 固化到计算机主板上的程序 包括系统设置, 自检程序和系统自启动程序 BIOS-MBR: 通过 BIOS 加载主引导记录(MBR, Main Boot Record) 在多个分区中选择具体的活动分区来启动系统 BIOS-GPT: MBR 最大只能描述 4 个主分区, 每个主分区占 16 字节. 当主分">
+<meta name="keywords" content="linux 基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机启动过程">
+<meta property="og:url" content="http://chunqiublog.github.io/computer_startup.html">
 <meta property="og:site_name" content="CHUNQIULFQ">
-<meta property="og:description" content="黄沙百战穿金甲 不破楼兰终不还">
+<meta property="og:description" content="系统启动标准系统启动有两种标准:  BIOS(Basic Input/Output System) 固化到计算机主板上的程序 包括系统设置, 自检程序和系统自启动程序 BIOS-MBR: 通过 BIOS 加载主引导记录(MBR, Main Boot Record) 在多个分区中选择具体的活动分区来启动系统 BIOS-GPT: MBR 最大只能描述 4 个主分区, 每个主分区占 16 字节. 当主分">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://user-images.githubusercontent.com/7577575/79067977-fb1c7780-7cf5-11ea-9aee-78cc690dcb35.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/7577575/79075404-31bdb680-7d25-11ea-9fe9-952b33d03a74.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/7577575/79076307-9aa82d00-7d2b-11ea-8309-054972e3a94c.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/7577575/79075432-5d40a100-7d25-11ea-92b5-a28bc8a98152.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/7577575/79075438-6af62680-7d25-11ea-979a-b9f8d8a2fe61.png">
+<meta property="og:updated_time" content="2020-04-12T18:50:07.764Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CHUNQIULFQ">
-<meta name="twitter:description" content="黄沙百战穿金甲 不破楼兰终不还">
+<meta name="twitter:title" content="计算机启动过程">
+<meta name="twitter:description" content="系统启动标准系统启动有两种标准:  BIOS(Basic Input/Output System) 固化到计算机主板上的程序 包括系统设置, 自检程序和系统自启动程序 BIOS-MBR: 通过 BIOS 加载主引导记录(MBR, Main Boot Record) 在多个分区中选择具体的活动分区来启动系统 BIOS-GPT: MBR 最大只能描述 4 个主分区, 每个主分区占 16 字节. 当主分">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/7577575/79067977-fb1c7780-7cf5-11ea-9aee-78cc690dcb35.png">
 
 
 
@@ -141,7 +149,7 @@
 
 
 
-  <link rel="canonical" href="http://chunqiublog.github.io/archives/2018/05/"/>
+  <link rel="canonical" href="http://chunqiublog.github.io/computer_startup.html"/>
 
 
 
@@ -151,7 +159,7 @@
   };
 </script>
 
-  <title>归档 | CHUNQIULFQ</title>
+  <title>计算机启动过程 | CHUNQIULFQ</title>
   
 
 
@@ -198,7 +206,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,7 +255,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">33</span></a>
   </li>
@@ -283,25 +291,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -350,79 +339,366 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        还行! 目前共计 33 篇日志。 继续努力。
-      </span>
-      
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2018">2018</h2>
-          </div>
-        
-        
-
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/computer_startup.html">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chunqiulfq">
+      <meta itemprop="description" content="黄沙百战穿金甲 不破楼兰终不还">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHUNQIULFQ">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/KV_API_guarantees.html" itemprop="url">
-              
-                <span itemprop="name">KV API guarantees</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">计算机启动过程
+              
+            
+          </h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-14T01:23:45+08:00"
-              content="2018-05-14" >
-          05-14
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
 
+              
+                
+              
+
+              <time title="创建时间：2019-03-23 16:39:24" itemprop="dateCreated datePublished" datetime="2019-03-23T16:39:24+08:00">2019-03-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-04-13 02:50:07" itemprop="dateModified" datetime="2020-04-13T02:50:07+08:00">2020-04-13</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/操作系统/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
+      
 
+      
+        <h1 id="系统启动标准"><a href="#系统启动标准" class="headerlink" title="系统启动标准"></a>系统启动标准</h1><p>系统启动有两种标准:</p>
+<ul>
+<li><code>BIOS</code>(<code>Basic Input/Output System</code>)<ul>
+<li>固化到计算机主板上的程序</li>
+<li>包括系统设置, 自检程序和系统自启动程序</li>
+<li><code>BIOS-MBR</code>: 通过 <code>BIOS</code> 加载主引导记录(<code>MBR</code>, <code>Main Boot Record</code>) 在多个分区中选择具体的活动分区来启动系统</li>
+<li><code>BIOS-GPT</code>: <code>MBR</code> 最大只能描述 <code>4</code> 个主分区, 每个主分区占 <code>16</code> 字节. 当主分区大于 <code>4</code> 时, 就需要 <code>GPT</code>(全局唯一标识分区表), 可以在分区表中描述更多的分区结构</li>
+<li><code>PXE</code>: 网络启动的标准, 在 <code>BIOS</code> 中添加网络协议栈, 功能更加复杂</li>
+</ul>
+</li>
+<li><code>UEFI</code>(<code>Unified Extensible Firmware Interface</code>)<ul>
+<li>接口标准</li>
+<li>在所有平台上一致的操作系统启动服务</li>
+</ul>
+</li>
+</ul>
+<p>今天介绍的是 <code>BIOS</code>.</p>
+<a id="more"></a>
+<h1 id="计算机启动过程内存布局"><a href="#计算机启动过程内存布局" class="headerlink" title="计算机启动过程内存布局"></a>计算机启动过程内存布局</h1><h2 id="BIOS-的内存地址空间"><a href="#BIOS-的内存地址空间" class="headerlink" title="BIOS 的内存地址空间"></a><code>BIOS</code> 的内存地址空间</h2><p>&emsp;&emsp;计算机启动后, 当 <code>CPU</code> 加电电流稳定时, <code>CPU</code> 寄存器会有一个初始状态. 这时有一个约定, <strong><code>CPU</code> 寄存器中 <code>CS</code>(<code>code segment</code>, 代码段寄存器) 和 <code>IP</code>(<code>instruction pointer</code>, 指令指针寄存器, <code>32</code> 位为 <code>EIP</code>) 的初始状态应为 <code>CS:IP = 0xf000:fff0</code>, 即 <code>PC</code>(<code>programme counter</code>, 程序计数器) 的初始值, 作为第一条指令地址. 这时系统处于实模式(<code>real mode</code>)下</strong>, 下文会详细介绍. 然后执行第一条指令, 第一条指令在只读存储内存(<code>ROM</code>) 即 <code>BIOS</code> 启动固件中, 因为系统处于实模式, 地址总线只有 <code>20</code> 位可用, 即内存可用区域只有 <code>2^20</code> 即 <code>1MB</code>, 所以开机执行的代码只能保存在在内存前 <code>1MB</code> 内的一小块, <code>BIOS</code> 启动固件保存在 <code>640KB</code> 到 <code>1MB</code> 之间的空间.</p>
+<h2 id="加载程序的内存地址空间"><a href="#加载程序的内存地址空间" class="headerlink" title="加载程序的内存地址空间"></a>加载程序的内存地址空间</h2><ul>
+<li><code>BIOS</code> 初始化完成后:<ol>
+<li>将读取磁盘上的引导扇区中的<strong>加载程序(<code>bootloader</code>)</strong>, 引导扇区长度只有 <code>512</code> 字节, 将加载到 <code>0x7c00</code> 位置</li>
+<li>跳转到 <code>0x7c00</code>(<code>CS:IP = 0x0000:7c00</code>), 然后将控制权转交给从磁盘上读取的程序, 即加载程序</li>
+</ol>
+</li>
+<li>加载程序执行任务:<ol>
+<li>将操作系统代码和数据从硬盘上加载到内存中</li>
+<li>跳转到操作系统的起始位置, 将控制权转交给操作系统</li>
+</ol>
+</li>
+</ul>
+<p><img src="https://user-images.githubusercontent.com/7577575/79067977-fb1c7780-7cf5-11ea-9aee-78cc690dcb35.png" alt="disk space"></p>
+<h1 id="系统启动流程"><a href="#系统启动流程" class="headerlink" title="系统启动流程"></a>系统启动流程</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>在上文说到过系统加电 <code>BIOS</code> 初始化硬件完成后直接读取加载程序(<code>bootloader</code>), 但是这只是为了更直观的展示启动过程中的内存布局. 实际这一步并不能直接进行, 以前磁盘空间小只有一个分区的时候可以直接到这个分区的引导扇区读取加载程序, 但是现在计算机磁盘上都不止一个分区, 且每个分区都可能装有不同的系统, 所以不能直接进行</li>
+<li>这时就使用了<strong>主引导记录 <code>MBR</code></strong>, <code>BIOS</code> 会读取其中的主引导扇区代码到内存中, 将 <code>CPU</code> 控制权转交给主引导扇区代码(执行). <strong><code>MBR</code> 处于磁盘的第一个扇区中, 共 <code>512</code> 个字节</strong></li>
+<li>每个活动分区都有自己的引导扇区,  主引导扇区代码会确定加载程序所在的活动分区, 并读取该活动分区的引导扇区代码到内存中, 然后将 <code>CPU</code> 控制权转交给活动分区的引导扇区代码(执行)</li>
+<li>活动分区的引导扇区代码读取当前分区上文件系统的加载程序到内存中, 然后将 <code>CPU</code> 控制权转交给当前文件系统的加载程序(执行)</li>
+<li>当前文件系统的加载程序加载文件系统上的操作系统到内存中, 然后将 <code>CPU</code> 控制权转交给操作系统(执行), 操作系统启动</li>
+</ul>
+<p><img src="https://user-images.githubusercontent.com/7577575/79075404-31bdb680-7d25-11ea-9fe9-952b33d03a74.png" alt="computer startup process"></p>
+<h2 id="详细流程"><a href="#详细流程" class="headerlink" title="详细流程"></a>详细流程</h2><h3 id="CPU-初始化"><a href="#CPU-初始化" class="headerlink" title="CPU 初始化"></a><code>CPU</code> 初始化</h3><ul>
+<li>在 <code>x86-32 CPU</code> 加电启动后, <code>CPU</code> 会进行初始化, 设置中断使能标志. 这时所有寄存器都有一个缺省值, 这其中最重要的有代码段寄存器 <code>CS</code> 和指令指针寄存器 <code>EIP</code>(<code>IP</code>), 它们结合在一起形成了一个加电(启动) 后的地址, 这个地址将是计算机执行的第一条指令, 缺省值 <code>CS = 0xf000</code>, <code>EIP = 0x0000fff0</code></li>
+<li>为了兼容早期的 <code>CPU</code>, 如 <code>8086</code>, 计算机启动时是处于 <code>16</code> 位的实模式, 计算机的寻址方式按照实模式的寻址方式: <strong>段基址(<code>base</code>) + 偏移量(<code>offset</code>) = 物理地址(<code>address</code>)</strong>. 段基址(<code>base</code>) 为段寄存器左移 <code>4</code> 位, 即 <code>base = CS &lt;&lt; 4 = 0xf0000</code>, 为了和 <code>32</code> 位的 <code>EIP</code> 相加扩展为 <code>base = 0xffff0000</code>; 偏移量(<code>offset</code>) 即为 <code>EIP</code> 的值; 物理地址(<code>address</code>) 即为 <code>base + offer = 0xffff0000 + 0x0000fff0 = 0xfffffff0</code>, 由于处于 <code>16</code> 位的实模式, 地址总线只有 <code>20</code> 位可用, 可寻址空间只有内存起始位置的 <code>1MB</code> 空间, 所以物理地址(<code>address</code>) 即为 <code>0xffff0</code>. 这个物理地址就是加电后的第一条指令地址, 这个地址指向 <code>BIOS</code> 的 <code>EPROM</code>(<code>Erasable Programmable Read Only Memory</code>), 只读. 这个指令通常是一个长跳转指令(这时 <code>CS</code> 和 <code>EIP</code> 值都会更新), 会跳转进入 <code>BIOS</code> 中做初始化工作</li>
+</ul>
+<p><img src="https://user-images.githubusercontent.com/7577575/79076307-9aa82d00-7d2b-11ea-8309-054972e3a94c.png" alt="real_mode"></p>
+<h3 id="BIOS-初始化"><a href="#BIOS-初始化" class="headerlink" title="BIOS 初始化"></a><code>BIOS</code> 初始化</h3><ul>
+<li>硬件自检 <code>POST</code></li>
+<li>检测系统中的内存和显卡等关键部件的存在和工作状态</li>
+<li>查找执行显卡等接口卡 <code>BIOS</code>, 进行设备初始化</li>
+<li>执行系统 <code>BIOS</code>, 进行系统检测<ul>
+<li>检测和配置系统中安装的即插即用设备</li>
+</ul>
+</li>
+<li>更新 <code>CMOS</code> 中的扩展系统配置数据 <code>ESCD</code><ul>
+<li><code>ESCD</code>: 系统配置表, 保存扩展系统配置数据</li>
+</ul>
+</li>
+<li>指定启动设备顺序</li>
+<li>以中断方式提供基本的 <code>I/O</code> 系统调用: 从外设(磁盘, 键盘等)读取数据, 在显示器上显示等<ul>
+<li><code>BIOS</code> 系统调用<ul>
+<li><code>INT 10h</code>: 字符显示</li>
+<li><code>INT 13h</code>: 磁盘扇区读写</li>
+<li><code>INT 15h</code>: 检测内存大小</li>
+<li><code>INT 16h</code>: 键盘输入</li>
+</ul>
+</li>
+<li>只能在 <code>x86</code> 的实模式下访问</li>
+</ul>
+</li>
+</ul>
+<h3 id="主引导记录-MBR-格式"><a href="#主引导记录-MBR-格式" class="headerlink" title="主引导记录 MBR 格式"></a>主引导记录 <code>MBR</code> 格式</h3><ul>
+<li>启动代码: <code>446</code> 字节<ul>
+<li>检查分区表正确性</li>
+<li>加载并跳转到活动分区的引导程序</li>
+</ul>
+</li>
+<li>硬盘分区表: <code>64</code> 字节<ul>
+<li>描述分区状态和位置</li>
+<li>每个分区描述信息占据 <code>16</code> 字节</li>
+</ul>
+</li>
+<li>结束标志字: <code>2</code> 字节(<code>0x55 0xAA</code>)<ul>
+<li>主引导记录的有效标志</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://user-images.githubusercontent.com/7577575/79075432-5d40a100-7d25-11ea-92b5-a28bc8a98152.png" alt="MBR"></p>
+<h3 id="分区引导扇区格式"><a href="#分区引导扇区格式" class="headerlink" title="分区引导扇区格式"></a>分区引导扇区格式</h3><ul>
+<li>跳转代码(<code>JMP</code>): 跳转到启动代码<ul>
+<li>与平台相关代码</li>
+</ul>
+</li>
+<li>文件卷头: 文件系统描述信息, <strong>可以识别文件系统</strong></li>
+<li>启动代码: 跳转到加载程序</li>
+<li>结束标志: <code>0x55AA</code></li>
+<li><code>512</code> 字节, 启动代码可以修改, 只要指向加载程序即可, 加载程序位置随意</li>
+</ul>
+<p><img src="https://user-images.githubusercontent.com/7577575/79075438-6af62680-7d25-11ea-979a-b9f8d8a2fe61.png" alt="partition boot secter"></p>
+<h3 id="加载程序"><a href="#加载程序" class="headerlink" title="加载程序"></a>加载程序</h3><ul>
+<li><strong>可以识别文件系统</strong></li>
+<li>从文件系统中读取启动配置信息: 每种系统都有自己的启动配置信息格式, 不同的系统就有属于自己的加载程序的格式.</li>
+<li><strong>从实模式使能到保护模式(<code>protection mode</code>), 为后续操作系统的执行做准备, 这时的寻址能力从 <code>1MB</code> 扩展到 <code>4GB</code></strong>. 保护模式下段机制(<code>segment-level protection</code>) 会自动使能, <code>bootloader</code> 会创建 <code>GDT</code><ul>
+<li>清理环境: 禁止中断, 将段寄存器清 <code>0</code> 等</li>
+<li>开启 <code>A20</code>: 通过将键盘控制器上的 <code>A20</code> 线置为高电位, 使 <code>32</code> 条地址总线均可用, 实现最大 <code>4GB</code> 的寻址</li>
+<li>初始化 <code>GDT</code></li>
+<li>进入保护模式: 通过将 <code>cr0</code> 寄存器 <code>PE</code> 位(第 <code>0</code> 位) 置 <code>1</code> 开启保护模式</li>
+<li>设置段寄存器, 建立堆栈</li>
+</ul>
+</li>
+<li>加载程序的启动菜单配置操作系统内核列表和加载参数</li>
+<li>依据配置加载 <code>kernal in ELF</code> 格式的操作系统内核到内存中固定的位置, 并跳转到内核的<strong>入口点(<code>entry point</code>)</strong>执行, 这时控制权到了操作系统内核</li>
+</ul>
+<h1 id="引申"><a href="#引申" class="headerlink" title="引申"></a>引申</h1><h2 id="BIOS-能直接从磁盘上读取数据-为什么不用-BIOS-直接从磁盘上将操作系统读取到内存中"><a href="#BIOS-能直接从磁盘上读取数据-为什么不用-BIOS-直接从磁盘上将操作系统读取到内存中" class="headerlink" title="BIOS 能直接从磁盘上读取数据, 为什么不用 BIOS 直接从磁盘上将操作系统读取到内存中?"></a><code>BIOS</code> 能直接从磁盘上读取数据, 为什么不用 <code>BIOS</code> 直接从磁盘上将操作系统读取到内存中?</h2><p>&emsp;&emsp;磁盘上存在文件系统, 文件依照文件系统的特定格式写入磁盘. 文件系统多种多样, 而 <code>BIOS</code> 在计算机出厂是就已经写入, 不可能在出厂是限定用户使用某种文件系统, 同时也不能为了增加灵活性, 在 <code>BIOS</code> 中添加已知的所有文件系统代码. 所以, 这里有一个基本约定, <code>BIOS</code> 不需要认识文件系统的格式也能从磁盘的第一个扇区读取其中的启动代码, 然后通过启动代码识别文件系统, 读取加载程序, 继而读取操作系统内核代码, 并将其加载到内存中.</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://www.zhihu.com/question/21662568/answer/18950469" target="_blank" rel="noopener">关于程序计数器 <code>PC</code> 与 <code>CS:IP</code> 的区别</a></li>
+<li><a href="https://www.cnblogs.com/zhuge2018/p/8466288.html" target="_blank" rel="noopener">CS、IP和PC寄存器</a></li>
+<li>学堂在线操作系统课程</li>
+</ul>
+
+      
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享, 您的支持将鼓励我继续创作!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="chunqiulfq 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="chunqiulfq 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>chunqiulfq</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://chunqiublog.github.io/computer_startup.html" title="计算机启动过程">http://chunqiublog.github.io/computer_startup.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+			<a href="/tags/linux-基础/" rel="tag"><i class="fa fa-tag"></i> linux 基础</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/c_function_call.html" rel="next" title="C 语言函数调用的实现">
+                <i class="fa fa-chevron-left"></i> C 语言函数调用的实现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/raft_conclusion.html" rel="prev" title="raft 算法论述">
+                raft 算法论述 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div id="gitalk-container"></div>
+
+  
+
+
 
         </div>
         
@@ -445,8 +721,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -613,6 +898,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#系统启动标准"><span class="nav-number">1.</span> <span class="nav-text">系统启动标准</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#计算机启动过程内存布局"><span class="nav-number">2.</span> <span class="nav-text">计算机启动过程内存布局</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BIOS-的内存地址空间"><span class="nav-number">2.1.</span> <span class="nav-text">BIOS 的内存地址空间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加载程序的内存地址空间"><span class="nav-number">2.2.</span> <span class="nav-text">加载程序的内存地址空间</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系统启动流程"><span class="nav-number">3.</span> <span class="nav-text">系统启动流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">3.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#详细流程"><span class="nav-number">3.2.</span> <span class="nav-text">详细流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU-初始化"><span class="nav-number">3.2.1.</span> <span class="nav-text">CPU 初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BIOS-初始化"><span class="nav-number">3.2.2.</span> <span class="nav-text">BIOS 初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主引导记录-MBR-格式"><span class="nav-number">3.2.3.</span> <span class="nav-text">主引导记录 MBR 格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分区引导扇区格式"><span class="nav-number">3.2.4.</span> <span class="nav-text">分区引导扇区格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载程序"><span class="nav-number">3.2.5.</span> <span class="nav-text">加载程序</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引申"><span class="nav-number">4.</span> <span class="nav-text">引申</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#BIOS-能直接从磁盘上读取数据-为什么不用-BIOS-直接从磁盘上将操作系统读取到内存中"><span class="nav-number">4.1.</span> <span class="nav-text">BIOS 能直接从磁盘上读取数据, 为什么不用 BIOS 直接从磁盘上将操作系统读取到内存中?</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -760,6 +1061,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
 
   
 
@@ -782,6 +1087,21 @@
 
 
 
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '208433c9fd56b4c87620',
+          clientSecret: '5822b2d2a9ff16ec2e5f3471f23521b7d8d43912',
+          repo: 'chunqiulfq.github.io',
+          owner: 'chunqiulfq',
+          admin: ['chunqiulfq'],
+          id: window.location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
 
 
@@ -1158,7 +1478,7 @@
   <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@latest/bookmark.min.js"></script>
   <script type="text/javascript">
   
-    bookmark.loadBookmark();
+    bookmark.scrollToMark('auto', "#更多");
   
   </script>
 
