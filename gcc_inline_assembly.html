@@ -123,16 +123,18 @@
 
 
 
-  <meta name="description" content="黄沙百战穿金甲 不破楼兰终不还">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CHUNQIULFQ">
-<meta property="og:url" content="http://chunqiublog.github.io/archives/2018/09/index.html">
+  <meta name="description" content="&amp;emsp;&amp;emsp;GCC内联汇编(inline assembly): 在 C 语言环境中使用汇编代码, 使得 C 和汇编混合在一起使用, 可以直接在 C 语言中插入汇编指令. 这是 GCC 对 C 语言的扩展.">
+<meta name="keywords" content="汇编,GCC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GCC内联汇编">
+<meta property="og:url" content="http://chunqiublog.github.io/gcc_inline_assembly.html">
 <meta property="og:site_name" content="CHUNQIULFQ">
-<meta property="og:description" content="黄沙百战穿金甲 不破楼兰终不还">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;GCC内联汇编(inline assembly): 在 C 语言环境中使用汇编代码, 使得 C 和汇编混合在一起使用, 可以直接在 C 语言中插入汇编指令. 这是 GCC 对 C 语言的扩展.">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-04-12T09:27:08.373Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CHUNQIULFQ">
-<meta name="twitter:description" content="黄沙百战穿金甲 不破楼兰终不还">
+<meta name="twitter:title" content="GCC内联汇编">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;GCC内联汇编(inline assembly): 在 C 语言环境中使用汇编代码, 使得 C 和汇编混合在一起使用, 可以直接在 C 语言中插入汇编指令. 这是 GCC 对 C 语言的扩展.">
 
 
 
@@ -141,7 +143,7 @@
 
 
 
-  <link rel="canonical" href="http://chunqiublog.github.io/archives/2018/09/"/>
+  <link rel="canonical" href="http://chunqiublog.github.io/gcc_inline_assembly.html"/>
 
 
 
@@ -151,7 +153,7 @@
   };
 </script>
 
-  <title>归档 | CHUNQIULFQ</title>
+  <title>GCC内联汇编 | CHUNQIULFQ</title>
   
 
 
@@ -198,7 +200,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,7 +249,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">32</span></a>
   </li>
@@ -283,25 +285,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -350,79 +333,272 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        还行! 目前共计 32 篇日志。 继续努力。
-      </span>
-      
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2018">2018</h2>
-          </div>
-        
-        
-
-        
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/gcc_inline_assembly.html">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chunqiulfq">
+      <meta itemprop="description" content="黄沙百战穿金甲 不破楼兰终不还">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHUNQIULFQ">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/POSIX_Threads_Programming.html" itemprop="url">
-              
-                <span itemprop="name">POSIX Threads Programming</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">GCC内联汇编
+              
+            
+          </h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-02T12:45:32+08:00"
-              content="2018-09-02" >
-          09-02
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
 
-    </header>
-  </article>
+            
+            
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
 
+              
+                
+              
+
+              <time title="创建时间：2015-11-02 16:38:51" itemprop="dateCreated datePublished" datetime="2015-11-02T16:38:51+08:00">2015-11-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-04-12 17:27:08" itemprop="dateModified" datetime="2020-04-12T17:27:08+08:00">2020-04-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
 
       
+      
 
+      
+        <p>&emsp;&emsp;<code>GCC</code>内联汇编(<code>inline assembly</code>): 在 <code>C</code> 语言环境中使用汇编代码, 使得 <code>C</code> 和汇编混合在一起使用, 可以直接在 <code>C</code> 语言中插入汇编指令. 这是 <code>GCC</code> 对 <code>C</code> 语言的扩展. </p>
+<a id="more"></a>
+<h1 id="为什么要在-C-语言中插入汇编代码"><a href="#为什么要在-C-语言中插入汇编代码" class="headerlink" title="为什么要在 C 语言中插入汇编代码?"></a>为什么要在 <code>C</code> 语言中插入汇编代码?</h1><ol>
+<li><code>C</code> 语言不足以完成所有 <code>CPU</code> 的指令, 特别是一些特权指令, 没有对应的C语言代码(如加载<code>GDT</code>)</li>
+<li>用汇编在 <code>C</code> 语言中手动优化</li>
+</ol>
+<h1 id="代码格式"><a href="#代码格式" class="headerlink" title="代码格式"></a>代码格式</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">asm</span> ( assembler <span class="keyword">template</span></span><br><span class="line">	    : output operands			 	(optional)</span><br><span class="line">	    : input operands			 	(optional)</span><br><span class="line">	    : <span class="built_in">list</span> of clobbered registers 	  	(optional)</span><br><span class="line">	    );</span><br></pre></td></tr></table></figure>
+<h1 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h1><p>&emsp;&emsp;<code>volatile</code>: 可选的, 如果用了它, 则是向 <code>GCC</code> 声明不允许对该内联汇编优化, 否则当使用了优化选项(<code>-O</code>) 进行编译时, <code>GCC</code> 将会根据自己的判断决定是否将这个内联汇编表达式中的指令优化掉.</p>
+<h1 id="参数含义"><a href="#参数含义" class="headerlink" title="参数含义"></a>参数含义</h1><ul>
+<li><code>%0</code>: 代表第一个使用的寄存器</li>
+<li><code>r</code>: 代表任意寄存器</li>
+<li><code>a</code>: <code>%eax</code></li>
+<li><code>b</code>: <code>%ebx</code></li>
+<li><code>c</code>: <code>%ecx</code></li>
+<li><code>d</code>: <code>%edx</code></li>
+<li><code>S</code>: <code>%esi</code></li>
+<li><code>D</code>: <code>%edi</code></li>
+</ul>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="http://www.ibm.com/developerworks/library/l-ia/index.html" target="_blank" rel="noopener">Inline assembly for x86 in Linux</a></li>
+<li><a href="https://www.cnblogs.com/taek/archive/2012/02/05/2338838.html" target="_blank" rel="noopener">汇编语言—GCC内联汇编</a></li>
+</ul>
+
+      
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享, 您的支持将鼓励我继续创作!</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="chunqiulfq 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="chunqiulfq 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>chunqiulfq</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://chunqiublog.github.io/gcc_inline_assembly.html" title="GCC内联汇编">http://chunqiublog.github.io/gcc_inline_assembly.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+			<a href="/tags/汇编/" rel="tag"><i class="fa fa-tag"></i> 汇编</a>
+          
+			<a href="/tags/GCC/" rel="tag"><i class="fa fa-tag"></i> GCC</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/dual_system_cannot_start.html" rel="next" title="RHEL7.0或CentOS7.0与WIN8.1双系统时WIN8.1无法启动">
+                <i class="fa fa-chevron-left"></i> RHEL7.0或CentOS7.0与WIN8.1双系统时WIN8.1无法启动
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/redis_source_code_analysis.html" rel="prev" title="Redis 源码解析">
+                Redis 源码解析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+    <div id="gitalk-container"></div>
+
+  
+
+
 
         </div>
         
@@ -445,8 +621,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -613,6 +798,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么要在-C-语言中插入汇编代码"><span class="nav-number">1.</span> <span class="nav-text">为什么要在 C 语言中插入汇编代码?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码格式"><span class="nav-number">2.</span> <span class="nav-text">代码格式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#关键字"><span class="nav-number">3.</span> <span class="nav-text">关键字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参数含义"><span class="nav-number">4.</span> <span class="nav-text">参数含义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -760,6 +961,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
 
   
 
@@ -782,6 +987,21 @@
 
 
 
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: '208433c9fd56b4c87620',
+          clientSecret: '5822b2d2a9ff16ec2e5f3471f23521b7d8d43912',
+          repo: 'chunqiulfq.github.io',
+          owner: 'chunqiulfq',
+          admin: ['chunqiulfq'],
+          id: window.location.pathname,
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')           
+       </script>
 
 
 
@@ -1158,7 +1378,7 @@
   <script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@latest/bookmark.min.js"></script>
   <script type="text/javascript">
   
-    bookmark.loadBookmark();
+    bookmark.scrollToMark('auto', "#更多");
   
   </script>
 

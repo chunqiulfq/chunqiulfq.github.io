@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://chunqiublog.github.io/gcc_inline_assembly.html</loc>
+    <lastmod>2020-04-12T09:27:08.373Z</lastmod>
+  </url>  <url>
     <loc>http://chunqiublog.github.io/c_function_call.html</loc>
     <lastmod>2020-04-12T08:37:37.966Z</lastmod>
   </url>  <url>
