@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://chunqiublog.github.io/raft_conclusion.html</loc>
+    <lastmod>2020-04-13T04:54:39.956Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/friend_system.html</loc>
+    <lastmod>2020-04-13T04:53:39.429Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/dual_system_cannot_start.html</loc>
+    <lastmod>2020-04-13T04:47:52.879Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/cplusplus_inline.html</loc>
+    <lastmod>2020-04-13T04:47:32.199Z</lastmod>
+  </url>  <url>
+    <loc>http://chunqiublog.github.io/cplusplus_default_values_for_function_arguments.html</loc>
+    <lastmod>2020-04-13T04:04:52.612Z</lastmod>
+  </url>  <url>
     <loc>http://chunqiublog.github.io/computer_startup.html</loc>
     <lastmod>2020-04-12T18:50:07.764Z</lastmod>
   </url>  <url>
@@ -16,9 +31,6 @@
     <loc>http://chunqiublog.github.io/print_more_text_line.html</loc>
     <lastmod>2020-04-11T16:28:35.418Z</lastmod>
   </url>  <url>
-    <loc>http://chunqiublog.github.io/raft_conclusion.html</loc>
-    <lastmod>2020-04-11T12:58:29.830Z</lastmod>
-  </url>  <url>
     <loc>http://chunqiublog.github.io/KV_API_guarantees.html</loc>
     <lastmod>2020-04-10T16:43:47.559Z</lastmod>
   </url>  <url>
@@ -30,9 +42,6 @@
   </url>  <url>
     <loc>http://chunqiublog.github.io/Brute_Force.html</loc>
     <lastmod>2020-04-09T16:48:04.606Z</lastmod>
-  </url>  <url>
-    <loc>http://chunqiublog.github.io/dual_system_cannot_start.html</loc>
-    <lastmod>2020-04-09T16:28:01.586Z</lastmod>
   </url>  <url>
     <loc>http://chunqiublog.github.io/Linux_forget_root_password.html</loc>
     <lastmod>2020-04-09T16:18:10.094Z</lastmod>

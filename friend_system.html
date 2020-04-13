@@ -123,18 +123,21 @@
 
 
 
-  <meta name="keywords" content="TCP">
+  <meta name="description" content="&amp;emsp;&amp;emsp;伙伴系统(buddy system) 是操作系统中用到的一种动态内存存储管理的方法. 它和边界标识法相类似, 在用户提出申请时, 分配给用户一块大小“恰当”的内存区给用户; 反之, 在用户释放内存区时即可收回. 对于伙伴系统而言, 所有分配的内存块大小都是分为几种“规格”的, 即每个分配出去的内存块大小都为2的k次幂, 如当内存池大小为 $2^m$ 次幂时, 内存块的大小种">
+<meta name="keywords" content="源码,链表">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TCP 头部封装">
-<meta property="og:url" content="http://chunqiublog.github.io/TCP_header.html">
+<meta property="og:title" content="实现伙伴系统">
+<meta property="og:url" content="http://chunqiublog.github.io/friend_system.html">
 <meta property="og:site_name" content="CHUNQIULFQ">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;伙伴系统(buddy system) 是操作系统中用到的一种动态内存存储管理的方法. 它和边界标识法相类似, 在用户提出申请时, 分配给用户一块大小“恰当”的内存区给用户; 反之, 在用户释放内存区时即可收回. 对于伙伴系统而言, 所有分配的内存块大小都是分为几种“规格”的, 即每个分配出去的内存块大小都为2的k次幂, 如当内存池大小为 $2^m$ 次幂时, 内存块的大小种">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://user-images.githubusercontent.com/7577575/78691226-f8eb9f00-792a-11ea-86ad-e6953b52e05f.png">
-<meta property="og:image" content="https://user-images.githubusercontent.com/7577575/78691429-2e908800-792b-11ea-81fc-d34a94b9f69d.png">
-<meta property="og:updated_time" content="2020-04-09T01:51:25.588Z">
+<meta property="og:image" content="https://user-images.githubusercontent.com/7577575/79092635-1b931300-7d84-11ea-8fa0-b3c081302230.png">
+<meta property="og:image" content="https://user-images.githubusercontent.com/7577575/79092658-2b125c00-7d84-11ea-9310-c8b8946aa4f4.png">
+<meta property="og:updated_time" content="2020-04-13T04:53:39.429Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TCP 头部封装">
-<meta name="twitter:image" content="https://user-images.githubusercontent.com/7577575/78691226-f8eb9f00-792a-11ea-86ad-e6953b52e05f.png">
+<meta name="twitter:title" content="实现伙伴系统">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;伙伴系统(buddy system) 是操作系统中用到的一种动态内存存储管理的方法. 它和边界标识法相类似, 在用户提出申请时, 分配给用户一块大小“恰当”的内存区给用户; 反之, 在用户释放内存区时即可收回. 对于伙伴系统而言, 所有分配的内存块大小都是分为几种“规格”的, 即每个分配出去的内存块大小都为2的k次幂, 如当内存池大小为 $2^m$ 次幂时, 内存块的大小种">
+<meta name="twitter:image" content="https://user-images.githubusercontent.com/7577575/79092635-1b931300-7d84-11ea-8fa0-b3c081302230.png">
 
 
 
@@ -143,7 +146,7 @@
 
 
 
-  <link rel="canonical" href="http://chunqiublog.github.io/TCP_header.html"/>
+  <link rel="canonical" href="http://chunqiublog.github.io/friend_system.html"/>
 
 
 
@@ -153,7 +156,7 @@
   };
 </script>
 
-  <title>TCP 头部封装 | CHUNQIULFQ</title>
+  <title>实现伙伴系统 | CHUNQIULFQ</title>
   
 
 
@@ -349,7 +352,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/TCP_header.html">
+    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/friend_system.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="chunqiulfq">
@@ -366,7 +369,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">TCP 头部封装
+          <h2 class="post-title" itemprop="name headline">实现伙伴系统
               
             
           </h2>
@@ -391,7 +394,7 @@
                 
               
 
-              <time title="创建时间：2018-11-15 20:18:58" itemprop="dateCreated datePublished" datetime="2018-11-15T20:18:58+08:00">2018-11-15</time>
+              <time title="创建时间：2015-09-02 02:47:00" itemprop="dateCreated datePublished" datetime="2015-09-02T02:47:00+08:00">2015-09-02</time>
             
 
             
@@ -408,7 +411,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-04-09 09:51:25" itemprop="dateModified" datetime="2020-04-09T09:51:25+08:00">2020-04-09</time>
+                <time title="修改时间：2020-04-13 12:53:39" itemprop="dateModified" datetime="2020-04-13T12:53:39+08:00">2020-04-13</time>
               
             
           </span>
@@ -425,7 +428,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/网络/" itemprop="url" rel="index"><span itemprop="name">网络</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/项目程序/" itemprop="url" rel="index"><span itemprop="name">项目程序</span></a></span>
 
                 
                 
@@ -459,46 +462,43 @@
       
 
       
-        <p><img src="https://user-images.githubusercontent.com/7577575/78691226-f8eb9f00-792a-11ea-86ad-e6953b52e05f.png" alt="TCP header location" title="图一: TCP头部位置(图片来源: TCP/IP Illustrated Volume 1: The Protocols Second Edition)"></p>
-<a id="more"></a>
-<p><img src="https://user-images.githubusercontent.com/7577575/78691429-2e908800-792b-11ea-81fc-d34a94b9f69d.png" alt="The TCP header" title="图二: TCP头部(图片来源: TCP/IP Illustrated Volume 1: The Protocols Second Edition)"></p>
-<p>&emsp;&emsp;<code>TCP</code> 头部包括以下字段:</p>
+        <p>&emsp;&emsp;<strong>伙伴系统</strong>(<code>buddy system</code>) 是操作系统中用到的一种动态内存存储管理的方法. 它和边界标识法相类似, 在用户提出申请时, 分配给用户一块大小“恰当”的内存区给用户; 反之, 在用户释放内存区时即可收回. 对于伙伴系统而言, 所有分配的内存块大小都是分为几种“规格”的, 即每个分配出去的内存块大小都为2的k次幂, 如当内存池大小为 $2^m$ 次幂时, 内存块的大小种类有 $2^0$, $2^1$, … , $2^k$, … , $2^m$, 当用户申请内存大小n为 $2^{k-1} &lt; n &lt;= 2^k$ 时, 将为用户分配内存大小为 $2^k$ 的内存块.<br><a id="more"></a></p>
+<h2 id="结构设计"><a href="#结构设计" class="headerlink" title="结构设计"></a>结构设计</h2><h3 id="整体设计"><a href="#整体设计" class="headerlink" title="整体设计"></a>整体设计</h3><p>&emsp;&emsp;对于伙伴系统而言, 有大小固定且相同的内存块, 将大小相同的内存块链接在一起时, 为了达到写平衡, 使用双向链表实现, 这样可以在回收回的内存块时, 将其插入双向链表的链尾, 在申请内存块时, 从链头删除内存块; 而将链接不同大小内存块的双向链表链接起来时, 因为内存块大小种类固定所以使用顺序表实现, 故使用顺序表加双向链表的形式实现伙伴系统.</p>
+<h3 id="双向链表设计思路及定义"><a href="#双向链表设计思路及定义" class="headerlink" title="双向链表设计思路及定义"></a>双向链表设计思路及定义</h3><p>&emsp;&emsp;细化而言, 对于内存块, 因为是在双向链表中, 所以每个内存块中需要一个 <code>header</code>, 其中包含的信息有前驱 <code>llink</code>, 后继 <code>rlink</code>; 同时还需要一个标记内存块是否被占用的信息 <code>tag</code>, <code>tag = 0</code> 则内存块空闲, <code>tag = 1</code> 则内存块占用; 需要一个标记内存块大小的信息 <code>kval</code>, 内存块大小为 $2^k$.</p>
+<p>&emsp;&emsp;所以我们在实现内存池时, 以一个 <code>header</code> 的大小 <code>16</code> 个字节为单位进行内存管理, 每个单位称之为 <code>WORD</code>. </p>
+<p><img src="https://user-images.githubusercontent.com/7577575/79092635-1b931300-7d84-11ea-8fa0-b3c081302230.png" alt="friend1"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">WORD</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">WORD</span> *<span class="title">llink</span>;</span></span><br><span class="line">	<span class="keyword">int</span> tag;</span><br><span class="line">	<span class="keyword">int</span> k;</span><br><span class="line">	<span class="class"><span class="keyword">struct</span> <span class="title">WORD</span> *<span class="title">rlink</span>;</span></span><br><span class="line">&#125;WORD, *Space;</span><br></pre></td></tr></table></figure>
+<h3 id="顺序表设计思路及定义"><a href="#顺序表设计思路及定义" class="headerlink" title="顺序表设计思路及定义"></a>顺序表设计思路及定义</h3><p>&emsp;&emsp;对于顺序表, 则需要一个记录内存块大小的信息 <code>nodesize</code>; 一个记录链接与 <code>nodesize</code> 大小相同的内存块的双向链表的结点信息 <code>first</code>.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">HNode</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">int</span> size;</span><br><span class="line">	WORD *next;</span><br><span class="line">&#125;HNode, *PHNode;</span><br></pre></td></tr></table></figure>
+<h2 id="实现动态内存管理"><a href="#实现动态内存管理" class="headerlink" title="实现动态内存管理"></a>实现动态内存管理</h2><h3 id="内存初始化"><a href="#内存初始化" class="headerlink" title="内存初始化"></a>内存初始化</h3><p><img src="https://user-images.githubusercontent.com/7577575/79092658-2b125c00-7d84-11ea-9310-c8b8946aa4f4.png" alt="friend2"></p>
+<p>&emsp;&emsp;通过初始化实现如上图第一部分所示的内存池. 同时在这里需要建立一个内存池头结点, 全局变量 <code>HEAD</code> 记录内存池首地址, 作用下文会有详细说明.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InitMemory</span><span class="params">(PHNode *ppav)</span>               <span class="comment">/*初始化:创建一个需要进行内存管理的内存池*/</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	WORD word[SIZE];</span><br><span class="line">	HNode head[K];</span><br><span class="line"></span><br><span class="line">	HEAD = word;<span class="comment">//保存内存池首地址</span></span><br><span class="line"></span><br><span class="line">	word[<span class="number">0</span>].llink = word;<span class="comment">//初始化内存池</span></span><br><span class="line">	word[<span class="number">0</span>].tag = <span class="number">0</span>;</span><br><span class="line">	word[<span class="number">0</span>].k = K - <span class="number">1</span>;</span><br><span class="line">	word[<span class="number">0</span>].rlink = word;</span><br><span class="line"></span><br><span class="line">	*ppav = head;<span class="comment">//将顺序表链接到头指针</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">int</span> size = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; K; i++, size *= <span class="number">2</span>)<span class="comment">//初始化顺序表</span></span><br><span class="line">	&#123;</span><br><span class="line">		head[i].size = size;</span><br><span class="line">		head[i].next = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	head[K - <span class="number">1</span>].next = word;<span class="comment">//将内存池链接到顺序表</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="动态内存申请"><a href="#动态内存申请" class="headerlink" title="动态内存申请"></a>动态内存申请</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">WORD *<span class="title">Mymalloc</span><span class="params">(PHNode ppav, <span class="keyword">int</span> size)</span>    <span class="comment">/*动态内存申请*/</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	assert(ppav != <span class="literal">NULL</span>);</span><br><span class="line">	<span class="keyword">if</span> (ppav == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="comment">//int j = -1;</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; K; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//if (ppav[i].size &gt;= size &amp;&amp; j == -1)</span></span><br><span class="line">		<span class="comment">//&#123;</span></span><br><span class="line">		<span class="comment">//	j = i;</span></span><br><span class="line">		<span class="comment">//&#125;</span></span><br><span class="line">		<span class="keyword">if</span> (ppav[i].next != <span class="literal">NULL</span> &amp;&amp; ppav[i].size &gt;= size)<span class="comment">//判断是否有足够剩余空间</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (i == K)<span class="comment">//剩余空间不足</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	Space q;</span><br><span class="line">	Space head = ppav[i].next;</span><br><span class="line">	Space p = head;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//有剩余空间</span></span><br><span class="line">	<span class="keyword">if</span> (head-&gt;llink == head)<span class="comment">//该双向链表中只有一个节点</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//head = NULL; Error: 无法改变ppav[i].next的值, 只改变head的值, 函数运行完成后销毁, 无用</span></span><br><span class="line">		ppav[i].next = <span class="literal">NULL</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span><span class="comment">//该双向链表不只有一个节点</span></span><br><span class="line">	&#123;</span><br><span class="line">		ppav[i].next = head-&gt;rlink;</span><br><span class="line">		head-&gt;llink-&gt;rlink = head-&gt;rlink;</span><br><span class="line">		head-&gt;rlink-&gt;llink = head-&gt;llink;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*方法一: 从左向右由小到大切割内存块</span></span><br><span class="line"><span class="comment">	q = p + ppav[j].size;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	p-&gt;llink = p;</span></span><br><span class="line"><span class="comment">	p-&gt;k = j;</span></span><br><span class="line"><span class="comment">	p-&gt;tag = 1;</span></span><br><span class="line"><span class="comment">	p-&gt;rlink = p;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	while (j &lt; i)</span></span><br><span class="line"><span class="comment">	&#123;</span></span><br><span class="line"><span class="comment">		q-&gt;llink = q;</span></span><br><span class="line"><span class="comment">		q-&gt;tag = 0;</span></span><br><span class="line"><span class="comment">		q-&gt;k = j;</span></span><br><span class="line"><span class="comment">		q-&gt;rlink = q;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		ppav[j].next = q;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">		j++;</span></span><br><span class="line"><span class="comment">		q = q + ppav[j].size;</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/*方法二: 从右向左有大到小切割内存块*/</span></span><br><span class="line">	<span class="keyword">for</span>(i--; ppav[i].size &gt;= size; i--)<span class="comment">//大块内存块切割小块内存块</span></span><br><span class="line">	&#123;</span><br><span class="line">		q = p + ppav[i].size;</span><br><span class="line"></span><br><span class="line">		q-&gt;llink = q;</span><br><span class="line">		q-&gt;tag = <span class="number">0</span>;</span><br><span class="line">		q-&gt;k = i;</span><br><span class="line">		q-&gt;rlink = q;</span><br><span class="line"></span><br><span class="line">		ppav[i].next = q;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	p-&gt;llink = p;</span><br><span class="line">	p-&gt;tag = <span class="number">1</span>;</span><br><span class="line">	p-&gt;k = i + <span class="number">1</span>;</span><br><span class="line">	p-&gt;rlink = p;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;动态内存申请时要注意: </p>
+<blockquote>
 <ul>
-<li><p><strong>源端口</strong>(<code>Source Port, 16 bits</code>): 发送端进程端口号, 用于标识发送进程.</p>
-</li>
-<li><p><strong>目的端口</strong>(<code>Destination Port, 16 bits</code>): 接收端进程端口号, 用于标识接收进程. <code>IP</code> 和端口被称为端点(<code>endpoint</code>) 或套接字(<code>socket</code>), 一对端点(目的 <code>IP</code>, 目的端口, 源 <code>IP</code>, 源端口四元组)唯一标识一个连接.</p>
-</li>
-<li><strong>序列号</strong>(<code>Sequence Number, 32 bits</code>): 记录数据包中第一个数据在整个连接中的位置, 以字节为单位. 初始序列号(<code>Initial Sequence Number, ISN</code>) 由系统生成, 在 <code>SYN</code>(下文介绍) 报文段选择 <code>ISN</code> 时需要随时间增长且无法被预测.<ul>
-<li>随时间增长避免一个连接上到达某一个端点上的报文段在一段时间内, 旧的实例报文段的序列号不会与新的实例报文段的序列号相同, 如果相同则 <code>TCP</code> 将无法识别这是一个异常的报文段(不考虑 <code>TSopt</code> 选项, 下文介绍), 可能会导致传输数据错误. 这段时间需要大于一个报文段在网络中的存活时间为 <a href="https://en.wikipedia.org/wiki/Maximum_segment_lifetime" target="_blank" rel="noopener"><code>MSL</code></a>, 而 <code>SN</code> 随时间增长回绕到相等时通常远大于 <code>MSL</code>.</li>
-<li>无法被预测避免其他人猜测到当前 <code>SN</code> 进行攻击, 例如攻击者可以发送具有当前 <code>SN</code> 的 <code>RST</code>(下文介绍)报文段到对端破坏连接, 也可以发送具有当前 <code>SN</code> 的错误数据报文段到对端使传输的数据出错. 如果无法猜测到当前 <code>SN</code>, 即使发送了错误报文段, <code>SN</code> 不在窗口范围内也会被 <code>TCP</code> 主动抛弃.</li>
+<li>当双向链表值在顺序表中的头指针为 <code>NULL</code> 的情况</li>
+<li>双向链表只有一个节点的情况</li>
 </ul>
-</li>
-<li><strong>确认号</strong>(<code>Acknowledgment Number, 32 bits</code>): 对接收到的数据包进行确认, 设置 <code>ACK</code> 标志位(下文介绍)时生效, 值为接收到报文段 <code>SN</code> + 数据长度, 即下一个应该接收到的报文段的 <code>SN</code>, 例如当收到一个 <code>SN</code> 为 <code>1</code> 数据长度为 <code>200</code> 的报文段, 应回复的确认号值为 <code>201</code>.  <code>TCP</code> 可以进行累计确认, 例如当收到 <code>SN</code> 为 <code>1</code> 数据长度为 <code>200</code> 和 <code>SN</code> 为 <code>201</code> 数据长度为 <code>200</code> 的报文段时可以回复一个确认号为 <code>401</code> 的报文段.</li>
-<li><strong>头部长度</strong>(<code>Header Length, 4 bits</code>): 统计 <code>TCP</code> 报文段头部长度, 以 <code>4</code> 字节为单位, 所以 <code>TCP</code> 头部最大长度为 <code>(2 ^ 4) - 1 * 4 = 60</code> 字节.</li>
-<li><strong>保留</strong>(<code>Recv, 4 bits</code>): 保留后续改进 <code>TCP</code> 预留的字段, 值必须为 <code>0</code>. 其中最低一位在试验性质的 <code>RFC</code> 文件 <code>RFC3540</code> 中被定义为随机数和(<code>nonce sum, NS</code>).</li>
-<li><strong>CWR</strong>: 拥塞窗口减小标志位, 当接收端通过 <code>ECE</code> 标志位(下文介绍)通知发送端出现拥塞时, 发送端降低发送速率, 回复该标志.</li>
-<li><strong>ECE</strong>: 显式拥塞通知(<code>ECN</code>)回显标志位, <code>IP</code> 协议 <code>ToS</code> 字段两个最低有效位(第 <code>15 ~ 16</code> 位) 用于表示是否支持 <code>ECN</code>: <code>00</code> 表示不支持, <code>01/10</code> 表示支持, <code>11</code> 表示发生拥塞(<code>CE</code>). 当传输层支持 <code>ECN</code> 时, 如果发生拥塞, 路由器将不丢包, 而是设置 <code>CE</code>. 在三次握手中协商 <code>ECN</code> 成功时, 如果接收端收到 <code>CE</code> 标志, 则会一直设置该标志位通知直到接收到 <code>CWR</code> 标志位. 详情参考<a href="https://zh.wikipedia.org/wiki/%E6%98%BE%E5%BC%8F%E6%8B%A5%E5%A1%9E%E9%80%9A%E7%9F%A5" target="_blank" rel="noopener">显式拥塞通知</a>.</li>
-<li><strong>URG</strong>: 紧急指针标志位, 用于发送紧急数据时设置, 使紧急指针生效.</li>
-<li><strong>ACK</strong>: 确认标志位, 用于确认接收到的数据包时设置, 使确认号字段生效.</li>
-<li><strong>PSH</strong>: 推送标志位, 用于通知接收端将接收到的所有数据提交给接收进程, 所有数据包括与该标志位一起到达的数据和已经接收到但未提交给接收进程的数据. 在 <code>linux</code>(<code>Berkeley socket</code>) 中, 系统没有提供设置 <code>PSH</code> 的 <code>API</code>, 系统会在发送数据清空发送缓冲区时自动进行置位; 同时由于系统一般不会推迟将接收到的数据提交给应用程序, 所以系统会忽略接收到的 <code>PSH</code>.</li>
-<li><strong>RST</strong>: 连接重置标志位, 用于连接出现异常或错误时立即断开连接时设置. 设置了该标志位的数据包, 不需要确认.</li>
-<li><strong>SYN</strong>: 连接建立标志位, 用于建立连接时设置.</li>
-<li><strong>FIN</strong>: 连接断开标志位, 用于断开连接时设置.</li>
-<li><strong>窗口大小</strong>(<code>Window Size, 16 bits</code>): 指定对端可以发送从确认号字段开始的字节数, 单位由 <code>WSopt</code> 选项指定(下文介绍). <code>TCP</code> 连接的每一端中都存在一个发送窗口和一个接受窗口用于进行流量控制和拥塞控制(见后续文章), 当前大小指定了对端发送窗口大小, 即本端接收窗口大小.</li>
-<li><strong>检验和</strong>(<code>TCP Checksum, 16 bits</code>): 用于伪头部, <code>TCP</code> 头部, <code>TCP</code> 数据的校验和.</li>
-<li><strong>紧急指针</strong>(<code>Urgent Pointer, 16 bits</code>): <code>URG</code> 置位时生效, 用于指明紧急数据结束的位置, 即正常数据开始位置, 在 <code>Linux</code> 中称为带外数据.</li>
-<li><strong>选项(可变)</strong>(<code>Options, variable</code>): </li>
+</blockquote>
+<p>动态内存申请的难点在于处理大块内存块切割小块内存块的情况, 这时有两种方法:</p>
+<ul>
+<li>从左向右由小到大切割内存块</li>
+<li>从右向左由大到小切割内存块.</li>
 </ul>
-<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><p>&emsp;&emsp;<code>TCP</code> 在 <code>Linux</code> 中定义如下:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tcphdr</span> &#123;</span></span><br><span class="line">	__be16	source;</span><br><span class="line">	__be16	dest;</span><br><span class="line">	__be32	seq;</span><br><span class="line">	__be32	ack_seq;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> defined(__LITTLE_ENDIAN_BITFIELD)</span></span><br><span class="line">	__u16	res1:<span class="number">4</span>,</span><br><span class="line">		doff:<span class="number">4</span>,</span><br><span class="line">		fin:<span class="number">1</span>,</span><br><span class="line">		syn:<span class="number">1</span>,</span><br><span class="line">		rst:<span class="number">1</span>,</span><br><span class="line">		psh:<span class="number">1</span>,</span><br><span class="line">		ack:<span class="number">1</span>,</span><br><span class="line">		urg:<span class="number">1</span>,</span><br><span class="line">		ece:<span class="number">1</span>,</span><br><span class="line">		cwr:<span class="number">1</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">elif</span> defined(__BIG_ENDIAN_BITFIELD)</span></span><br><span class="line">	__u16	doff:<span class="number">4</span>,</span><br><span class="line">		res1:<span class="number">4</span>,</span><br><span class="line">		cwr:<span class="number">1</span>,</span><br><span class="line">		ece:<span class="number">1</span>,</span><br><span class="line">		urg:<span class="number">1</span>,</span><br><span class="line">		ack:<span class="number">1</span>,</span><br><span class="line">		psh:<span class="number">1</span>,</span><br><span class="line">		rst:<span class="number">1</span>,</span><br><span class="line">		syn:<span class="number">1</span>,</span><br><span class="line">		fin:<span class="number">1</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">error</span>	<span class="meta-string">"Adjust your &lt;asm/byteorder.h&gt; defines"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span>	</span></span><br><span class="line">	__be16	window;</span><br><span class="line">	__sum16	check;</span><br><span class="line">	__be16	urg_ptr;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>&emsp;&emsp;其中 <code>__be16</code> 和 <code>__sum16</code> 为 <code>unsigned short</code>, <code>__be32</code> 为 <code>unsigned int</code>, <code>__LITTLE_ENDIAN_BITFIELD</code> 表示小端比特序, <code>__BIG_ENDIAN_BITFIELD</code> 表示大端比特序. 其中大端比特序与人类思维方式一致, 可以通过对比大端序与上文中图二 <code>TCP</code> 头部字段加深了解. 同时通过源码可以看出 <code>Linux</code> 并没有实现 <code>NS</code> 标志位.</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="http://www.r-5.org/files/books/computers/internals/net/Richard_Stevens-TCP-IP_Illustrated-EN.pdf" target="_blank" rel="noopener">TCP/IP Illustrated, Volume 1: The Protocols (2nd Edition)</a> • Chapter 12 TCP: The Transmission Control Protocol (Preliminaries)</li>
-<li><a href="http://www.r-5.org/files/books/computers/internals/net/Richard_Stevens-TCP-IP_Illustrated-EN.pdf" target="_blank" rel="noopener">TCP/IP Illustrated, Volume 1: The Protocols (2nd Edition)</a> • Chapter 13 TCP Connection Management</li>
-<li><a href="https://elixir.bootlin.com/linux/v4.19/source/include/uapi/linux/tcp.h#L25" target="_blank" rel="noopener">TCP Header Source</a></li>
-<li><a href="https://www.linuxjournal.com/article/6788" target="_blank" rel="noopener">Byte and Bit Order Dissection</a></li>
+<h3 id="动态内存回收"><a href="#动态内存回收" class="headerlink" title="动态内存回收"></a>动态内存回收</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Myfree</span><span class="params">(PHNode ppav, WORD *p)</span>        <span class="comment">/*动态内存回收*/</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	p-&gt;tag = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">int</span> k = p-&gt;k;</span><br><span class="line">	<span class="keyword">int</span> size = powx(<span class="number">2</span>, k);</span><br><span class="line">	Space q;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> flag;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span>(k &lt; K)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> ((p - HEAD) % (size * <span class="number">2</span>) == <span class="number">0</span>)<span class="comment">//判断左块, 右块</span></span><br><span class="line">		&#123;	</span><br><span class="line">			flag = <span class="number">0</span>;<span class="comment">//左块</span></span><br><span class="line">			q = p + size;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			flag = <span class="number">1</span>;<span class="comment">//右块</span></span><br><span class="line">			q = p - size;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (q-&gt;tag == <span class="number">0</span> &amp;&amp; flag == <span class="number">1</span> &amp;&amp; q-&gt;k == p-&gt;k)<span class="comment">//p为右块且有p的左块存在</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(q-&gt;rlink == q)</span><br><span class="line">			&#123;</span><br><span class="line">				ppav[k].next = <span class="literal">NULL</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				ppav[k].next = q-&gt;rlink;<span class="comment">//易错: 若p的左块为ppav[k].next所指的空间块, 不写则在输出时会陷入死循环</span></span><br><span class="line">				q-&gt;llink-&gt;rlink = q-&gt;rlink;</span><br><span class="line">				q-&gt;rlink-&gt;llink = q-&gt;llink;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			q-&gt;k++;</span><br><span class="line">			p = q;</span><br><span class="line">			k++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (q-&gt;tag == <span class="number">0</span> &amp;&amp; flag == <span class="number">0</span> &amp;&amp; q-&gt;k == p-&gt;k)<span class="comment">//p位左块且有p的右块存在</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span>(q-&gt;rlink == q)</span><br><span class="line">			&#123;</span><br><span class="line">				ppav[k].next = <span class="literal">NULL</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;</span><br><span class="line">				ppav[k].next = q-&gt;rlink;<span class="comment">//易错: 若p的左块为ppav[k].next所指的空间块, 不写则在输出时会陷入死循环</span></span><br><span class="line">				q-&gt;llink-&gt;rlink = q-&gt;rlink;</span><br><span class="line">				q-&gt;rlink-&gt;llink = q-&gt;llink;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			p-&gt;k++;</span><br><span class="line">			k++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span><span class="comment">//p没有伙伴块</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		size *= <span class="number">2</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(ppav[p-&gt;k].next == <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		p-&gt;llink = p;</span><br><span class="line">		p-&gt;rlink = p;</span><br><span class="line"></span><br><span class="line">		ppav[p-&gt;k].next = p;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		q = ppav[k].next;</span><br><span class="line">		q-&gt;llink-&gt;rlink = p;<span class="comment">//将p插入内存池</span></span><br><span class="line">		p-&gt;llink = q-&gt;llink;</span><br><span class="line">		q-&gt;llink = p;</span><br><span class="line">		p-&gt;rlink = q;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;在动态内存回收中需要注意:</p>
+<blockquote>
+<ul>
+<li>在判断回收的内存块的伙伴是否空闲时应使用 <code>q-&gt;tag == 0 &amp;&amp; flag == 0 &amp;&amp; q-&gt;k == p-&gt;k</code> 进行判断, 缺一不可</li>
+<li>代码第<code>33</code>, <code>50</code>行不可缺少</li>
+<li>当双向链表值在顺序表中的头指针为 <code>NULL</code> 的情况</li>
+<li>双向链表只有一个节点的情况</li>
 </ul>
-<p><em>注: 本文源码来自 <code>Linux v4.19</code>.</em></p>
+</blockquote>
+<p>&emsp;&emsp;动态内存回收的难点在于内存回收时对于伙伴块的合并, 应使用循环, 当回收的内存块有伙伴时, 与伙伴合并成为新的内存块, 新的内存块再次查看是否有伙伴, 直至新的内存块没有伙伴, 将其插入和其大小的匹配的双向链表中, 正如<strong>整体设计</strong>中所说, 这时双向链表的价值就体现出来, 为了写平衡, 双向链表可轻易将新内存块插入双向链表的链表尾.</p>
+<p>&emsp;&emsp;在这其中伙伴是一个很重要的概念, 何为“伙伴”? 将一个大块内存切割成为两个大小相同的小块内存, 两个小块内存<strong>互为伙伴</strong>.</p>
+<p>&emsp;&emsp;在寻找回收的内存块的伙伴时, 首先需要知道回收的内存块是左块还是右块, $p    MOD   2^{k + 1} = 0$ 则为左块, 否则为右块.这里的 <code>p</code> 指回收的内存块相对于内存池首地址的相对地址, 这时在<strong>内存初始化</strong>中的 <code>HEAD</code> 变量的作用就体现出来.</p>
 
       
     </div>
@@ -549,7 +549,7 @@
     <strong>本文作者： </strong>chunqiulfq</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://chunqiublog.github.io/TCP_header.html" title="TCP 头部封装">http://chunqiublog.github.io/TCP_header.html</a>
+    <a href="http://chunqiublog.github.io/friend_system.html" title="实现伙伴系统">http://chunqiublog.github.io/friend_system.html</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -562,7 +562,9 @@
       
         <div class="post-tags">
           
-			<a href="/tags/TCP/" rel="tag"><i class="fa fa-tag"></i> TCP</a>
+			<a href="/tags/源码/" rel="tag"><i class="fa fa-tag"></i> 源码</a>
+          
+			<a href="/tags/链表/" rel="tag"><i class="fa fa-tag"></i> 链表</a>
           
         </div>
       
@@ -575,8 +577,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/write_function.html" rel="next" title="write() 函数">
-                <i class="fa fa-chevron-left"></i> write() 函数
+              <a href="/dual_system_cannot_start.html" rel="next" title="RHEL7.0或CentOS7.0与WIN8.1双系统时WIN8.1无法启动">
+                <i class="fa fa-chevron-left"></i> RHEL7.0或CentOS7.0与WIN8.1双系统时WIN8.1无法启动
               </a>
             
           </div>
@@ -585,8 +587,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/c_function_call.html" rel="prev" title="C 语言函数调用的实现">
-                C 语言函数调用的实现 <i class="fa fa-chevron-right"></i>
+              <a href="/cplusplus_inline.html" rel="prev" title="C++ 内联函数 inline">
+                C++ 内联函数 inline <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -825,7 +827,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#源码"><span class="nav-number">1.</span> <span class="nav-text">源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">2.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#结构设计"><span class="nav-number">1.</span> <span class="nav-text">结构设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#整体设计"><span class="nav-number">1.1.</span> <span class="nav-text">整体设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双向链表设计思路及定义"><span class="nav-number">1.2.</span> <span class="nav-text">双向链表设计思路及定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#顺序表设计思路及定义"><span class="nav-number">1.3.</span> <span class="nav-text">顺序表设计思路及定义</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现动态内存管理"><span class="nav-number">2.</span> <span class="nav-text">实现动态内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#内存初始化"><span class="nav-number">2.1.</span> <span class="nav-text">内存初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态内存申请"><span class="nav-number">2.2.</span> <span class="nav-text">动态内存申请</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态内存回收"><span class="nav-number">2.3.</span> <span class="nav-text">动态内存回收</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1376,6 +1378,30 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 
