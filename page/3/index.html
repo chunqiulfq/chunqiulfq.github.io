@@ -250,7 +250,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">36</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档<span class="badge">39</span></a>
   </li>
         
         
@@ -332,6 +332,181 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/redis_source_code_analysis_SDS_1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chunqiulfq">
+      <meta itemprop="description" content="黄沙百战穿金甲 不破楼兰终不还">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHUNQIULFQ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/redis_source_code_analysis_SDS_1.html" itemprop="url">
+                  Redis 源码解析: SDS(1)
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-12-14 11:22:26" itemprop="dateCreated datePublished" datetime="2017-12-14T11:22:26+08:00">2017-12-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-21 00:08:13" itemprop="dateModified" datetime="2018-10-21T00:08:13+08:00">2018-10-21</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/数据库/" itemprop="url" rel="index"><span itemprop="name">数据库</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><strong>注: 基于 <code>redis 4.0</code>.</strong></p>
+<p>&emsp;&emsp;本文将介绍 <code>SDS</code> 的头文件. <code>SDS</code> 的头文件包括两个文件: <code>sds.h</code> 和 <code>sdsalloc.h</code>.<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/redis_source_code_analysis_SDS_1.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -522,6 +697,182 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/Linux_uid.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chunqiulfq">
+      <meta itemprop="description" content="黄沙百战穿金甲 不破楼兰终不还">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHUNQIULFQ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/Linux_uid.html" itemprop="url">
+                  Linux UID
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2016-07-11 01:09:54" itemprop="dateCreated datePublished" datetime="2016-07-11T01:09:54+08:00">2016-07-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-04-14 11:32:06" itemprop="dateModified" datetime="2020-04-14T11:32:06+08:00">2020-04-14</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/操作系统/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><em>翻译自: <a href="https://en.wikipedia.org/wiki/User_identifier#Process_attributes" target="_blank" rel="noopener">User identifier</a></em></p>
+<h1 id="进程属性"><a href="#进程属性" class="headerlink" title="进程属性"></a>进程属性</h1><p>&emsp;&emsp;<code>POSIX</code> 标准在进程描述符表中引入了三个不同的 <code>UID</code> 字段，以允许特权进程动态地担当不同的角色:</p>
+<h2 id="Effctive-user-ID-有效-UID"><a href="#Effctive-user-ID-有效-UID" class="headerlink" title="Effctive user ID(有效 UID)"></a><code>Effctive user ID</code>(有效 <code>UID</code>)</h2><p>&emsp;&emsp;一个进程的有效 <code>UID</code>(<code>euid</code>) 大多数时候被用来进行访问权限检查. 它也被用来设置进程创建文件时的所有者. 进程的有效 <code>GID</code>(<code>egid</code>) 会影响访问控制, 也可能影响文件创建, 这取决于正在使用的特定内核实现的语义和可能被使用的挂载选项. 根据 <code>BSD Unix</code> 的语义, 新创建的文件的所属组无条件继承创建该文件所在目录的所属组.根据 <code>AT&amp;T UNIX System V</code> 的语义(也被 <code>Linux</code> 采用), 新创建的文件的所属组通常是根据创建文件的进程的 <code>egid</code> 给定一个特定的所属组. 大多数文件系统会实现一个方法, 这个方法会去选择新创建的文件应该使用<code>BSD</code> 还是 <code>AT&amp;T</code> 语义设置所属组. 当为一个目录设置 <code>S_ISGID(s-gid)</code> 权限时, 该目录将使用 <code>BSD</code> 语义.</p>
+<h2 id="File-system-user-ID"><a href="#File-system-user-ID" class="headerlink" title="File system user ID"></a><code>File system user ID</code></h2><p>&emsp;&emsp;<code>Linux</code> 系统还有一个文件系统 <code>UID</code>(<code>fsuid</code>), 它被用来确定文件系统的访问权限. 除非有其他明确的设置, 否则使用它与 <code>euid</code> 匹配. 除非 <code>ruid</code> , <code>suid</code> 或 <code>euid</code> 是 <code>root</code>, 它才可能是管理员的 <code>uid</code>. 无论 <code>euid</code> 如何变动, 这种变动都会传递到 <code>fsuid</code>.</p>
+<p>&emsp;&emsp;设立 <code>fsuid</code> 的意图是允许程序(例如 <code>NFS</code> 服务) 可以在不需获取向给定UID账户发送信号的情况下以给定UID的权限来限定自己的文件系统权限. 从内核 2.0 开始, 因为 <code>Linux</code> 遵守 <a href="https://en.wikipedia.org/wiki/Single_UNIX_Specification#2001:_POSIX:2001,_Single_UNIX_Specification_version_3" target="_blank" rel="noopener"><code>SUSv3</code></a> 标准发送信号, 所以不再需要 <code>fsuid</code>, 但是因为兼容性仍然保留.</p>
+<h2 id="Saved-user-ID"><a href="#Saved-user-ID" class="headerlink" title="Saved user ID"></a><code>Saved user ID</code></h2><p>&emsp;&emsp;当一个被提高到特权级别运行的进程需要临时执行某些非特权级别的工作; 需要将 <code>euid</code> 从一个特权值(通常是 0)修改为一个非特权值(任何非特权值)需要将特权值存储在 <code>suid</code> 中. 之后, 程序的 <code>euid</code> 可以使用存储在 <code>suid</code> 中的值恢复, 以便提升权限时进行设置; 需要说明的是一个非特权进程只可以把 <code>euid</code> 设置为 <code>ruid</code>, <code>suid</code>, <code>euid</code> 三个值之中的一个.</p>
+<h2 id="Real-user-ID-真实-UID"><a href="#Real-user-ID-真实-UID" class="headerlink" title="Real user ID(真实 UID)"></a><code>Real user ID</code>(真实 <code>UID</code>)</h2><p>&emsp;&emsp;真实 <code>UID</code>(<code>ruid</code>) 和真实 <code>GID</code>(<code>rgid</code>) 用于鉴别一个进程的真正所有者并影响进程发送信号的权限. 当一个进程没有 <code>root</code> 权限时, 它只能向 <code>ruid</code> 或 <code>suid</code> 与它(发送进程)的 <code>ruid</code> 或 <code>euid</code> 相匹配的进程(接收进程)发送信号. 因为子进程从父进程继承了凭证, 所以父子进程之间可以相互发送信号.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/gcc_inline_assembly.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -641,6 +992,180 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/gcc_inline_assembly.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/type_conversion_problem.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="chunqiulfq">
+      <meta itemprop="description" content="黄沙百战穿金甲 不破楼兰终不还">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CHUNQIULFQ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/type_conversion_problem.html" itemprop="url">
+                  一个 C/C++ 类型转换错误
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2015-10-08 17:33:55" itemprop="dateCreated datePublished" datetime="2015-10-08T17:33:55+08:00">2015-10-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-04-14 05:32:20" itemprop="dateModified" datetime="2020-04-14T05:32:20+08:00">2020-04-14</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程语言/" itemprop="url" rel="index"><span itemprop="name">编程语言</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>&emsp;&emsp;<code>C</code> 和 <code>C++</code> 中类型转换对于每一个学习 <code>C</code> 和 <code>C++</code> 的人来说都是必不可少的知识, 但是我们却又经常不能注意到它们的重要性, 以至于我们常常忽略它们.<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/type_conversion_problem.html#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1553,529 +2078,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/Linux_forget_root_password.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chunqiulfq">
-      <meta itemprop="description" content="黄沙百战穿金甲 不破楼兰终不还">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CHUNQIULFQ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Linux_forget_root_password.html" itemprop="url">
-                  Linux 忘记 root 密码
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2014-05-17 18:26:26" itemprop="dateCreated datePublished" datetime="2014-05-17T18:26:26+08:00">2014-05-17</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-04-10 00:18:10" itemprop="dateModified" datetime="2020-04-10T00:18:10+08:00">2020-04-10</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/操作系统/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>&emsp;&emsp;安装 <code>Linux</code> 的虚拟机很久了, 之前不太会用, 也比较忙, 一段时间没有学习它, 因此一直没打开虚拟机, 结果我很悲催的把 <code>root</code> 密码给忘了, 伤心欲绝, 但是不知道怎么弄, 一直听说 <code>Linux</code> 的安全性很霸气, 以为不能修改了, 于是乎重新安了一遍…</p>
-<p>&emsp;&emsp;结果前几天在学校学 <code>Linux</code>, 学会了在启动界面不需要原密码就修改 <code>root</code> 密码的方法, 上来显摆显摆.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Linux_forget_root_password.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/Linux_software_installation.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chunqiulfq">
-      <meta itemprop="description" content="黄沙百战穿金甲 不破楼兰终不还">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CHUNQIULFQ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Linux_software_installation.html" itemprop="url">
-                  Linux 软件安装
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2014-05-13 00:48:25" itemprop="dateCreated datePublished" datetime="2014-05-13T00:48:25+08:00">2014-05-13</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-04-09 23:45:17" itemprop="dateModified" datetime="2020-04-09T23:45:17+08:00">2020-04-09</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/操作系统/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>&emsp;&emsp;<code>Linux</code> 有很多发行版本, 许多发行版本都有着自己的软件安装方法, 我现在在学习 <code>RedHat</code> 系统, 对于 <code>RedHat</code> 有两种软件安装的方法.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Linux_software_installation.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://chunqiublog.github.io/Linux_system_basic_structure.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="chunqiulfq">
-      <meta itemprop="description" content="黄沙百战穿金甲 不破楼兰终不还">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CHUNQIULFQ">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/Linux_system_basic_structure.html" itemprop="url">
-                  Linux 系统的基本结构
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2014-04-26 23:59:12" itemprop="dateCreated datePublished" datetime="2014-04-26T23:59:12+08:00">2014-04-26</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-04-09 23:10:22" itemprop="dateModified" datetime="2020-04-09T23:10:22+08:00">2020-04-09</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/操作系统/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>&emsp;&emsp;开始学习 <code>Linux</code> 不了解 <code>Linux</code> 的基本结构是不行的, 在这篇文章中将会介绍一下 <code>Linux</code> 的基本结构.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/Linux_system_basic_structure.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2129,7 +2131,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-count">39</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2813,13 +2815,13 @@
       
     
       
+    
+      
+    
+      
+    
+      
         
-      
-    
-      
-    
-      
-    
       
     
       
