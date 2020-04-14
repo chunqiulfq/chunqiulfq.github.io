@@ -123,18 +123,18 @@
 
 
 
-  <meta name="description" content="翻译自: User identifier 进程属性&amp;emsp;&amp;emsp;POSIX 标准在进程描述符表中引入了三个不同的 UID 字段，以允许特权进程动态地担当不同的角色: Effctive user ID(有效 UID)&amp;emsp;&amp;emsp;一个进程的有效 UID(euid) 大多数时候被用来进行访问权限检查. 它也被用来设置进程创建文件时的所有者. 进程的有效 GID(egid) 会影响访">
+  <meta name="description" content="翻译自: User identifier 进程属性&amp;emsp;&amp;emsp;POSIX 标准在进程描述符表中引入了三个不同的 UID 字段，以允许特权进程动态地担当不同的角色:">
 <meta name="keywords" content="翻译,linux 基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux UID">
 <meta property="og:url" content="http://chunqiublog.github.io/Linux_uid.html">
 <meta property="og:site_name" content="CHUNQIULFQ">
-<meta property="og:description" content="翻译自: User identifier 进程属性&amp;emsp;&amp;emsp;POSIX 标准在进程描述符表中引入了三个不同的 UID 字段，以允许特权进程动态地担当不同的角色: Effctive user ID(有效 UID)&amp;emsp;&amp;emsp;一个进程的有效 UID(euid) 大多数时候被用来进行访问权限检查. 它也被用来设置进程创建文件时的所有者. 进程的有效 GID(egid) 会影响访">
+<meta property="og:description" content="翻译自: User identifier 进程属性&amp;emsp;&amp;emsp;POSIX 标准在进程描述符表中引入了三个不同的 UID 字段，以允许特权进程动态地担当不同的角色:">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-04-14T03:32:06.894Z">
+<meta property="og:updated_time" content="2020-04-14T03:35:42.166Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux UID">
-<meta name="twitter:description" content="翻译自: User identifier 进程属性&amp;emsp;&amp;emsp;POSIX 标准在进程描述符表中引入了三个不同的 UID 字段，以允许特权进程动态地担当不同的角色: Effctive user ID(有效 UID)&amp;emsp;&amp;emsp;一个进程的有效 UID(euid) 大多数时候被用来进行访问权限检查. 它也被用来设置进程创建文件时的所有者. 进程的有效 GID(egid) 会影响访">
+<meta name="twitter:description" content="翻译自: User identifier 进程属性&amp;emsp;&amp;emsp;POSIX 标准在进程描述符表中引入了三个不同的 UID 字段，以允许特权进程动态地担当不同的角色:">
 
 
 
@@ -408,7 +408,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-04-14 11:32:06" itemprop="dateModified" datetime="2020-04-14T11:32:06+08:00">2020-04-14</time>
+                <time title="修改时间：2020-04-14 11:35:42" itemprop="dateModified" datetime="2020-04-14T11:35:42+08:00">2020-04-14</time>
               
             
           </span>
@@ -461,6 +461,7 @@
       
         <p><em>翻译自: <a href="https://en.wikipedia.org/wiki/User_identifier#Process_attributes" target="_blank" rel="noopener">User identifier</a></em></p>
 <h1 id="进程属性"><a href="#进程属性" class="headerlink" title="进程属性"></a>进程属性</h1><p>&emsp;&emsp;<code>POSIX</code> 标准在进程描述符表中引入了三个不同的 <code>UID</code> 字段，以允许特权进程动态地担当不同的角色:</p>
+<a id="more"></a>
 <h2 id="Effctive-user-ID-有效-UID"><a href="#Effctive-user-ID-有效-UID" class="headerlink" title="Effctive user ID(有效 UID)"></a><code>Effctive user ID</code>(有效 <code>UID</code>)</h2><p>&emsp;&emsp;一个进程的有效 <code>UID</code>(<code>euid</code>) 大多数时候被用来进行访问权限检查. 它也被用来设置进程创建文件时的所有者. 进程的有效 <code>GID</code>(<code>egid</code>) 会影响访问控制, 也可能影响文件创建, 这取决于正在使用的特定内核实现的语义和可能被使用的挂载选项. 根据 <code>BSD Unix</code> 的语义, 新创建的文件的所属组无条件继承创建该文件所在目录的所属组.根据 <code>AT&amp;T UNIX System V</code> 的语义(也被 <code>Linux</code> 采用), 新创建的文件的所属组通常是根据创建文件的进程的 <code>egid</code> 给定一个特定的所属组. 大多数文件系统会实现一个方法, 这个方法会去选择新创建的文件应该使用<code>BSD</code> 还是 <code>AT&amp;T</code> 语义设置所属组. 当为一个目录设置 <code>S_ISGID(s-gid)</code> 权限时, 该目录将使用 <code>BSD</code> 语义.</p>
 <h2 id="File-system-user-ID"><a href="#File-system-user-ID" class="headerlink" title="File system user ID"></a><code>File system user ID</code></h2><p>&emsp;&emsp;<code>Linux</code> 系统还有一个文件系统 <code>UID</code>(<code>fsuid</code>), 它被用来确定文件系统的访问权限. 除非有其他明确的设置, 否则使用它与 <code>euid</code> 匹配. 除非 <code>ruid</code> , <code>suid</code> 或 <code>euid</code> 是 <code>root</code>, 它才可能是管理员的 <code>uid</code>. 无论 <code>euid</code> 如何变动, 这种变动都会传递到 <code>fsuid</code>.</p>
 <p>&emsp;&emsp;设立 <code>fsuid</code> 的意图是允许程序(例如 <code>NFS</code> 服务) 可以在不需获取向给定UID账户发送信号的情况下以给定UID的权限来限定自己的文件系统权限. 从内核 2.0 开始, 因为 <code>Linux</code> 遵守 <a href="https://en.wikipedia.org/wiki/Single_UNIX_Specification#2001:_POSIX:2001,_Single_UNIX_Specification_version_3" target="_blank" rel="noopener"><code>SUSv3</code></a> 标准发送信号, 所以不再需要 <code>fsuid</code>, 但是因为兼容性仍然保留.</p>

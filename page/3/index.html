@@ -760,7 +760,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-04-14 11:32:06" itemprop="dateModified" datetime="2020-04-14T11:32:06+08:00">2020-04-14</time>
+                <time title="修改时间：2020-04-14 11:35:42" itemprop="dateModified" datetime="2020-04-14T11:35:42+08:00">2020-04-14</time>
               
             
           </span>
@@ -812,16 +812,15 @@
 
       
         
-          
-            <p><em>翻译自: <a href="https://en.wikipedia.org/wiki/User_identifier#Process_attributes" target="_blank" rel="noopener">User identifier</a></em></p>
+          <p><em>翻译自: <a href="https://en.wikipedia.org/wiki/User_identifier#Process_attributes" target="_blank" rel="noopener">User identifier</a></em></p>
 <h1 id="进程属性"><a href="#进程属性" class="headerlink" title="进程属性"></a>进程属性</h1><p>&emsp;&emsp;<code>POSIX</code> 标准在进程描述符表中引入了三个不同的 <code>UID</code> 字段，以允许特权进程动态地担当不同的角色:</p>
-<h2 id="Effctive-user-ID-有效-UID"><a href="#Effctive-user-ID-有效-UID" class="headerlink" title="Effctive user ID(有效 UID)"></a><code>Effctive user ID</code>(有效 <code>UID</code>)</h2><p>&emsp;&emsp;一个进程的有效 <code>UID</code>(<code>euid</code>) 大多数时候被用来进行访问权限检查. 它也被用来设置进程创建文件时的所有者. 进程的有效 <code>GID</code>(<code>egid</code>) 会影响访问控制, 也可能影响文件创建, 这取决于正在使用的特定内核实现的语义和可能被使用的挂载选项. 根据 <code>BSD Unix</code> 的语义, 新创建的文件的所属组无条件继承创建该文件所在目录的所属组.根据 <code>AT&amp;T UNIX System V</code> 的语义(也被 <code>Linux</code> 采用), 新创建的文件的所属组通常是根据创建文件的进程的 <code>egid</code> 给定一个特定的所属组. 大多数文件系统会实现一个方法, 这个方法会去选择新创建的文件应该使用<code>BSD</code> 还是 <code>AT&amp;T</code> 语义设置所属组. 当为一个目录设置 <code>S_ISGID(s-gid)</code> 权限时, 该目录将使用 <code>BSD</code> 语义.</p>
-<h2 id="File-system-user-ID"><a href="#File-system-user-ID" class="headerlink" title="File system user ID"></a><code>File system user ID</code></h2><p>&emsp;&emsp;<code>Linux</code> 系统还有一个文件系统 <code>UID</code>(<code>fsuid</code>), 它被用来确定文件系统的访问权限. 除非有其他明确的设置, 否则使用它与 <code>euid</code> 匹配. 除非 <code>ruid</code> , <code>suid</code> 或 <code>euid</code> 是 <code>root</code>, 它才可能是管理员的 <code>uid</code>. 无论 <code>euid</code> 如何变动, 这种变动都会传递到 <code>fsuid</code>.</p>
-<p>&emsp;&emsp;设立 <code>fsuid</code> 的意图是允许程序(例如 <code>NFS</code> 服务) 可以在不需获取向给定UID账户发送信号的情况下以给定UID的权限来限定自己的文件系统权限. 从内核 2.0 开始, 因为 <code>Linux</code> 遵守 <a href="https://en.wikipedia.org/wiki/Single_UNIX_Specification#2001:_POSIX:2001,_Single_UNIX_Specification_version_3" target="_blank" rel="noopener"><code>SUSv3</code></a> 标准发送信号, 所以不再需要 <code>fsuid</code>, 但是因为兼容性仍然保留.</p>
-<h2 id="Saved-user-ID"><a href="#Saved-user-ID" class="headerlink" title="Saved user ID"></a><code>Saved user ID</code></h2><p>&emsp;&emsp;当一个被提高到特权级别运行的进程需要临时执行某些非特权级别的工作; 需要将 <code>euid</code> 从一个特权值(通常是 0)修改为一个非特权值(任何非特权值)需要将特权值存储在 <code>suid</code> 中. 之后, 程序的 <code>euid</code> 可以使用存储在 <code>suid</code> 中的值恢复, 以便提升权限时进行设置; 需要说明的是一个非特权进程只可以把 <code>euid</code> 设置为 <code>ruid</code>, <code>suid</code>, <code>euid</code> 三个值之中的一个.</p>
-<h2 id="Real-user-ID-真实-UID"><a href="#Real-user-ID-真实-UID" class="headerlink" title="Real user ID(真实 UID)"></a><code>Real user ID</code>(真实 <code>UID</code>)</h2><p>&emsp;&emsp;真实 <code>UID</code>(<code>ruid</code>) 和真实 <code>GID</code>(<code>rgid</code>) 用于鉴别一个进程的真正所有者并影响进程发送信号的权限. 当一个进程没有 <code>root</code> 权限时, 它只能向 <code>ruid</code> 或 <code>suid</code> 与它(发送进程)的 <code>ruid</code> 或 <code>euid</code> 相匹配的进程(接收进程)发送信号. 因为子进程从父进程继承了凭证, 所以父子进程之间可以相互发送信号.</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/Linux_uid.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
